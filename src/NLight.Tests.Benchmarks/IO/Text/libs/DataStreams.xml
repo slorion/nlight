@@ -1,0 +1,3566 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DataStreams</name>
+    </assembly>
+    <members>
+        <member name="T:DataStreams.Common.DataReaderBase">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DataStreams.Common.DataReaderBase.reader">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DataStreams.Common.DataReaderBase.initialized">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:DataStreams.Common.DataReaderBase.#ctor(DataStreams.Common.ReaderBase,DataStreams.Common.DataReaderBase.DataReaderColumnCollection)">
+            <summary>
+            
+            </summary>
+            <param name="reader"></param>
+            <param name="columns"></param>
+        </member>
+        <member name="M:DataStreams.Common.DataReaderBase.Initialize(System.String[])">
+            <summary>
+            
+            </summary>
+            <param name="names"></param>
+        </member>
+        <member name="M:DataStreams.Common.DataReaderBase.IsDBNull(System.Int32,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="i"></param>
+            <param name="columnValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataStreams.Common.DataReaderBase.OnReadRecord">
+            <summary>
+            
+            </summary>
+            <returns>If the next record should be skipped.</returns>
+        </member>
+        <member name="M:DataStreams.Common.DataReaderBase.Dispose(System.Boolean)">
+            <summary>
+            	Closes and releases all related resources.
+            </summary>
+            <param name="disposing">
+            	Whether this call is coming from an explicit call,
+            	instead of from the implicit GC finalizer call.
+            </param>
+        </member>
+        <member name="M:DataStreams.Common.DataReaderBase.Finalize">
+            <summary>
+            	Called to release unmanaged resources.
+            </summary>
+        </member>
+        <member name="M:DataStreams.Common.DataReaderBase.CheckDisposed">
+            <summary>
+            	Checks to see if object has already been disposed, which
+            	would make calling methods on the object invalid.
+            </summary>
+            <exception cref="T:System.ObjectDisposedException">
+            	Methods were called after the object has been disposed.
+            </exception>
+        </member>
+        <member name="M:DataStreams.Common.DataReaderBase.Close">
+            <summary>
+            	Closes and releases all related resources.
+            </summary>
+        </member>
+        <member name="E:DataStreams.Common.DataReaderBase.ReadRecord">
+            <summary>
+            	This event is raised after each record has been read and before
+            	the values have been converted to the destination type. This event
+            	can be used to modify values in a record, add values to a record,
+            	or skip a record entirely.
+            </summary>
+        </member>
+        <member name="T:DataStreams.Common.DataReaderBase.ReadRecordEventHandler">
+            <summary>
+            	Represents the method that will handle the <see cref="E:DataStreams.Common.DataReaderBase.ReadRecord"/>
+            	event of a <see cref="T:DataStreams.Common.DataReaderBase"/> instance.
+            </summary>
+            <param name="e">
+            	The <see cref="T:DataStreams.Common.DataReaderBase.ReadRecordEventArgs"/> that contains the event data.
+            </param>
+        </member>
+        <member name="T:DataStreams.Common.DataReaderBase.RecordValuesCollection">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:DataStreams.Common.DataReaderBase.RecordValuesCollection.System#Collections#ICollection#CopyTo(System.Array,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="array"></param>
+            <param name="index"></param>
+        </member>
+        <member name="M:DataStreams.Common.DataReaderBase.RecordValuesCollection.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:DataStreams.Common.DataReaderBase.RecordValuesCollection.Count">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DataStreams.Common.DataReaderBase.RecordValuesCollection.System#Collections#ICollection#IsSynchronized">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DataStreams.Common.DataReaderBase.RecordValuesCollection.System#Collections#ICollection#SyncRoot">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DataStreams.Common.DataReaderBase.RecordValuesCollection.Item(System.Int32)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DataStreams.Common.DataReaderBase.RecordValuesCollection.Item(System.String)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:DataStreams.Common.DataReaderBase.ReadRecordEventArgs">
+            <summary>
+            	Provides data for the <see cref="E:DataStreams.Common.DataReaderBase.ReadRecord"/> event.
+            </summary>
+        </member>
+        <member name="P:DataStreams.Common.DataReaderBase.ReadRecordEventArgs.Values">
+            <summary>
+            	An array of column values for this record.
+            </summary>
+        </member>
+        <member name="P:DataStreams.Common.DataReaderBase.ReadRecordEventArgs.SkipRecord">
+            <summary>
+            	Whether this record should be skipped or not. Default
+            	is false.
+            </summary>
+        </member>
+        <member name="T:DataStreams.Common.DataReaderBase.DataReaderColumnCollection">
+            <summary>
+            	Collection of <see cref="T:DataStreams.Common.DataReaderBase.DataReaderColumn"/> items.
+            </summary>
+        </member>
+        <member name="T:DataStreams.Common.NamedColumnCollection">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DataStreams.Common.NamedColumnCollection.columns">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DataStreams.Common.NamedColumnCollection.indexByName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:DataStreams.Common.NamedColumnCollection.System#Collections#ICollection#CopyTo(System.Array,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="array"></param>
+            <param name="index"></param>
+        </member>
+        <member name="M:DataStreams.Common.NamedColumnCollection.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DataStreams.Common.NamedColumnCollection.GetIndex(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="columnName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataStreams.Common.NamedColumnCollection.Add(System.Object)">
+            <summary>
+            	
+            </summary>
+            <param name="column">
+            	
+            </param>
+        </member>
+        <member name="M:DataStreams.Common.NamedColumnCollection.Add(System.Object,System.String)">
+            <summary>
+            	
+            </summary>
+            <param name="column">
+            	
+            </param>
+            <param name="columnName">
+            	
+            </param>
+        </member>
+        <member name="P:DataStreams.Common.NamedColumnCollection.CaseSensitive">
+            <summary>
+            	This determines whether the column lookup using the column name
+            	will be case sensitive or not. Default is true.
+            </summary>
+        </member>
+        <member name="P:DataStreams.Common.NamedColumnCollection.Names">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DataStreams.Common.NamedColumnCollection.Count">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DataStreams.Common.NamedColumnCollection.System#Collections#ICollection#IsSynchronized">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DataStreams.Common.NamedColumnCollection.System#Collections#ICollection#SyncRoot">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DataStreams.Common.NamedColumnCollection.Item(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="columnIndex"></param>
+            <returns></returns>
+        </member>
+        <member name="P:DataStreams.Common.NamedColumnCollection.Item(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="columnName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataStreams.Common.DataReaderBase.DataReaderColumnCollection.Add(DataStreams.Common.DataReaderBase.DataReaderColumn)">
+            <summary>
+            	Adds a <see cref="T:DataStreams.Common.DataReaderBase.DataReaderColumn"/> to the collection.
+            </summary>
+            <param name="column">
+            	The <see cref="T:DataStreams.Common.DataReaderBase.DataReaderColumn"/> to add to the collection.
+            </param>
+        </member>
+        <member name="M:DataStreams.Common.DataReaderBase.DataReaderColumnCollection.Add(DataStreams.Common.DataReaderBase.DataReaderColumn,System.String)">
+            <summary>
+            	Adds a <see cref="T:DataStreams.Common.DataReaderBase.DataReaderColumn"/> to the collection.
+            </summary>
+            <param name="column">
+            	The <see cref="T:DataStreams.Common.DataReaderBase.DataReaderColumn"/> to add to the collection.
+            </param>
+            <param name="columnName">
+            	
+            </param>
+        </member>
+        <member name="P:DataStreams.Common.DataReaderBase.DataReaderColumnCollection.Item(System.Int32)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DataStreams.Common.DataReaderBase.DataReaderColumnCollection.Item(System.String)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:DataStreams.Common.DataReaderBase.DataReaderColumn">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DataStreams.Common.DataReaderBase.DataReaderColumn.DefaultValue">
+            <summary>
+            	The value to use for the column when no value is present.
+            	Default is <see cref="F:System.DBNull.Value"/>.
+            </summary>
+        </member>
+        <member name="P:DataStreams.Common.DataReaderBase.DataReaderColumn.FormatProvider">
+            <summary>
+            	The <see cref="T:System.IFormatProvider"/> to use while
+            	attempting to parse values for this column. Contains
+            	culture specific settings for date and numeric values.
+            </summary>
+        </member>
+        <member name="P:DataStreams.Common.DataReaderBase.DataReaderColumn.Format">
+            <summary>
+            	The format string to use for parsing irregular date
+            	column values. Must exactly match the column's value
+            	in the data source using the <see cref="P:DataStreams.Common.DataReaderBase.DataReaderColumn.FormatProvider"/>'s
+            	formatting symbols.
+            </summary>
+        </member>
+        <member name="T:DataStreams.Common.ReaderBase">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DataStreams.Common.ReaderBase.columnsCount">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DataStreams.Common.ReaderBase.values">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DataStreams.Common.ReaderBase.currentRecord">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DataStreams.Common.ReaderBase.disposed">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:DataStreams.Common.ReaderBase.ReadRecord">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DataStreams.Common.ReaderBase.Close">
+            <summary>
+            	Closes and releases all related resources.
+            </summary>
+        </member>
+        <member name="M:DataStreams.Common.ReaderBase.Dispose(System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="disposing"></param>
+        </member>
+        <member name="M:DataStreams.Common.ReaderBase.CheckDisposed">
+            <summary>
+            	Checks to see if object has already been disposed, which
+            	would make calling methods on the object invalid.
+            </summary>
+            <exception cref="T:System.ObjectDisposedException">
+            	Methods were called after the object has been disposed.
+            </exception>
+        </member>
+        <member name="P:DataStreams.Common.ReaderBase.Item(System.Int32)">
+            <summary>
+            	Returns the current column value for a given column index.
+            </summary>
+            <exception cref="T:System.ObjectDisposedException">
+            	Methods were called after the object has been disposed.
+            </exception>
+        </member>
+        <member name="P:DataStreams.Common.ReaderBase.Values">
+            <summary>
+            	Returns the columns values for the current record as a string array.
+            </summary>
+            <exception cref="T:System.ObjectDisposedException">
+            	Methods were called after the object has been disposed.
+            </exception>
+        </member>
+        <member name="P:DataStreams.Common.ReaderBase.CurrentRecord">
+            <summary>
+            	The index of the current record.
+            </summary>
+        </member>
+        <member name="T:DataStreams.Common.SpreadsheetDataReader">
+            <summary>
+            	Provides a datasource for the .Net Framework SqlBulkCopy class
+            	which allows data to be rapidly imported from an Excel spreadsheet into SQL Server.
+            </summary>
+        </member>
+        <member name="M:DataStreams.Common.SpreadsheetDataReader.#ctor(DataStreams.Common.SpreadsheetReader)">
+            <summary>
+            
+            </summary>
+            <param name="reader"></param>
+        </member>
+        <member name="M:DataStreams.Common.SpreadsheetDataReader.GetSheetIndex(System.String)">
+            <summary>
+            	Returns the index of the sheet with the given name.
+            </summary>
+            <param name="sheetName">
+            	The name of the sheet to look for.
+            </param>
+            <returns>
+            	The index of the sheet or -1 if not found.
+            </returns>
+        </member>
+        <member name="M:DataStreams.Common.SpreadsheetDataReader.GetSheetName(System.Int32)">
+            <summary>
+            	Returns the name of the sheet at the given index.
+            </summary>
+            <param name="sheetIndex">
+            	The index to the requested sheet.
+            </param>
+            <returns>
+            	The name of the sheet or empty string if the sheet index is invalid.
+            </returns>
+        </member>
+        <member name="M:DataStreams.Common.SpreadsheetDataReader.Initialize(System.String[])">
+            <summary>
+            
+            </summary>
+            <param name="names">
+            
+            </param>
+        </member>
+        <member name="M:DataStreams.Common.SpreadsheetDataReader.IsDBNull(System.Int32,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="i">
+            
+            </param>
+            <param name="columnValue">
+            
+            </param>
+            <returns>
+            
+            </returns>
+        </member>
+        <member name="P:DataStreams.Common.SpreadsheetDataReader.Settings">
+            <summary>
+            	Has all the options that are able to be set that will affect the way
+            	records are parsed.
+            </summary>
+        </member>
+        <member name="P:DataStreams.Common.SpreadsheetDataReader.Columns">
+            <summary>
+            	Collection of columns to include in the source data.
+            </summary>
+        </member>
+        <member name="P:DataStreams.Common.SpreadsheetDataReader.SheetCount">
+            <summary>
+            	Returns the count of sheets found in the workbook.
+            </summary>
+        </member>
+        <member name="P:DataStreams.Common.SpreadsheetDataReader.CurrentSheet">
+            <summary>
+            	Gets or sets the index of the current sheet in the workbook.
+            </summary>
+        </member>
+        <member name="P:DataStreams.Common.SpreadsheetDataReader.SheetNames">
+            <summary>
+            	Returns the list of sheet names as a string array in the correct
+            	order. The array can then easily be bound to a combo box for example
+            	for sheet selection in a windows form.
+            </summary>
+        </member>
+        <member name="T:DataStreams.Common.SpreadsheetDataReader.Column">
+            <summary>
+            	Represents a data column in the data source to use during import.
+            </summary>
+        </member>
+        <member name="M:DataStreams.Common.SpreadsheetDataReader.Column.#ctor(System.String)">
+            <summary>
+            	Initializes a new instance of the <see cref="T:DataStreams.Common.SpreadsheetDataReader.Column"/>
+            	class using the name of the data type to use for this column.
+            </summary>
+            <param name="dataType">
+            	Name of the data type in the database, for example, datetime, varchar, and so on.
+            </param>
+        </member>
+        <member name="T:DataStreams.Common.SpreadsheetDataReader.ColumnCollection">
+            <summary>
+            	Collection of <see cref="T:DataStreams.Common.SpreadsheetDataReader.Column"/> items.
+            </summary>
+        </member>
+        <member name="M:DataStreams.Common.SpreadsheetDataReader.ColumnCollection.Add(System.String)">
+            <summary>
+            	Adds a <see cref="T:DataStreams.Common.SpreadsheetDataReader.Column"/> to the collection.
+            </summary>
+            <param name="dataType">
+            	The name of the data type of the <see cref="T:DataStreams.Common.SpreadsheetDataReader.Column"/>
+            	to add to the collection.
+            </param>
+        </member>
+        <member name="M:DataStreams.Common.SpreadsheetDataReader.ColumnCollection.Add(System.String,System.String)">
+            <summary>
+            	Adds a <see cref="T:DataStreams.Common.SpreadsheetDataReader.Column"/> to the collection.
+            </summary>
+            <param name="dataType">
+            	The name of the data type of the <see cref="T:DataStreams.Common.SpreadsheetDataReader.Column"/>
+            	to add to the collection.
+            </param>
+            <param name="columnName">
+            	The name to use when referring to this column in column mappings.
+            </param>
+        </member>
+        <member name="P:DataStreams.Common.SpreadsheetDataReader.ColumnCollection.Item(System.Int32)">
+            <summary>
+            	The <see cref="T:DataStreams.Common.SpreadsheetDataReader.Column"/> at the specified index.
+            </summary>
+        </member>
+        <member name="P:DataStreams.Common.SpreadsheetDataReader.ColumnCollection.Item(System.String)">
+            <summary>
+            	The <see cref="T:DataStreams.Common.SpreadsheetDataReader.Column"/> corresponding to the given column name.
+            </summary>
+        </member>
+        <member name="T:DataStreams.Common.SpreadsheetDataReader.UserSettings">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:DataStreams.Common.SpreadsheetDataReader.UserSettings.#ctor(DataStreams.Common.SpreadsheetReader)">
+            <summary>
+            
+            </summary>
+            <param name="reader"></param>
+        </member>
+        <member name="P:DataStreams.Common.SpreadsheetDataReader.UserSettings.HasHeaders">
+            <summary>
+            	Indicates whether the first line of data contains names of the columns.
+            	Default is false.
+            </summary>
+        </member>
+        <member name="T:DataStreams.Common.SpreadsheetReader">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:DataStreams.Common.SpreadsheetReader.#ctor(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="fileName"></param>
+        </member>
+        <member name="M:DataStreams.Common.SpreadsheetReader.Reset">
+            <summary>
+            	Resets the position of the record cursor to the first record
+            	for use with the <see cref="M:DataStreams.Common.SpreadsheetReader.ReadRecord"/> method.
+            </summary>
+        </member>
+        <member name="M:DataStreams.Common.SpreadsheetReader.GetHeader(System.Int32)">
+            <summary>
+            	Returns the column header value for a given
+            	<paramref name="columnIndex" />.
+            </summary>
+            <param name="columnIndex">
+            	The index of the header column being requested.
+            </param>
+            <returns>
+            	The value of the column header at the given
+            	<paramref name="columnIndex" />.
+            </returns>
+        </member>
+        <member name="M:DataStreams.Common.SpreadsheetReader.GetIndex(System.String)">
+            <summary>
+            	Gets the corresponding column index for a given
+            	<paramref name="headerName" />.
+            </summary>
+            <param name="headerName">
+            	The column header of the column.
+            </param>
+            <returns>
+            	The column index for the given
+            	<paramref name="headerName" />. Returns -1 if not
+            	found.
+            </returns>
+        </member>
+        <member name="M:DataStreams.Common.SpreadsheetReader.GetSheetIndex(System.String)">
+            <summary>
+            	Returns the index of the sheet with the given name.
+            </summary>
+            <param name="sheetName">
+            	The name of the sheet to look for.
+            </param>
+            <returns>
+            	The index of the sheet or -1 if not found.
+            </returns>
+        </member>
+        <member name="M:DataStreams.Common.SpreadsheetReader.GetSheetName(System.Int32)">
+            <summary>
+            	Returns the name of the sheet at the given index.
+            </summary>
+            <param name="sheetIndex">
+            	The index to the requested sheet.
+            </param>
+            <returns>
+            	The name of the sheet or empty string if the sheet index is invalid.
+            </returns>
+        </member>
+        <member name="M:DataStreams.Common.SpreadsheetReader.ReadRecord">
+            <summary>
+            	Advances the record cursor to the next record.
+            </summary>
+            <returns>
+            	Returns true if another record was found, or false if the
+            	end of the sheet was found.
+            </returns>
+        </member>
+        <member name="M:DataStreams.Common.SpreadsheetReader.Dispose(System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="disposing"></param>
+        </member>
+        <member name="P:DataStreams.Common.SpreadsheetReader.CurrentRecord">
+            <summary>
+            	Gets or sets the current record the reader is on
+            	for reading records in a loop using <see cref="M:DataStreams.Common.SpreadsheetReader.ReadRecord"/>.
+            </summary>
+        </member>
+        <member name="P:DataStreams.Common.SpreadsheetReader.Settings">
+            <summary>
+            	Has all the options that are able to be set that will affect the way
+            	records are parsed and accessed.
+            </summary>
+        </member>
+        <member name="P:DataStreams.Common.SpreadsheetReader.HeaderCount">
+            <summary>
+            	Returns the count of column headers found when <see cref="P:DataStreams.Common.SpreadsheetReader.UserSettings.HasHeaders"/>
+            	is set to true.
+            </summary>
+        </member>
+        <member name="P:DataStreams.Common.SpreadsheetReader.Headers">
+            <summary>
+            	Returns the header values as a string array or
+            	sets the headers to allow columns to be accessed by
+            	name even if the current spreadsheet does not contain
+            	column headers.
+            </summary>
+        </member>
+        <member name="P:DataStreams.Common.SpreadsheetReader.Item(System.String)">
+            <summary>
+            	Returns the column's value corresponding to the column header
+            	name.
+            </summary>
+        </member>
+        <member name="P:DataStreams.Common.SpreadsheetReader.Item(System.Int32,System.Int32)">
+            <summary>
+            	Returns the column value at the given record and column indexes.
+            </summary>
+        </member>
+        <member name="P:DataStreams.Common.SpreadsheetReader.SheetCount">
+            <summary>
+            	Returns the count of sheets found in the workbook.
+            </summary>
+        </member>
+        <member name="P:DataStreams.Common.SpreadsheetReader.CurrentSheet">
+            <summary>
+            	Gets or sets the index of the current sheet in the workbook.
+            </summary>
+        </member>
+        <member name="P:DataStreams.Common.SpreadsheetReader.ColumnCount">
+            <summary>
+            	Returns the count of columns found on the current record when looping
+            	with the <see cref="M:DataStreams.Common.SpreadsheetReader.ReadRecord"/> method.
+            </summary>
+        </member>
+        <member name="P:DataStreams.Common.SpreadsheetReader.RecordCount">
+            <summary>
+            	Returns the count of records found in the current sheet.
+            </summary>
+        </member>
+        <member name="P:DataStreams.Common.SpreadsheetReader.SheetNames">
+            <summary>
+            	Returns the list of sheet names as a string array in the correct
+            	order. The array can then easily be bound to a combo box for example
+            	for sheet selection in a windows form.
+            </summary>
+        </member>
+        <member name="P:DataStreams.Common.SpreadsheetReader.Table">
+            <summary>
+            	Returns all data for the current sheet as a DataTable of string
+            	columns.
+            </summary>
+        </member>
+        <member name="T:DataStreams.Common.SpreadsheetReader.UserSettings">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DataStreams.Common.SpreadsheetReader.UserSettings.CaseSensitive">
+            <summary>
+            	This determines whether the column value lookup using the column name
+            	retrieved from the column header names will be case sensitive based
+            	on the header names or not. Default is true.
+            </summary>
+        </member>
+        <member name="P:DataStreams.Common.SpreadsheetReader.UserSettings.HasHeaders">
+            <summary>
+            	Indicates whether the first line of data contains names of the columns.
+            	Default is false.
+            </summary>
+        </member>
+        <member name="T:DataStreams.Common.SpreadsheetReader.HeadersHolder">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DataStreams.Common.SpreadsheetReader.HeadersHolder.Headers">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DataStreams.Common.SpreadsheetReader.HeadersHolder.Length">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DataStreams.Common.SpreadsheetReader.HeadersHolder.IndexByName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:DataStreams.Common.SpreadsheetReader.HeadersHolder.Create">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:DataStreams.Common.SpreadsheetReader.StaticSettings">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DataStreams.Common.SpreadsheetReader.StaticSettings.MaxFileBufferSize">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:DataStreams.Common.WriterBase">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DataStreams.Common.WriterBase.outputStream">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DataStreams.Common.WriterBase.fileName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DataStreams.Common.WriterBase.encoding">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DataStreams.Common.WriterBase.disposed">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DataStreams.Common.WriterBase.initialized">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:DataStreams.Common.WriterBase.CheckDisposed">
+            <summary>
+            	Checks to see if object has already been disposed, which
+            	would make calling methods on the object invalid.
+            </summary>
+            <exception cref="T:System.ObjectDisposedException">
+            	Methods were called after the object has been disposed.
+            </exception>
+        </member>
+        <member name="M:DataStreams.Common.WriterBase.Init">
+            <summary>
+            	Initializes the output stream by opening a file using
+            	the passed in file name from the constructor if the output
+            	stream has not been initialized.
+            </summary>
+        </member>
+        <member name="M:DataStreams.Common.WriterBase.Close">
+            <summary>
+            	Closes and releases all related resources.
+            </summary>
+        </member>
+        <member name="M:DataStreams.Common.WriterBase.System#IDisposable#Dispose">
+            <summary>
+            	Closes and releases all related resources.
+            </summary>
+        </member>
+        <member name="M:DataStreams.Common.WriterBase.Flush">
+            <summary>
+            	Clears all buffers for the current writer and causes any
+            	buffered data to be written to the underlying device.
+            </summary>
+        </member>
+        <member name="M:DataStreams.Common.WriterBase.Dispose(System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="disposing"></param>
+        </member>
+        <member name="T:DataStreams.Csv.CsvDataReader">
+            <summary>
+            	Provides a datasource for the .Net Framework SqlBulkCopy class
+            	which allows data to be rapidly imported into SQL Server.
+            </summary>
+        </member>
+        <member name="M:DataStreams.Csv.CsvDataReader.#ctor(System.String,System.Char,System.Text.Encoding)">
+            <summary>
+            	Creates a <see cref="T:DataStreams.Csv.CsvDataReader"/> object using a
+            	file as the data source.
+            </summary>
+            <param name="fileName">
+            	The path to the file to use as the data source.
+            </param>
+            <param name="delimiter">
+            	The character to use as the column delimiter.
+            </param>
+            <param name="encoding">
+            	The <see cref="T:System.Text.Encoding"/> to use while parsing the data.
+            </param>
+        </member>
+        <member name="M:DataStreams.Csv.CsvDataReader.#ctor(System.String,System.Char)">
+            <summary>
+            	Creates a <see cref="T:DataStreams.Csv.CsvDataReader"/> object using a
+            	file as the data source. Uses <see cref="P:System.Text.Encoding.Default"/>
+            	as the encoding.
+            </summary>
+            <param name="fileName">
+            	The path to the file to use as the data source.
+            </param>
+            <param name="delimiter">"&gt;
+            	The character to use as the column delimiter.
+            </param>
+        </member>
+        <member name="M:DataStreams.Csv.CsvDataReader.#ctor(System.String)">
+            <summary>
+            	Creates a <see cref="T:DataStreams.Csv.CsvDataReader"/> object using a
+            	file as the data source. Uses a comma as the column
+            	delimiter and <see cref="P:System.Text.Encoding.Default"/> as the
+            	encoding.
+            </summary>
+            <param name="fileName">
+            	The path to the file to use as the data source.
+            </param>
+        </member>
+        <member name="M:DataStreams.Csv.CsvDataReader.#ctor(System.IO.TextReader,System.Char)">
+            <summary>
+            	Constructs a <see cref="T:DataStreams.Csv.CsvDataReader"/> object using
+            	a <see cref="T:System.IO.TextReader"/> object as the data
+            	source.
+            </summary>
+            <param name="inputStream">
+            	The stream to use as the data source.
+            </param>
+            <param name="delimiter">
+            	The character to use as the column delimiter.
+            </param>
+        </member>
+        <member name="M:DataStreams.Csv.CsvDataReader.#ctor(System.IO.TextReader)">
+            <summary>
+            	Constructs a <see cref="T:DataStreams.Csv.CsvDataReader"/> object using
+            	a <see cref="T:System.IO.TextReader"/> object as the data
+            	source. Uses a comma as the column delimiter.
+            </summary>
+            <param name="inputStream">
+            	The stream to use as the data source.
+            </param>
+        </member>
+        <member name="M:DataStreams.Csv.CsvDataReader.#ctor(System.IO.Stream,System.Char,System.Text.Encoding)">
+            <summary>
+            	Constructs a <see cref="T:DataStreams.Csv.CsvDataReader"/> object using
+            	a Stream object as the data
+            	source.
+            </summary>
+            <param name="inputStream">
+            	The stream to use as the data source.
+            </param>
+            <param name="delimiter">
+            	The character to use as the column delimiter.
+            </param>
+            <param name="encoding">
+            	The <see cref="T:System.Text.Encoding"/> to use while parsing the data.
+            </param>
+        </member>
+        <member name="M:DataStreams.Csv.CsvDataReader.#ctor(System.IO.Stream,System.Text.Encoding)">
+            <summary>
+            	Constructs a <see cref="T:DataStreams.Csv.CsvDataReader"/> object using
+            	a <see cref="T:System.IO.Stream"/> object as the data
+            	source. Uses a comma as the column delimiter.
+            </summary>
+            <param name="inputStream">
+            	The stream to use as the data source.
+            </param>
+            <param name="encoding">
+            	The <see cref="T:System.Text.Encoding"/> to use while parsing the data.
+            </param>
+        </member>
+        <member name="M:DataStreams.Csv.CsvDataReader.IsDBNull(System.Int32,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="i">
+            
+            </param>
+            <param name="columnValue">
+            
+            </param>
+            <returns>
+            
+            </returns>
+        </member>
+        <member name="M:DataStreams.Csv.CsvDataReader.Initialize(System.String[])">
+            <summary>
+            
+            </summary>
+            <param name="names">
+            
+            </param>
+        </member>
+        <member name="M:DataStreams.Csv.CsvDataReader.Parse(System.String)">
+            <summary>
+            	Creates a <see cref="T:DataStreams.Csv.CsvDataReader"/> object using
+            	a string of data as the source. Uses <see cref="P:System.Text.Encoding.Default"/>
+            	as the encoding.
+            </summary>
+            <param name="data">
+            	The string of data to use as the source.
+            </param>
+            <returns>
+            	A <see cref="T:DataStreams.Csv.CsvDataReader"/> object using the string of <paramref name="data"/>
+            	as the source.
+            </returns>
+        </member>
+        <member name="P:DataStreams.Csv.CsvDataReader.Settings">
+            <summary>
+            	Has all the options that are able to be set that will affect the way
+            	records are parsed.
+            </summary>
+        </member>
+        <member name="P:DataStreams.Csv.CsvDataReader.Columns">
+            <summary>
+            	Collection of columns to include in the source data.
+            </summary>
+        </member>
+        <member name="T:DataStreams.Csv.CsvDataReader.ColumnCollection">
+            <summary>
+            	Collection of <see cref="T:DataStreams.Csv.CsvDataReader.Column"/> items.
+            </summary>
+        </member>
+        <member name="M:DataStreams.Csv.CsvDataReader.ColumnCollection.Add(System.String)">
+            <summary>
+            	Adds a <see cref="T:DataStreams.Csv.CsvDataReader.Column"/> to the collection.
+            </summary>
+            <param name="dataType">
+            	The name of the data type of the <see cref="T:DataStreams.Csv.CsvDataReader.Column"/>
+            	to add to the collection.
+            </param>
+        </member>
+        <member name="M:DataStreams.Csv.CsvDataReader.ColumnCollection.Add(System.String,System.String)">
+            <summary>
+            	Adds a <see cref="T:DataStreams.Csv.CsvDataReader.Column"/> to the collection.
+            </summary>
+            <param name="dataType">
+            	The name of the data type of the <see cref="T:DataStreams.Csv.CsvDataReader.Column"/>
+            	to add to the collection.
+            </param>
+            <param name="columnName">
+            	The name to use when referring to this column in column mappings.
+            </param>
+        </member>
+        <member name="P:DataStreams.Csv.CsvDataReader.ColumnCollection.Item(System.Int32)">
+            <summary>
+            	The <see cref="T:DataStreams.Csv.CsvDataReader.Column"/> at the specified index.
+            </summary>
+        </member>
+        <member name="P:DataStreams.Csv.CsvDataReader.ColumnCollection.Item(System.String)">
+            <summary>
+            	The <see cref="T:DataStreams.Csv.CsvDataReader.Column"/> corresponding to the given column name.
+            </summary>
+        </member>
+        <member name="T:DataStreams.Csv.CsvDataReader.Column">
+            <summary>
+            	Represents a data column in the data source to use during import.
+            </summary>
+        </member>
+        <member name="M:DataStreams.Csv.CsvDataReader.Column.#ctor(System.String)">
+            <summary>
+            	Initializes a new instance of the <see cref="T:DataStreams.Csv.CsvDataReader.Column"/>
+            	class using the name of the data type to use for this column.
+            </summary>
+            <param name="dataType">
+            	Name of the data type in the database, for example, datetime, varchar, and so on.
+            </param>
+        </member>
+        <member name="T:DataStreams.Csv.CsvDataReader.UserSettings">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:DataStreams.Csv.CsvDataReader.UserSettings.#ctor(DataStreams.Csv.CsvReader)">
+            <summary>
+            
+            </summary>
+            <param name="csvReader"></param>
+        </member>
+        <member name="P:DataStreams.Csv.CsvDataReader.UserSettings.HasHeaders">
+            <summary>
+            	Indicates whether the first record of data contains names of the columns.
+            	Default is false.
+            </summary>
+        </member>
+        <member name="P:DataStreams.Csv.CsvDataReader.UserSettings.TrimWhitespace">
+            <summary>
+            	Whether to trim leading and trailing whitespace characters
+            	from non-textqualified column data. Default is true.
+            </summary>
+        </member>
+        <member name="P:DataStreams.Csv.CsvDataReader.UserSettings.Delimiter">
+            <summary>
+            	The character to use as the column delimiter. Default
+            	is comma, ','.
+            </summary>
+        </member>
+        <member name="P:DataStreams.Csv.CsvDataReader.UserSettings.RecordDelimiter">
+            <summary>
+            	The character to use as the record delimiter. Default
+            	is combination of standard end of line characters
+            	for Windows, Unix, or Mac.
+            </summary>
+        </member>
+        <member name="P:DataStreams.Csv.CsvDataReader.UserSettings.TextQualifier">
+            <summary>
+            	The character to use as a text qualifier in the data.
+            	Default is quote, '"'.
+            </summary>
+        </member>
+        <member name="P:DataStreams.Csv.CsvDataReader.UserSettings.UseTextQualifier">
+            <summary>
+            	Whether to use a text qualifier while parsing or not.
+            	Default is true.
+            </summary>
+        </member>
+        <member name="P:DataStreams.Csv.CsvDataReader.UserSettings.Comment">
+            <summary>
+            	The character to use as a comment signal. Default
+            	is pound, '#'.
+            </summary>
+        </member>
+        <member name="P:DataStreams.Csv.CsvDataReader.UserSettings.UseComments">
+            <summary>
+            	Whether to look for comments while parsing or not.
+            	Default is false.
+            </summary>
+        </member>
+        <member name="P:DataStreams.Csv.CsvDataReader.UserSettings.EscapeMode">
+            <summary>
+            	Specifies how to escape an occurance of system
+            	characters, like the <see cref="P:DataStreams.Csv.CsvDataReader.UserSettings.TextQualifier"/>
+            	and <see cref="P:DataStreams.Csv.CsvDataReader.UserSettings.Delimiter"/>, inside field values
+            	when required.
+            	Default is <see cref="F:DataStreams.Csv.EscapeMode.Doubled"/>.
+            </summary>
+            <remarks>
+            	When the <see cref="P:DataStreams.Csv.CsvDataReader.UserSettings.EscapeMode"/> is set to
+            	<see cref="F:DataStreams.Csv.EscapeMode.Doubled"/>, occurances of the
+            	<see cref="P:DataStreams.Csv.CsvDataReader.UserSettings.TextQualifier"/> will be expected
+            	to be escaped by replacing it with two consecutive occurances
+            	of the <see cref="P:DataStreams.Csv.CsvDataReader.UserSettings.TextQualifier"/>. This is the
+            	format generally used for CSV in applications such as Excel.
+            	When the <see cref="P:DataStreams.Csv.CsvDataReader.UserSettings.EscapeMode"/> is set to
+            	<see cref="F:DataStreams.Csv.EscapeMode.Backslash"/>, occurances of the
+            	<see cref="P:DataStreams.Csv.CsvDataReader.UserSettings.TextQualifier"/> will be expected
+            	to be escaped by preceding it with a backslash character. This
+            	format is common in Unix type environments.
+            	When the <see cref="P:DataStreams.Csv.CsvDataReader.UserSettings.EscapeMode"/> is set to
+            	<see cref="F:DataStreams.Csv.EscapeMode.Backslash"/>, the following escape
+            	sequences are also recognized and replaced inside field values.
+            	<list type="table">
+            		<listheader>
+            			<term>Escape</term>
+            			<description>Description</description>
+            		</listheader>
+            		<item>
+            			<term>\n</term>
+            			<description>New Line, ASCII 10</description>
+            		</item>
+            		<item>
+            			<term>\r</term>
+            			<description>Carriage Return, ASCII 13</description>
+            		</item>
+            		<item>
+            			<term>\t</term>
+            			<description>Tab, ASCII 9</description>
+            		</item>
+            		<item>
+            			<term>\b</term>
+            			<description>Backspace, ASCII 8</description>
+            		</item>
+            		<item>
+            			<term>\f</term>
+            			<description>Form Feed, ASCII 12</description>
+            		</item>
+            		<item>
+            			<term>\e</term>
+            			<description>Escape, ASCII 27</description>
+            		</item>
+            		<item>
+            			<term>\v</term>
+            			<description>Vertical Tab, ASCII 11</description>
+            		</item>
+            		<item>
+            			<term>\a</term>
+            			<description>Alert, ASCII 7</description>
+            		</item>
+            	</list>
+            	<list type="table">
+            		<listheader>
+            			<term>Format</term>
+            			<description>Description</description>
+            		</listheader>
+            		<item>
+            			<term>\u#### or \U###</term>
+            			<description>Unicode, ex. \u0041 = 'A'</description>
+            		</item>
+            		<item>
+            			<term>\x## or \X##</term>
+            			<description>Hexadecimal, ex. \x41 = 'A'</description>
+            		</item>
+            		<item>
+            			<term>\o### or \O### or \###</term>
+            			<description>Octal, ex. \o101 = 'A'</description>
+            		</item>
+            		<item>
+            			<term>\d### or \D###</term>
+            			<description>Decimal, ex. \d065 = 'A'</description>
+            		</item>
+            	</list>
+            </remarks>
+        </member>
+        <member name="P:DataStreams.Csv.CsvDataReader.UserSettings.SkipEmptyRecords">
+            <summary>
+            	Whether to treat a record with no data as if it wasn't there or not.
+            	When set to true, two consecutive occurances of the record delimiter
+            	will be treated as only one. When set to true, when the reader encounters
+            	an empty record, all fields will contain their corresponding column's
+            	default value.
+            	Default is true.
+            </summary>
+        </member>
+        <member name="P:DataStreams.Csv.CsvDataReader.UserSettings.SafetySwitch">
+            <summary>
+            	Safety caution to prevent the parser from using large amounts of
+            	memory in the case where parsing settings like file encodings don't
+            	end up matching the actual format of a file. This switch can be turned
+            	off if the file format is known and tested. With the switch off, the
+            	max column lengths and max column count per record supported by the
+            	parser will greatly increase. Default is true.
+            </summary>
+        </member>
+        <member name="T:DataStreams.Csv.CsvReader">
+            <summary>
+            	A stream based parser for parsing delimited text data from a file or a stream.
+            </summary>
+        </member>
+        <member name="M:DataStreams.Csv.CsvReader.#ctor(System.String,System.Char,System.Text.Encoding)">
+            <summary>
+            	Creates a <see cref="T:DataStreams.Csv.CsvReader"/> object using a
+            	file as the data source.
+            </summary>
+            <param name="fileName">
+            	The path to the file to use as the data source.
+            </param>
+            <param name="delimiter">
+            	The character to use as the column delimiter.
+            </param>
+            <param name="encoding">
+            	The <see cref="T:System.Text.Encoding"/> to use while parsing the data.
+            </param>
+        </member>
+        <member name="M:DataStreams.Csv.CsvReader.#ctor(System.String,System.Char)">
+            <summary>
+            	Creates a <see cref="T:DataStreams.Csv.CsvReader"/> object using a
+            	file as the data source. Uses <see cref="P:System.Text.Encoding.Default"/>
+            	as the encoding.
+            </summary>
+            <param name="fileName">
+            	The path to the file to use as the data source.
+            </param>
+            <param name="delimiter">"&gt;
+            	The character to use as the column delimiter.
+            </param>
+        </member>
+        <member name="M:DataStreams.Csv.CsvReader.#ctor(System.String)">
+            <summary>
+            	Creates a <see cref="T:DataStreams.Csv.CsvReader"/> object using a
+            	file as the data source. Uses a comma as the column
+            	delimiter and <see cref="P:System.Text.Encoding.Default"/> as the
+            	encoding.
+            </summary>
+            <param name="fileName">
+            	The path to the file to use as the data source.
+            </param>
+        </member>
+        <member name="M:DataStreams.Csv.CsvReader.#ctor(System.IO.TextReader,System.Char)">
+            <summary>
+            	Constructs a <see cref="T:DataStreams.Csv.CsvReader"/> object using
+            	a <see cref="T:System.IO.TextReader"/> object as the data
+            	source.
+            </summary>
+            <param name="inputStream">
+            	The stream to use as the data source.
+            </param>
+            <param name="delimiter">
+            	The character to use as the column delimiter.
+            </param>
+        </member>
+        <member name="M:DataStreams.Csv.CsvReader.#ctor(System.IO.TextReader)">
+            <summary>
+            	Constructs a <see cref="T:DataStreams.Csv.CsvReader"/> object using
+            	a <see cref="T:System.IO.TextReader"/> object as the data
+            	source. Uses a comma as the column delimiter.
+            </summary>
+            <param name="inputStream">
+            	The stream to use as the data source.
+            </param>
+        </member>
+        <member name="M:DataStreams.Csv.CsvReader.#ctor(System.IO.Stream,System.Char,System.Text.Encoding)">
+            <summary>
+            	Constructs a <see cref="T:DataStreams.Csv.CsvReader"/> object using
+            	a Stream object as the data
+            	source.
+            </summary>
+            <param name="inputStream">
+            	The stream to use as the data source.
+            </param>
+            <param name="delimiter">
+            	The character to use as the column delimiter.
+            </param>
+            <param name="encoding">
+            	The <see cref="T:System.Text.Encoding"/> to use while parsing the data.
+            </param>
+        </member>
+        <member name="M:DataStreams.Csv.CsvReader.#ctor(System.IO.Stream,System.Text.Encoding)">
+            <summary>
+            	Constructs a <see cref="T:DataStreams.Csv.CsvReader"/> object using
+            	a <see cref="T:System.IO.Stream"/> object as the data
+            	source. Uses a comma as the column delimiter.
+            </summary>
+            <param name="inputStream">
+            	The stream to use as the data source.
+            </param>
+            <param name="encoding">
+            	The <see cref="T:System.Text.Encoding"/> to use while parsing the data.
+            </param>
+        </member>
+        <member name="M:DataStreams.Csv.CsvReader.Parse(System.String)">
+            <summary>
+            	Creates a <see cref="T:DataStreams.Csv.CsvReader"/> object using
+            	a string of data as the source. Uses <see cref="P:System.Text.Encoding.Default"/>
+            	as the encoding.
+            </summary>
+            <param name="data">
+            	The string of data to use as the source.
+            </param>
+            <returns>
+            	A <see cref="T:DataStreams.Csv.CsvReader"/> object using the string of <paramref name="data"/>
+            	as the source.
+            </returns>
+        </member>
+        <member name="M:DataStreams.Csv.CsvReader.ReadToEnd(System.Boolean,System.UInt64)">
+            <summary>
+            	Reads till the end of the csv data.
+            </summary>
+            <param name="readHeaders">
+            	Read the column names from the data.
+            </param>
+            <param name="maxRecords">
+            	The max number of records to return in the <see cref="T:System.Data.DataTable"/>.
+            	Pass in 0 to read all records.
+            </param>
+            <returns>
+            	A <see cref="T:System.Data.DataTable"/> containing the csv data.
+            </returns>
+        </member>
+        <member name="M:DataStreams.Csv.CsvReader.ReadToEnd(System.Boolean)">
+            <summary>
+            	Reads till the end of the csv data.
+            </summary>
+            <param name="readHeaders">
+            	Read the column names from the data.
+            </param>
+            <returns>
+            	A <see cref="T:System.Data.DataTable"/> containing the csv data.
+            </returns>
+        </member>
+        <member name="M:DataStreams.Csv.CsvReader.ReadToEnd">
+            <summary>
+            	Reads till the end of the csv data. Reads the
+            	first line in the data as column headers.
+            </summary>
+            <returns>
+            	A <see cref="T:System.Data.DataTable"/> containing the csv data.
+            </returns>
+        </member>
+        <member name="M:DataStreams.Csv.CsvReader.ReadRecord">
+            <summary>
+            	Reads another record.
+            </summary>
+            <returns>
+            	Whether another record was successfully read or not.
+            </returns>
+            <exception cref="T:System.ObjectDisposedException">
+            	Methods were called after the object has been disposed.
+            </exception>
+        </member>
+        <member name="M:DataStreams.Csv.CsvReader.CheckDataLength">
+            <summary>
+            Check to see if more data needs to be read from the source.
+            </summary>
+        </member>
+        <member name="M:DataStreams.Csv.CsvReader.ReadHeaders">
+            <summary>
+            	Read the first record of data as column headers.
+            </summary>
+            <returns>
+            	Whether the header record was successfully read or not.
+            </returns>
+        </member>
+        <member name="M:DataStreams.Csv.CsvReader.GetHeader(System.Int32)">
+            <summary>
+            	Returns the column header value for a given
+            	<paramref name="columnIndex"/>.
+            </summary>
+            <param name="columnIndex">
+            	The index of the header column being requested.
+            </param>
+            <returns>
+            	The value of the column header at the given
+            	<paramref name="columnIndex"/>.
+            </returns>
+            <exception cref="T:System.ObjectDisposedException">
+            	Methods were called after the object has been disposed.
+            </exception>
+        </member>
+        <member name="M:DataStreams.Csv.CsvReader.IsQualified(System.Int32)">
+            <summary>
+            	Determines whether a specified column was qualified
+            	or not.
+            </summary>
+            <param name="columnIndex">
+            	The index of the column being requested.
+            </param>
+            <returns>
+            	Whether the requested column was qualified or not.
+            </returns>
+            <exception cref="T:System.ObjectDisposedException">
+            	Methods were called after the object has been disposed.
+            </exception>
+        </member>
+        <member name="M:DataStreams.Csv.CsvReader.EndColumn">
+            <summary>
+            	Signals that the end of the current column has been
+            	reached and allows necessary values to be set.
+            </summary>
+        </member>
+        <member name="M:DataStreams.Csv.CsvReader.EndRecord">
+            <summary>
+            	Signals that the end of the current record has been
+            	reached and allows necessary values to be set.
+            </summary>
+        </member>
+        <member name="M:DataStreams.Csv.CsvReader.GetIndex(System.String)">
+            <summary>
+            	Gets the corresponding column index for a given
+            	<paramref name="headerName"/>.
+            </summary>
+            <param name="headerName">
+            	The column header of the column.
+            </param>
+            <returns>
+            	The column index for the given
+            	<paramref name="headerName"/>. Returns -1 if not
+            	found.
+            </returns>
+            <exception cref="T:System.ObjectDisposedException">
+            	Methods were called after the object has been disposed.
+            </exception>
+        </member>
+        <member name="M:DataStreams.Csv.CsvReader.SkipRecord">
+            <summary>
+            	Skips the next record of data by parsing each column.
+            	Does not increment <see cref="P:DataStreams.Common.ReaderBase.CurrentRecord"/>.
+            </summary>
+            <returns>
+            	Whether another record was successfully skipped or not.
+            </returns>
+            <exception cref="T:System.ObjectDisposedException">
+            	Methods were called after the object has been disposed.
+            </exception>
+        </member>
+        <member name="M:DataStreams.Csv.CsvReader.SkipLine">
+            <summary>
+            	Skips the next line of data using the standard
+            	end of line characters and does not do any
+            	column delimited parsing.
+            </summary>
+            <returns>
+            	Whether a line was successfully skipped or not.
+            </returns>
+            <exception cref="T:System.ObjectDisposedException">
+            	Methods were called after the object has been disposed.
+            </exception>
+        </member>
+        <member name="M:DataStreams.Csv.CsvReader.Dispose(System.Boolean)">
+            <summary>
+            	Closes and releases all related resources.
+            </summary>
+            <param name="disposing">
+            	Whether this call is coming from an explicit call,
+            	instead of from the implicit GC finalizer call.
+            </param>
+        </member>
+        <member name="M:DataStreams.Csv.CsvReader.Finalize">
+            <summary>
+            	Called to release unmanaged resources.
+            </summary>
+        </member>
+        <member name="M:DataStreams.Csv.CsvReader.HexToDec(System.Char)">
+            <summary>
+            	Converts an ASCII character code representing a
+            	single hex digit to the corresponding decimal
+            	value. hexToDec('a') and hexToDec('A') both
+            	return 10.
+            </summary>
+            <param name="hex">
+            	The ASCII character code representing a single
+            	hex digit, '0' - '9', 'a' - 'f', or 'A' - 'F'.
+            </param>
+            <returns>
+            	The corresponding decimal value.
+            </returns>
+        </member>
+        <member name="P:DataStreams.Csv.CsvReader.Settings">
+            <summary>
+            	Has all the options that are able to be set that will affect the way
+            	records are parsed and accessed.
+            </summary>
+        </member>
+        <member name="P:DataStreams.Csv.CsvReader.RawRecord">
+            <summary>
+            	Returns the text of the current record as it existed before parsing.
+            </summary>
+        </member>
+        <member name="P:DataStreams.Csv.CsvReader.ColumnCount">
+            <summary>
+            	The count of columns found in the current record.
+            </summary>
+        </member>
+        <member name="P:DataStreams.Csv.CsvReader.HeaderCount">
+            <summary>
+            	The count of headers read in by a previous call to <see cref="M:DataStreams.Csv.CsvReader.ReadHeaders"/>.
+            </summary>
+        </member>
+        <member name="P:DataStreams.Csv.CsvReader.Headers">
+            <summary>
+            	Returns the header values as a string array.
+            </summary>
+            <exception cref="T:System.ObjectDisposedException">
+            	Methods were called after the object has been disposed.
+            </exception>
+        </member>
+        <member name="P:DataStreams.Csv.CsvReader.Item(System.String)">
+            <summary>
+            	Returns the current column value corresponding to the
+            	<paramref name="headerName"/>.
+            </summary>
+            <exception cref="T:System.ObjectDisposedException">
+            	Methods were called after the object has been disposed.
+            </exception>
+        </member>
+        <member name="F:DataStreams.Csv.CsvReader.DataBuffer.Count">
+            <summary>
+            How much usable data has been read into the stream,
+            which will not always be as long as Buffer.Length.
+            </summary>
+        </member>
+        <member name="F:DataStreams.Csv.CsvReader.DataBuffer.ColumnStart">
+            <summary>
+            The position of the cursor in the buffer when the
+            current column was started or the last time data
+            was moved out to the column buffer.
+            </summary>
+        </member>
+        <member name="T:DataStreams.Csv.CsvReader.UserSettings">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DataStreams.Csv.CsvReader.UserSettings.CaseSensitive">
+            <summary>
+            	This determines whether the column value lookup using the column name
+            	retrieved from the column header names will be case sensitive based
+            	on the header names or not. Default is true.
+            </summary>
+        </member>
+        <member name="P:DataStreams.Csv.CsvReader.UserSettings.TextQualifier">
+            <summary>
+            	The character to use as a text qualifier in the data.
+            	Default is quote, '"'.
+            </summary>
+        </member>
+        <member name="P:DataStreams.Csv.CsvReader.UserSettings.TrimWhitespace">
+            <summary>
+            	Whether to trim leading and trailing whitespace characters
+            	from non-textqualified column data. Default is true.
+            </summary>
+        </member>
+        <member name="P:DataStreams.Csv.CsvReader.UserSettings.UseTextQualifier">
+            <summary>
+            	Whether to use a text qualifier while parsing or not.
+            	Default is true.
+            </summary>
+        </member>
+        <member name="P:DataStreams.Csv.CsvReader.UserSettings.Delimiter">
+            <summary>
+            	The character to use as the column delimiter. Default
+            	is comma, ','.
+            </summary>
+        </member>
+        <member name="P:DataStreams.Csv.CsvReader.UserSettings.RecordDelimiter">
+            <summary>
+            	The character to use as the record delimiter. Default
+            	is combination of standard end of line characters
+            	for Windows, Unix, or Mac.
+            </summary>
+        </member>
+        <member name="P:DataStreams.Csv.CsvReader.UserSettings.Comment">
+            <summary>
+            	The character to use as a comment signal. Default
+            	is pound, '#'.
+            </summary>
+        </member>
+        <member name="P:DataStreams.Csv.CsvReader.UserSettings.UseComments">
+            <summary>
+            	Whether to look for comments while parsing or not.
+            	Default is false.
+            </summary>
+        </member>
+        <member name="P:DataStreams.Csv.CsvReader.UserSettings.EscapeMode">
+            <summary>
+            	Specifies how to escape an occurance of system
+            	characters, like the <see cref="P:DataStreams.Csv.CsvReader.UserSettings.TextQualifier"/>
+            	and <see cref="P:DataStreams.Csv.CsvReader.UserSettings.Delimiter"/>, inside field values
+            	when required.
+            	Default is <see cref="F:DataStreams.Csv.EscapeMode.Doubled"/>.
+            </summary>
+            <remarks>
+            	When the <see cref="P:DataStreams.Csv.CsvReader.UserSettings.EscapeMode"/> is set to
+            	<see cref="F:DataStreams.Csv.EscapeMode.Doubled"/>, occurances of the
+            	<see cref="P:DataStreams.Csv.CsvReader.UserSettings.TextQualifier"/> will be expected
+            	to be escaped by replacing it with two consecutive occurances
+            	of the <see cref="P:DataStreams.Csv.CsvReader.UserSettings.TextQualifier"/>. This is the
+            	format generally used for CSV in applications such as Excel.
+            	When the <see cref="P:DataStreams.Csv.CsvReader.UserSettings.EscapeMode"/> is set to
+            	<see cref="F:DataStreams.Csv.EscapeMode.Backslash"/>, occurances of the
+            	<see cref="P:DataStreams.Csv.CsvReader.UserSettings.TextQualifier"/> will be expected
+            	to be escaped by preceding it with a backslash character. This
+            	format is common in Unix type environments.
+            	When the <see cref="P:DataStreams.Csv.CsvReader.UserSettings.EscapeMode"/> is set to
+            	<see cref="F:DataStreams.Csv.EscapeMode.Backslash"/>, the following escape
+            	sequences are also recognized and replaced inside field values.
+            	<list type="table">
+            		<listheader>
+            			<term>Escape</term>
+            			<description>Description</description>
+            		</listheader>
+            		<item>
+            			<term>\n</term>
+            			<description>New Line, ASCII 10</description>
+            		</item>
+            		<item>
+            			<term>\r</term>
+            			<description>Carriage Return, ASCII 13</description>
+            		</item>
+            		<item>
+            			<term>\t</term>
+            			<description>Tab, ASCII 9</description>
+            		</item>
+            		<item>
+            			<term>\b</term>
+            			<description>Backspace, ASCII 8</description>
+            		</item>
+            		<item>
+            			<term>\f</term>
+            			<description>Form Feed, ASCII 12</description>
+            		</item>
+            		<item>
+            			<term>\e</term>
+            			<description>Escape, ASCII 27</description>
+            		</item>
+            		<item>
+            			<term>\v</term>
+            			<description>Vertical Tab, ASCII 11</description>
+            		</item>
+            		<item>
+            			<term>\a</term>
+            			<description>Alert, ASCII 7</description>
+            		</item>
+            	</list>
+            	<list type="table">
+            		<listheader>
+            			<term>Format</term>
+            			<description>Description</description>
+            		</listheader>
+            		<item>
+            			<term>\u#### or \U###</term>
+            			<description>Unicode, ex. \u0041 = 'A'</description>
+            		</item>
+            		<item>
+            			<term>\x## or \X##</term>
+            			<description>Hexadecimal, ex. \x41 = 'A'</description>
+            		</item>
+            		<item>
+            			<term>\o### or \O### or \###</term>
+            			<description>Octal, ex. \o101 = 'A'</description>
+            		</item>
+            		<item>
+            			<term>\d### or \D###</term>
+            			<description>Decimal, ex. \d065 = 'A'</description>
+            		</item>
+            	</list>
+            </remarks>
+        </member>
+        <member name="P:DataStreams.Csv.CsvReader.UserSettings.SafetySwitch">
+            <summary>
+            	Safety caution to prevent the parser from using large amounts of
+            	memory in the case where parsing settings like file encodings don't
+            	end up matching the actual format of a file. This switch can be turned
+            	off if the file format is known and tested. With the switch off, the
+            	max column lengths and max column count per record supported by the
+            	parser will greatly increase. Default is true.
+            </summary>
+        </member>
+        <member name="P:DataStreams.Csv.CsvReader.UserSettings.SkipEmptyRecords">
+            <summary>
+            	Whether to treat a record with no data as if it wasn't there or not.
+            	When set to true, two consecutive occurances of the record delimiter
+            	will be treated as only one.
+            	Default is true.
+            </summary>
+        </member>
+        <member name="P:DataStreams.Csv.CsvReader.UserSettings.CaptureRawRecord">
+            <summary>
+            	Determines whether the unparsed record text, <see cref="T:DataStreams.Csv.CsvReader"/>,
+            	should be preserved while parsing. Slightly better performce can be obtained by setting
+            	this to false when the record text will not be used. Default is true.
+            </summary>
+        </member>
+        <member name="T:DataStreams.Csv.CsvReader.HeadersHolder">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DataStreams.Csv.CsvReader.HeadersHolder.Headers">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DataStreams.Csv.CsvReader.HeadersHolder.Length">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DataStreams.Csv.CsvReader.HeadersHolder.IndexByName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:DataStreams.Csv.CsvReader.HeadersHolder.Create">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:DataStreams.Csv.CsvWriter">
+            <summary>
+            	A stream based writer for writing delimited text data
+            	to a file or a stream.
+            </summary>
+        </member>
+        <member name="M:DataStreams.Csv.CsvWriter.#ctor(System.String,System.Char,System.Text.Encoding)">
+            <summary>
+            	Creates a CsvWriter object using a file to write
+            	data to.
+            </summary>
+            <param name="fileName">
+            	The file to create with the column delimited data.
+            </param>
+            <param name="delimiter">
+            	The character to use as the column delimiter.
+            </param>
+            <param name="encoding">
+            	The <see cref="T:System.Text.Encoding"/> to use while writing the data.
+            </param>
+        </member>
+        <member name="M:DataStreams.Csv.CsvWriter.#ctor(System.String)">
+            <summary>
+            	Creates a CsvWriter object using a file to write
+            	data to. Uses a comma as the delimiter and Encoding.Default
+            	as the encoding.
+            </summary>
+            <param name="fileName">
+            	The file to create with the column delimited data.
+            </param>
+        </member>
+        <member name="M:DataStreams.Csv.CsvWriter.#ctor(System.IO.TextWriter,System.Char)">
+            <summary>
+            	Creates a CsvWriter object using a TextWriter to
+            	write data to.
+            </summary>
+            <param name="outputStream">
+            	The stream to write the column delimited data to.
+            </param>
+            <param name="delimiter">
+            	The character to use as the column delimiter.
+            </param>
+        </member>
+        <member name="M:DataStreams.Csv.CsvWriter.#ctor(System.IO.Stream,System.Char,System.Text.Encoding)">
+            <summary>
+            	Creates a CsvWriter object using a Stream to
+            	write data to.
+            </summary>
+            <param name="outputStream">
+            	The stream to write the column delimited data to.
+            </param>
+            <param name="delimiter">
+            	The character to use as the column delimiter.
+            </param>
+            <param name="encoding">
+            	The <see cref="T:System.Text.Encoding"/> to use while writing the data.
+            </param>
+        </member>
+        <member name="M:DataStreams.Csv.CsvWriter.Write(System.String,System.Boolean)">
+            <summary>
+            	Writes another column of data to this record.
+            </summary>
+            <param name="content">
+            	The data for the new column.
+            </param>
+            <param name="preserveSpaces">
+            	Whether to preserve leading and trailing whitespace in
+            	this column of data.
+            </param>
+        </member>
+        <member name="M:DataStreams.Csv.CsvWriter.Write(System.String)">
+            <summary>
+            	Writes another column of data to this record. Does not
+            	preserve leading and trailing whitespace in this column
+            	of data.
+            </summary>
+            <param name="content">
+            	The data for the new column.
+            </param>
+        </member>
+        <member name="M:DataStreams.Csv.CsvWriter.WriteAll(System.Data.DataTable,System.Boolean)">
+            <summary>
+            	Writes all data from the <see cref="T:System.Data.DataTable"/>.
+            </summary>
+            <param name="data">
+            	The data to write to the output.
+            </param>
+            <param name="writeHeaders">
+            	Write the column name headers as the first record in the
+            	output data.
+            </param>
+        </member>
+        <member name="M:DataStreams.Csv.CsvWriter.WriteAll(System.Data.DataTable)">
+            <summary>
+            	Writes all data from the <see cref="T:System.Data.DataTable"/>.
+            	Writes the column name headers as the first record in the
+            	output data.
+            </summary>
+            <param name="data">
+            	The data to write to the output.
+            </param>
+        </member>
+        <member name="M:DataStreams.Csv.CsvWriter.WriteComment(System.String)">
+            <summary>
+            	Writes comment text out to the file using the
+            	<see cref="P:DataStreams.Csv.CsvWriter.UserSettings.Comment"/> character.
+            </summary>
+            <param name="commentText">
+            	The text to write as a comment.
+            </param>
+        </member>
+        <member name="M:DataStreams.Csv.CsvWriter.WriteRecord(System.String[],System.Boolean)">
+            <summary>
+            	Writes a new record using the passed in array of values.
+            </summary>
+            <param name="values">
+            	Array of values to write in the record.
+            </param>
+            <param name="preserveSpaces">
+            	Whether to preserver leading and trailing spaces in
+            	columns while writing out to the record or not.
+            </param>
+        </member>
+        <member name="M:DataStreams.Csv.CsvWriter.WriteRecord(System.String[])">
+            <summary>
+            	Writes a new record using the passed in array of values.
+            </summary>
+            <param name="values">
+            	Array of values to write in the record.
+            </param>
+        </member>
+        <member name="M:DataStreams.Csv.CsvWriter.EndRecord">
+            <summary>
+            	Ends the current record by sending the record delimiter.
+            </summary>
+        </member>
+        <member name="M:DataStreams.Csv.CsvWriter.Dispose(System.Boolean)">
+            <summary>
+            	Closes and releases all related resources.
+            </summary>
+            <param name="disposing">
+            	Whether this call is coming from an explicit call,
+            	instead of from the implicit GC finalizer call.
+            </param>
+        </member>
+        <member name="M:DataStreams.Csv.CsvWriter.Finalize">
+            <summary>
+            	Called to release unmanaged resources.
+            </summary>
+        </member>
+        <member name="P:DataStreams.Csv.CsvWriter.Settings">
+            <summary>
+            	Has all the options that are able to be set that will affect the way
+            	records are written.
+            </summary>
+        </member>
+        <member name="T:DataStreams.Csv.CsvWriter.UserSettings">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DataStreams.Csv.CsvWriter.UserSettings.TextQualifier">
+            <summary>
+            	The character to use as a text qualifier in the data.
+            	Default is quote, '"'.
+            </summary>
+        </member>
+        <member name="P:DataStreams.Csv.CsvWriter.UserSettings.UseTextQualifier">
+            <summary>
+            	Whether to qualify columns of data with the
+            	<see cref="P:DataStreams.Csv.CsvWriter.UserSettings.TextQualifier"/> if the data requires it.
+            	Default is true.
+            </summary>
+        </member>
+        <member name="P:DataStreams.Csv.CsvWriter.UserSettings.Delimiter">
+            <summary>
+            	The character to use as the column delimiter. Default
+            	is comma, ','.
+            </summary>
+        </member>
+        <member name="P:DataStreams.Csv.CsvWriter.UserSettings.RecordDelimiter">
+            <summary>
+            	The character to use as the record delimiter. Default
+            	uses the system default end of line marker.
+            </summary>
+        </member>
+        <member name="P:DataStreams.Csv.CsvWriter.UserSettings.Comment">
+            <summary>
+            	The character to use as a comment signal. Default
+            	is pound, '#'.
+            </summary>
+        </member>
+        <member name="P:DataStreams.Csv.CsvWriter.UserSettings.EscapeMode">
+            <summary>
+            	Specifies how to escape an occurance of system
+            	characters, like the <see cref="P:DataStreams.Csv.CsvWriter.UserSettings.TextQualifier"/>
+            	and <see cref="P:DataStreams.Csv.CsvWriter.UserSettings.Delimiter"/>, inside field values
+            	when required.
+            	Default is <see cref="F:DataStreams.Csv.EscapeMode.Doubled"/>.
+            </summary>
+            <remarks>
+            	When the <see cref="P:DataStreams.Csv.CsvWriter.UserSettings.EscapeMode"/> is set to
+            	<see cref="F:DataStreams.Csv.EscapeMode.Doubled"/>, occurances of the
+            	<see cref="P:DataStreams.Csv.CsvWriter.UserSettings.TextQualifier"/> will be expected
+            	to be escaped by replacing it with two consecutive occurances
+            	of the <see cref="P:DataStreams.Csv.CsvWriter.UserSettings.TextQualifier"/>. This is the
+            	format generally used for CSV in applications such as Excel.
+            	When the <see cref="P:DataStreams.Csv.CsvWriter.UserSettings.EscapeMode"/> is set to
+            	<see cref="F:DataStreams.Csv.EscapeMode.Backslash"/>, occurances of the
+            	<see cref="P:DataStreams.Csv.CsvWriter.UserSettings.TextQualifier"/> will be expected
+            	to be escaped by preceding it with a backslash character. This
+            	format is common in Unix type environments.
+            </remarks>
+        </member>
+        <member name="P:DataStreams.Csv.CsvWriter.UserSettings.ForceQualifier">
+            <summary>
+            	Use this to force all fields to be surrounded by the text qualifier
+            	even if the qualifier is not necessarily needed to escape this field.
+            	Default is false.
+            </summary>
+        </member>
+        <member name="T:DataStreams.Csv.EscapeMode">
+            <summary>
+            	How to escape an occurance of the text qualifier
+            	inside text qualified data.
+            </summary>
+        </member>
+        <member name="F:DataStreams.Csv.EscapeMode.Doubled">
+            <summary>
+            	Double up the text qualifier to represent an
+            	occurance of the text qualifier.
+            </summary>
+        </member>
+        <member name="F:DataStreams.Csv.EscapeMode.Backslash">
+            <summary>
+            	Use a backslash character before the text
+            	qualifier to represent an occurance of the
+            	text qualifier.
+            </summary>
+        </member>
+        <member name="T:DataStreams.FixedWidth.FixedWidthDataReader">
+            <summary>
+            	Provides a datasource for the .Net Framework SqlBulkCopy class
+            	which allows data to be rapidly imported into SQL Server.
+            </summary>
+        </member>
+        <member name="M:DataStreams.FixedWidth.FixedWidthDataReader.#ctor(System.String)">
+            <summary>
+            	Creates a <see cref="T:DataStreams.FixedWidth.FixedWidthDataReader"/> object using a
+            	file as the data source. Uses a comma as the column
+            	delimiter and <see cref="P:System.Text.Encoding.Default"/> as the
+            	encoding.
+            </summary>
+            <param name="fileName">
+            	The path to the file to use as the data source.
+            </param>
+        </member>
+        <member name="M:DataStreams.FixedWidth.FixedWidthDataReader.#ctor(System.IO.TextReader)">
+            <summary>
+            	Constructs a <see cref="T:DataStreams.FixedWidth.FixedWidthDataReader"/> object using
+            	a <see cref="T:System.IO.TextReader"/> object as the data
+            	source. Uses a comma as the column delimiter.
+            </summary>
+            <param name="inputStream">
+            	The stream to use as the data source.
+            </param>
+        </member>
+        <member name="M:DataStreams.FixedWidth.FixedWidthDataReader.#ctor(System.IO.Stream,System.Text.Encoding)">
+            <summary>
+            	Constructs a <see cref="T:DataStreams.FixedWidth.FixedWidthDataReader"/> object using
+            	a <see cref="T:System.IO.Stream"/> object as the data
+            	source. Uses a comma as the column delimiter.
+            </summary>
+            <param name="inputStream">
+            	The stream to use as the data source.
+            </param>
+            <param name="encoding">
+            	The <see cref="T:System.Text.Encoding"/> to use while parsing the data.
+            </param>
+        </member>
+        <member name="M:DataStreams.FixedWidth.FixedWidthDataReader.Parse(System.String)">
+            <summary>
+            	Creates a <see cref="T:DataStreams.FixedWidth.FixedWidthDataReader"/> object using
+            	a string of data as the source. Uses <see cref="P:System.Text.Encoding.Default"/>
+            	as the encoding.
+            </summary>
+            <param name="data">
+            	The string of data to use as the source.
+            </param>
+            <returns>
+            	A <see cref="T:DataStreams.FixedWidth.FixedWidthDataReader"/> object using the string of <paramref name="data"/>
+            	as the source.
+            </returns>
+        </member>
+        <member name="M:DataStreams.FixedWidth.FixedWidthDataReader.Initialize(System.String[])">
+            <summary>
+            
+            </summary>
+            <param name="names"></param>
+        </member>
+        <member name="M:DataStreams.FixedWidth.FixedWidthDataReader.IsDBNull(System.Int32,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="i"></param>
+            <param name="columnValue"></param>
+            <returns></returns>
+        </member>
+        <member name="P:DataStreams.FixedWidth.FixedWidthDataReader.Columns">
+            <summary>
+            	Collection of columns to include in the source data.
+            </summary>
+        </member>
+        <member name="T:DataStreams.FixedWidth.FixedWidthDataReader.Column">
+            <summary>
+            	Represents a data column in the data source to use during import.
+            </summary>
+        </member>
+        <member name="M:DataStreams.FixedWidth.FixedWidthDataReader.Column.#ctor(System.String,System.Int32)">
+            <summary>
+            	Initializes a new instance of the <see cref="T:DataStreams.FixedWidth.FixedWidthDataReader.Column"/>
+            	class using the name of the data type to use for this column.
+            </summary>
+            <param name="width">
+            	
+            </param>
+            <param name="dataType">
+            	Name of the data type in the database, for example, datetime, varchar, and so on.
+            </param>
+        </member>
+        <member name="P:DataStreams.FixedWidth.FixedWidthDataReader.Column.Alignment">
+            <summary>
+            	The justification of text in the column. If the text is left
+            	justified, then padding will be applied to the right side of the
+            	text to meet the column's defined width.
+            </summary>
+        </member>
+        <member name="P:DataStreams.FixedWidth.FixedWidthDataReader.Column.PaddingChar">
+            <summary>
+            	The character to use for padding a column's text to meet
+            	the defined column length. Spaces or zeros are the most common.
+            	Default is space.
+            </summary>
+        </member>
+        <member name="P:DataStreams.FixedWidth.FixedWidthDataReader.Column.TrimPadding">
+            <summary>
+            	Determines if padding characters should be removed from
+            	the text value of the column while parsing. Default is
+            	true.
+            </summary>
+        </member>
+        <member name="P:DataStreams.FixedWidth.FixedWidthDataReader.Column.MinLength">
+            <summary>
+            	When trimming off extra padding characters, the
+            	minimum length to return for this column. If the padding
+            	character is a zero, the minimum length might need to
+            	be set to 1.
+            </summary>
+        </member>
+        <member name="T:DataStreams.FixedWidth.FixedWidthDataReader.ColumnCollection">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:DataStreams.FixedWidth.FixedWidthDataReader.ColumnCollection.Add(System.String,System.Int32)">
+            <summary>
+            	Adds a <see cref="T:DataStreams.FixedWidth.FixedWidthDataReader.Column"/> to the collection.
+            </summary>
+            <param name="width">
+            	
+            </param>
+            <param name="dataType">
+            	The name of the data type of the <see cref="T:DataStreams.FixedWidth.FixedWidthDataReader.Column"/>
+            	to add to the collection.
+            </param>
+        </member>
+        <member name="M:DataStreams.FixedWidth.FixedWidthDataReader.ColumnCollection.Add(System.String,System.Int32,System.String)">
+            <summary>
+            	Adds a <see cref="T:DataStreams.FixedWidth.FixedWidthDataReader.Column"/> to the collection.
+            </summary>
+            <param name="width">
+            	
+            </param>
+            <param name="dataType">
+            	The name of the data type of the <see cref="T:DataStreams.FixedWidth.FixedWidthDataReader.Column"/>
+            	to add to the collection.
+            </param>
+            <param name="columnName">
+            	The name to use when referring to this column in column mappings.
+            </param>
+        </member>
+        <member name="P:DataStreams.FixedWidth.FixedWidthDataReader.ColumnCollection.Item(System.Int32)">
+            <summary>
+            	The <see cref="T:DataStreams.FixedWidth.FixedWidthDataReader.Column"/> at the specified index.
+            </summary>
+        </member>
+        <member name="P:DataStreams.FixedWidth.FixedWidthDataReader.ColumnCollection.Item(System.String)">
+            <summary>
+            	The <see cref="T:DataStreams.FixedWidth.FixedWidthDataReader.Column"/> corresponding to the given column name.
+            </summary>
+        </member>
+        <member name="T:DataStreams.FixedWidth.FixedWidthReader">
+            <summary>
+            	A stream based parser for parsing fixed width text data from a file or a stream.
+            </summary>
+        </member>
+        <member name="M:DataStreams.FixedWidth.FixedWidthReader.#ctor(System.String,System.Text.Encoding)">
+            <summary>
+            	Creates a <see cref="T:DataStreams.FixedWidth.FixedWidthReader"/> object using a
+            	file as the data source.
+            </summary>
+            <param name="fileName">
+            	The path to the file to use as the data source.
+            </param>
+            <param name="encoding">
+            	The <see cref="T:System.Text.Encoding"/> to use while parsing the data.
+            </param>
+        </member>
+        <member name="M:DataStreams.FixedWidth.FixedWidthReader.#ctor(System.String)">
+            <summary>
+            	Creates a <see cref="T:DataStreams.FixedWidth.FixedWidthReader"/> object using a
+            	file as the data source. Uses a comma as the column
+            	delimiter and <see cref="P:System.Text.Encoding.Default"/> as the
+            	encoding.
+            </summary>
+            <param name="fileName">
+            	The path to the file to use as the data source.
+            </param>
+        </member>
+        <member name="M:DataStreams.FixedWidth.FixedWidthReader.#ctor(System.IO.TextReader)">
+            <summary>
+            	Constructs a <see cref="T:DataStreams.FixedWidth.FixedWidthReader"/> object using
+            	a <see cref="T:System.IO.TextReader"/> object as the data
+            	source. Uses a comma as the column delimiter.
+            </summary>
+            <param name="inputStream">
+            	The stream to use as the data source.
+            </param>
+        </member>
+        <member name="M:DataStreams.FixedWidth.FixedWidthReader.#ctor(System.IO.Stream,System.Text.Encoding)">
+            <summary>
+            	Constructs a <see cref="T:DataStreams.FixedWidth.FixedWidthReader"/> object using
+            	a <see cref="T:System.IO.Stream"/> object as the data
+            	source.
+            </summary>
+            <param name="inputStream">
+            	The stream to use as the data source.
+            </param>
+            <param name="encoding">
+            	The <see cref="T:System.Text.Encoding"/> to use while parsing the data.
+            </param>
+        </member>
+        <member name="M:DataStreams.FixedWidth.FixedWidthReader.Parse(System.String)">
+            <summary>
+            	Creates a <see cref="T:DataStreams.FixedWidth.FixedWidthReader"/> object using
+            	a string of data as the source. Uses <see cref="P:System.Text.Encoding.Default"/>
+            	as the encoding.
+            </summary>
+            <param name="data">
+            	The string of data to use as the source.
+            </param>
+            <returns>
+            	A <see cref="T:DataStreams.FixedWidth.FixedWidthReader"/> object using the string of <paramref name="data"/>
+            	as the source.
+            </returns>
+        </member>
+        <member name="M:DataStreams.FixedWidth.FixedWidthReader.ReadToEnd(System.UInt64)">
+            <summary>
+            	Reads till the end of the fixed width data.
+            </summary>
+            <param name="maxRecords">
+            	The max number of records to return in the <see cref="T:System.Data.DataTable"/>.
+            	Pass in 0 to read all records.
+            </param>
+            <returns>
+            	A <see cref="T:System.Data.DataTable"/> containing the fixed width data.
+            </returns>
+        </member>
+        <member name="M:DataStreams.FixedWidth.FixedWidthReader.ReadToEnd">
+            <summary>
+            	Reads till the end of the fixed width data. Reads the
+            	first line in the data as column headers.
+            </summary>
+            <returns>
+            	A <see cref="T:System.Data.DataTable"/> containing the fixed width data.
+            </returns>
+        </member>
+        <member name="M:DataStreams.FixedWidth.FixedWidthReader.ReadRecord">
+            <summary>
+            	Reads another record.
+            </summary>
+            <returns>
+            	Whether another record was successfully read or not.
+            </returns>
+            <exception cref="T:System.ObjectDisposedException">
+            	Methods were called after the object has been disposed.
+            </exception>
+        </member>
+        <member name="M:DataStreams.FixedWidth.FixedWidthReader.CheckDataLength">
+            <summary>
+            Check to see if more data needs to be read from the source.
+            </summary>
+        </member>
+        <member name="M:DataStreams.FixedWidth.FixedWidthReader.SkipRecord">
+            <summary>
+            	Skips the next record of data by parsing each column.
+            	Does not increment <see cref="P:DataStreams.Common.ReaderBase.CurrentRecord"/>.
+            </summary>
+            <returns>
+            	Whether another record was successfully skipped or not.
+            </returns>
+            <exception cref="T:System.ObjectDisposedException">
+            	Methods were called after the object has been disposed.
+            </exception>
+        </member>
+        <member name="M:DataStreams.FixedWidth.FixedWidthReader.SkipLine">
+            <summary>
+            	Skips the next line of data using the standard
+            	end of line characters and does not do any
+            	column delimited parsing.
+            </summary>
+            <returns>
+            	Whether a line was successfully skipped or not.
+            </returns>
+            <exception cref="T:System.ObjectDisposedException">
+            	Methods were called after the object has been disposed.
+            </exception>
+        </member>
+        <member name="M:DataStreams.FixedWidth.FixedWidthReader.Dispose(System.Boolean)">
+            <summary>
+            	Closes and releases all related resources.
+            </summary>
+            <param name="disposing">
+            	Whether this call is coming from an explicit call,
+            	instead of from the implicit GC finalizer call.
+            </param>
+        </member>
+        <member name="M:DataStreams.FixedWidth.FixedWidthReader.Finalize">
+            <summary>
+            	Called to release unmanaged resources.
+            </summary>
+        </member>
+        <member name="P:DataStreams.FixedWidth.FixedWidthReader.Settings">
+            <summary>
+            	Has all the options that are able to be set that will affect the way
+            	records are parsed.
+            </summary>
+        </member>
+        <member name="P:DataStreams.FixedWidth.FixedWidthReader.RawRecord">
+            <summary>
+            	Returns the text of the current record as it existed before parsing.
+            </summary>
+        </member>
+        <member name="P:DataStreams.FixedWidth.FixedWidthReader.Columns">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DataStreams.FixedWidth.FixedWidthReader.Item(System.String)">
+            <summary>
+            	Returns the current column value corresponding to the
+            	<paramref name="columnName"/>.
+            </summary>
+            <exception cref="T:System.ObjectDisposedException">
+            	Methods were called after the object has been disposed.
+            </exception>
+        </member>
+        <member name="F:DataStreams.FixedWidth.FixedWidthReader.DataBuffer.Count">
+            <summary>
+            How much usable data has been read into the stream,
+            which will not always be as long as Buffer.Length.
+            </summary>
+        </member>
+        <member name="T:DataStreams.FixedWidth.FixedWidthReader.ColumnCollection">
+            <summary>
+            	Collection of <see cref="T:DataStreams.FixedWidth.FixedWidthReader.Column"/> items.
+            </summary>
+        </member>
+        <member name="M:DataStreams.FixedWidth.FixedWidthReader.ColumnCollection.Add(DataStreams.FixedWidth.FixedWidthReader.Column)">
+            <summary>
+            	Adds a <see cref="T:DataStreams.FixedWidth.FixedWidthReader.Column"/> to the collection.
+            </summary>
+            <param name="column">
+            	The <see cref="T:DataStreams.FixedWidth.FixedWidthReader.Column"/> to add to the collection.
+            </param>
+        </member>
+        <member name="M:DataStreams.FixedWidth.FixedWidthReader.ColumnCollection.Add(System.Int32)">
+            <summary>
+            	Adds a <see cref="T:DataStreams.FixedWidth.FixedWidthReader.Column"/> to the collection.
+            </summary>
+        </member>
+        <member name="M:DataStreams.FixedWidth.FixedWidthReader.ColumnCollection.Add(System.Int32,System.String)">
+            <summary>
+            	Adds a <see cref="T:DataStreams.FixedWidth.FixedWidthReader.Column"/> to the collection.
+            </summary>
+            <param name="width">
+            	
+            </param>
+            <param name="columnName">
+            	The name to use when referring to this column in column mappings.
+            </param>
+        </member>
+        <member name="M:DataStreams.FixedWidth.FixedWidthReader.ColumnCollection.Add(DataStreams.FixedWidth.FixedWidthReader.Column,System.String)">
+            <summary>
+            	Adds a <see cref="T:DataStreams.FixedWidth.FixedWidthReader.Column"/> to the collection.
+            </summary>
+            <param name="column">
+            	
+            </param>
+            <param name="columnName">
+            	The name to use when referring to this column in column mappings.
+            </param>
+        </member>
+        <member name="P:DataStreams.FixedWidth.FixedWidthReader.ColumnCollection.Item(System.Int32)">
+            <summary>
+            	The <see cref="T:DataStreams.FixedWidth.FixedWidthReader.Column"/> at the specified index.
+            </summary>
+        </member>
+        <member name="P:DataStreams.FixedWidth.FixedWidthReader.ColumnCollection.Item(System.String)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:DataStreams.FixedWidth.FixedWidthReader.Column">
+            <summary>
+            	Represents a source column in the data to use for parsing.
+            </summary>
+        </member>
+        <member name="M:DataStreams.FixedWidth.FixedWidthReader.Column.#ctor(System.Int32)">
+            <summary>
+            	Initializes a new instance of the <see cref="T:DataStreams.FixedWidth.FixedWidthReader.Column"/>
+            	class specifying the width of this column.
+            </summary>
+        </member>
+        <member name="P:DataStreams.FixedWidth.FixedWidthReader.Column.Alignment">
+            <summary>
+            	The justification of text in the column. If the text is left
+            	justified, then padding will be applied to the right side of the
+            	text to meet the column's defined width.
+            </summary>
+        </member>
+        <member name="P:DataStreams.FixedWidth.FixedWidthReader.Column.PaddingChar">
+            <summary>
+            	The character to use for padding a column's text to meet
+            	the defined column length. Spaces or zeros are the most common.
+            	Default is space.
+            </summary>
+        </member>
+        <member name="P:DataStreams.FixedWidth.FixedWidthReader.Column.TrimPadding">
+            <summary>
+            	Determines if padding characters should be removed from
+            	the text value of the column while parsing. Default is
+            	true.
+            </summary>
+        </member>
+        <member name="P:DataStreams.FixedWidth.FixedWidthReader.Column.Width">
+            <summary>
+            	The length of the column.
+            </summary>
+        </member>
+        <member name="P:DataStreams.FixedWidth.FixedWidthReader.Column.MinLength">
+            <summary>
+            	When trimming off extra padding characters, the
+            	minimum length to return for this column. If the padding
+            	character is a zero, the minimum length might need to
+            	be set to 1.
+            </summary>
+        </member>
+        <member name="T:DataStreams.FixedWidth.FixedWidthReader.UserSettings">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DataStreams.FixedWidth.FixedWidthReader.UserSettings.CaptureRawRecord">
+            <summary>
+            	Determines whether the unparsed record text, <see cref="T:DataStreams.FixedWidth.FixedWidthReader"/>,
+            	should be preserved while parsing. Slightly better performce can be obtained by setting
+            	this to false when the record text will not be used. Default is true.
+            </summary>
+        </member>
+        <member name="T:DataStreams.FixedWidth.FixedWidthWriter">
+            <summary>
+            	A stream based writer for writing fixed width text data
+            	to a file or a stream.
+            </summary>
+        </member>
+        <member name="M:DataStreams.FixedWidth.FixedWidthWriter.#ctor(System.String,System.Text.Encoding)">
+            <summary>
+            	Creates a FixedWidthWriter object using a file to write
+            	data to.
+            </summary>
+            <param name="fileName">
+            	The file to create with the column delimited data.
+            </param>
+            <param name="encoding">
+            	The <see cref="T:System.Text.Encoding"/> to use while writing the data.
+            </param>
+        </member>
+        <member name="M:DataStreams.FixedWidth.FixedWidthWriter.#ctor(System.String)">
+            <summary>
+            	Creates a FixedWidthWriter object using a file to write
+            	data to. Uses a comma as the delimiter and Encoding.Default
+            	as the encoding.
+            </summary>
+            <param name="fileName">
+            	The file to create with the column delimited data.
+            </param>
+        </member>
+        <member name="M:DataStreams.FixedWidth.FixedWidthWriter.#ctor(System.IO.TextWriter)">
+            <summary>
+            	Creates a FixedWidthWriter object using a TextWriter to
+            	write data to.
+            </summary>
+            <param name="outputStream">
+            	The stream to write the column delimited data to.
+            </param>
+        </member>
+        <member name="M:DataStreams.FixedWidth.FixedWidthWriter.#ctor(System.IO.Stream,System.Text.Encoding)">
+            <summary>
+            	Creates a FixedWidthWriter object using a Stream to
+            	write data to.
+            </summary>
+            <param name="outputStream">
+            	The stream to write the column delimited data to.
+            </param>
+            <param name="encoding">
+            	The <see cref="T:System.Text.Encoding"/> to use while writing the data.
+            </param>
+        </member>
+        <member name="M:DataStreams.FixedWidth.FixedWidthWriter.Write(System.String)">
+            <summary>
+            	Writes another column of data to this record.
+            </summary>
+            <param name="content">
+            	The data for the new column.
+            </param>
+        </member>
+        <member name="M:DataStreams.FixedWidth.FixedWidthWriter.WriteAll(System.Data.DataTable)">
+            <summary>
+            	Writes all data from the <see cref="T:System.Data.DataTable"/>.
+            </summary>
+            <param name="data">
+            	The data to write to the output.
+            </param>
+        </member>
+        <member name="M:DataStreams.FixedWidth.FixedWidthWriter.WriteRecord(System.String[])">
+            <summary>
+            	Writes a new record using the passed in array of values.
+            </summary>
+            <param name="values">
+            	Array of values to write in the record.
+            </param>
+        </member>
+        <member name="M:DataStreams.FixedWidth.FixedWidthWriter.EndRecord">
+            <summary>
+            	Ends the current record by sending the record delimiter.
+            </summary>
+        </member>
+        <member name="M:DataStreams.FixedWidth.FixedWidthWriter.Dispose(System.Boolean)">
+            <summary>
+            	Closes and releases all related resources.
+            </summary>
+            <param name="disposing">
+            	Whether this call is coming from an explicit call,
+            	instead of from the implicit GC finalizer call.
+            </param>
+        </member>
+        <member name="M:DataStreams.FixedWidth.FixedWidthWriter.Finalize">
+            <summary>
+            	Called to release unmanaged resources.
+            </summary>
+        </member>
+        <member name="P:DataStreams.FixedWidth.FixedWidthWriter.Settings">
+            <summary>
+            	Has all the options that are able to be set that will affect the way
+            	records are written.
+            </summary>
+        </member>
+        <member name="P:DataStreams.FixedWidth.FixedWidthWriter.Columns">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:DataStreams.FixedWidth.FixedWidthWriter.ColumnCollection">
+            <summary>
+            	Collection of <see cref="T:DataStreams.FixedWidth.FixedWidthWriter.Column"/> items.
+            </summary>
+        </member>
+        <member name="M:DataStreams.FixedWidth.FixedWidthWriter.ColumnCollection.Add(DataStreams.FixedWidth.FixedWidthWriter.Column)">
+            <summary>
+            	Adds a <see cref="T:DataStreams.FixedWidth.FixedWidthWriter.Column"/> to the collection.
+            </summary>
+            <param name="column">
+            	The <see cref="T:DataStreams.FixedWidth.FixedWidthWriter.Column"/> to add to the collection.
+            </param>
+        </member>
+        <member name="M:DataStreams.FixedWidth.FixedWidthWriter.ColumnCollection.Add(System.Int32)">
+            <summary>
+            	Adds a <see cref="T:DataStreams.FixedWidth.FixedWidthWriter.Column"/> to the collection.
+            </summary>
+        </member>
+        <member name="M:DataStreams.FixedWidth.FixedWidthWriter.ColumnCollection.Add(System.Int32,System.String)">
+            <summary>
+            	Adds a <see cref="T:DataStreams.FixedWidth.FixedWidthWriter.Column"/> to the collection.
+            </summary>
+            <param name="width">
+            	
+            </param>
+            <param name="columnName">
+            	The name to use when referring to this column in column mappings.
+            </param>
+        </member>
+        <member name="M:DataStreams.FixedWidth.FixedWidthWriter.ColumnCollection.Add(DataStreams.FixedWidth.FixedWidthWriter.Column,System.String)">
+            <summary>
+            	Adds a <see cref="T:DataStreams.FixedWidth.FixedWidthWriter.Column"/> to the collection.
+            </summary>
+            <param name="column">
+            	
+            </param>
+            <param name="columnName">
+            	The name to use when referring to this column in column mappings.
+            </param>
+        </member>
+        <member name="P:DataStreams.FixedWidth.FixedWidthWriter.ColumnCollection.Item(System.Int32)">
+            <summary>
+            	The <see cref="T:DataStreams.FixedWidth.FixedWidthWriter.Column"/> at the specified index.
+            </summary>
+        </member>
+        <member name="P:DataStreams.FixedWidth.FixedWidthWriter.ColumnCollection.Item(System.String)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:DataStreams.FixedWidth.FixedWidthWriter.Column">
+            <summary>
+            	Represents a data column in the data source to use during import.
+            </summary>
+        </member>
+        <member name="M:DataStreams.FixedWidth.FixedWidthWriter.Column.#ctor(System.Int32)">
+            <summary>
+            	Initializes a new instance of the <see cref="T:DataStreams.FixedWidth.FixedWidthWriter.Column"/>
+            	class using the name of the data type to use for this column
+                and specifying the name to use to refer to this column.
+            </summary>
+        </member>
+        <member name="P:DataStreams.FixedWidth.FixedWidthWriter.Column.Alignment">
+            <summary>
+            	The justification of text in the column. If the text is left
+            	justified, then padding will be applied to the right side of the
+            	text to meet the column's defined width.
+            </summary>
+        </member>
+        <member name="P:DataStreams.FixedWidth.FixedWidthWriter.Column.PaddingChar">
+            <summary>
+            	The character to use for padding a column's text to meet
+            	the defined column length. Spaces or zeros are the most common.
+            	Default is space.
+            </summary>
+        </member>
+        <member name="P:DataStreams.FixedWidth.FixedWidthWriter.Column.Width">
+            <summary>
+            	The length of the column.
+            </summary>
+        </member>
+        <member name="T:DataStreams.FixedWidth.FixedWidthWriter.UserSettings">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DataStreams.FixedWidth.FixedWidthWriter.UserSettings.RecordDelimiter">
+            <summary>
+            	The character to use as the record delimiter. Default
+            	uses the system default end of line marker.
+            </summary>
+        </member>
+        <member name="P:DataStreams.FixedWidth.FixedWidthWriter.UserSettings.UseRecordDelimiter">
+            <summary>
+            	Determines if each record that is written will have normal end
+            	of line characters or custom delimiters that signify the end of a record.
+            	Since a fixed width file has a specific length to each record, a record
+            	delimiter may not be required. Default is true.
+            </summary>
+        </member>
+        <member name="T:DataStreams.FixedWidth.TextAlignment">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DataStreams.FixedWidth.TextAlignment.Left">
+            <summary>
+            	Text will be left justified and padding characters will
+            	be used on the right side of the text if needed to extend
+            	the column's length to the defined length.
+            </summary>
+        </member>
+        <member name="F:DataStreams.FixedWidth.TextAlignment.Right">
+            <summary>
+            	Text will be right justified and padding characters will
+            	be used on the left side of the text if needed to extend
+            	the column's length to the defined length.
+            </summary>
+        </member>
+        <member name="T:DataStreams.Xlsx.InMemoryStreamCopy">
+            <summary>
+            	Copys contents of a stream into memory to create a seekable stream from a non seekable stream.
+            	This uses a lot more memory, and takes additional time during construction,
+            	so this is only for ease of functionality.
+            </summary>
+        </member>
+        <member name="M:DataStreams.Xlsx.InMemoryStreamCopy.Close">
+            <summary>
+            	Closes and releases all related resources.
+            </summary>
+        </member>
+        <member name="M:DataStreams.Xlsx.InMemoryStreamCopy.Dispose(System.Boolean)">
+            <summary>
+            	Closes and releases all related resources.
+            </summary>
+            <param name="disposing">
+            	Whether this call is coming from an explicit call,
+            	instead of from the implicit GC finalizer call.
+            </param>
+        </member>
+        <member name="M:DataStreams.Xlsx.InMemoryStreamCopy.Finalize">
+            <summary>
+            	Called to release unmanaged resources.
+            </summary>
+        </member>
+        <member name="M:DataStreams.Xlsx.InMemoryStreamCopy.CheckDisposed">
+            <summary>
+            	Checks to see if object has already been disposed, which
+            	would make calling methods on the object invalid.
+            </summary>
+            <exception cref="T:System.ObjectDisposedException">
+            	Methods were called after the object has been disposed.
+            </exception>
+        </member>
+        <member name="T:DataStreams.Xlsx.XlsxDataReader">
+            <summary>
+            	Provides a datasource for the .Net Framework SqlBulkCopy class
+            	which allows data to be rapidly imported from an Excel 2007 spreadsheet into SQL Server.
+            </summary>
+        </member>
+        <member name="M:DataStreams.Xlsx.XlsxDataReader.#ctor(System.String)">
+            <summary>
+            	Creates a <see cref="T:DataStreams.Xlsx.XlsxDataReader"/> object using a
+            	spreadsheet file as the data source.
+            </summary>
+            <param name="fileName">
+            	The path to the spreadsheet file to use as the data source.
+            </param>
+        </member>
+        <member name="M:DataStreams.Xlsx.XlsxDataReader.#ctor(System.IO.Stream)">
+            <summary>
+            	Constructs a <see cref="T:DataStreams.Xlsx.XlsxDataReader"/> object using
+            	a Stream object as the data source.
+            </summary>
+            <param name="inputStream">
+            	The stream to use as the data source.
+            </param>
+        </member>
+        <member name="T:DataStreams.Xlsx.XlsxReader">
+            <summary>
+            	A reader for Excel spreadsheet data generated by Office 2007.
+            </summary>
+        </member>
+        <member name="M:DataStreams.Xlsx.XlsxReader.#ctor(System.String)">
+            <summary>
+            	Creates a <see cref="T:DataStreams.Xlsx.XlsxReader"/> object using
+            	a file as the data source.
+            </summary>
+            <param name="fileName">
+            	The path to the file to use as the data source.
+            </param>
+        </member>
+        <member name="M:DataStreams.Xlsx.XlsxReader.#ctor(System.IO.Stream)">
+            <summary>
+            	Creates a <see cref="T:DataStreams.Xlsx.XlsxReader"/> object using
+            	Excel spreadsheet data read in from a stream as the data source.
+            </summary>
+            <param name="inputStream">
+            	The stream containing Excel spreadsheet data to be read in
+            	as the data source.
+            </param>
+        </member>
+        <member name="T:DataStreams.Xls.Biff.Records.Name">
+            <summary>
+            	Unfinished support for named ranges.
+            </summary>
+        </member>
+        <member name="M:DataStreams.Xls.Biff.Worksheet.VerifySize(System.Int32,System.Int32)">
+            <summary>
+            	In case we encounter an incorrect file that has an incorrect Dimensions
+            	record.
+            </summary>
+            <param name="row"></param>
+            <param name="column"></param>
+        </member>
+        <member name="T:DataStreams.Xls.XlsDataReader">
+            <summary>
+            	Provides a datasource for the .Net Framework SqlBulkCopy class
+            	which allows data to be rapidly imported from an Excel spreadsheet into SQL Server.
+            </summary>
+        </member>
+        <member name="M:DataStreams.Xls.XlsDataReader.#ctor(System.String)">
+            <summary>
+            	Creates a <see cref="T:DataStreams.Xls.XlsDataReader"/> object using a
+            	spreadsheet file as the data source.
+            </summary>
+            <param name="fileName">
+            	The path to the spreadsheet file to use as the data source.
+            </param>
+        </member>
+        <member name="M:DataStreams.Xls.XlsDataReader.#ctor(System.IO.Stream)">
+            <summary>
+            	Constructs a <see cref="T:DataStreams.Xls.XlsDataReader"/> object using
+            	a Stream object as the data source.
+            </summary>
+            <param name="inputStream">
+            	The stream to use as the data source.
+            </param>
+        </member>
+        <member name="T:DataStreams.Xls.XlsReader">
+            <summary>
+            	A reader for Excel spreadsheet data generated by Office 95 thru Office 2003.
+            </summary>
+        </member>
+        <member name="M:DataStreams.Xls.XlsReader.#ctor(System.String)">
+            <summary>
+            	Creates a <see cref="T:DataStreams.Xls.XlsReader"/> object using
+            	a file as the data source.
+            </summary>
+            <param name="fileName">
+            	The path to the file to use as the data source.
+            </param>
+        </member>
+        <member name="M:DataStreams.Xls.XlsReader.#ctor(System.IO.Stream)">
+            <summary>
+            	Creates a <see cref="T:DataStreams.Xls.XlsReader"/> object using
+            	Excel spreadsheet data read in from a stream as the data source.
+            </summary>
+            <param name="inputStream">
+            	The stream containing Excel spreadsheet data to be read in
+            	as the data source.
+            </param>
+        </member>
+        <member name="T:DataStreams.Xls.XlsWriter">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:DataStreams.Xls.XlsWriter.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:DataStreams.Xls.XlsWriter.#ctor(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="sheetName">
+            
+            </param>
+        </member>
+        <member name="M:DataStreams.Xls.XlsWriter.#ctor(DataStreams.Xls.XlsReader)">
+            <summary>
+            
+            </summary>
+            <param name="original">
+            
+            </param>
+        </member>
+        <member name="M:DataStreams.Xls.XlsWriter.Save(System.IO.Stream)">
+            <summary>
+            
+            </summary>
+            <param name="output">
+            
+            </param>
+        </member>
+        <member name="M:DataStreams.Xls.XlsWriter.Save(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="fileName">
+            
+            </param>
+        </member>
+        <member name="M:DataStreams.Xls.XlsWriter.Write(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="content">
+            
+            </param>
+        </member>
+        <member name="M:DataStreams.Xls.XlsWriter.Write(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="content">
+            
+            </param>
+        </member>
+        <member name="M:DataStreams.Xls.XlsWriter.Write(System.Double)">
+            <summary>
+            
+            </summary>
+            <param name="content">
+            
+            </param>
+        </member>
+        <member name="M:DataStreams.Xls.XlsWriter.Write(System.DateTime)">
+            <summary>
+            
+            </summary>
+            <param name="content">
+            
+            </param>
+        </member>
+        <member name="M:DataStreams.Xls.XlsWriter.Write(System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="content">
+            
+            </param>
+        </member>
+        <member name="M:DataStreams.Xls.XlsWriter.EndRecord">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:DataStreams.Xls.XlsWriter.WriteAll(System.Data.DataTable)">
+            <summary>
+            
+            </summary>
+            <param name="data">
+            
+            </param>
+        </member>
+        <member name="M:DataStreams.Xls.XlsWriter.WriteAll(System.Data.DataSet)">
+            <summary>
+            
+            </summary>
+            <param name="data">
+            
+            </param>
+        </member>
+        <member name="M:DataStreams.Xls.XlsWriter.WriteRecord(System.String[])">
+            <summary>
+            
+            </summary>
+            <param name="values">
+            
+            </param>
+        </member>
+        <member name="M:DataStreams.Xls.XlsWriter.WriteRecord(System.Object[])">
+            <summary>
+            
+            </summary>
+            <param name="values">
+            
+            </param>
+        </member>
+        <member name="M:DataStreams.Xls.XlsWriter.Close">
+            <summary>
+            	Closes and releases all related resources.
+            </summary>
+        </member>
+        <member name="M:DataStreams.Xls.XlsWriter.System#IDisposable#Dispose">
+            <summary>
+            	Closes and releases all related resources.
+            </summary>
+        </member>
+        <member name="M:DataStreams.Xls.XlsWriter.Dispose(System.Boolean)">
+            <summary>
+            	Closes and releases all related resources.
+            </summary>
+            <param name="disposing">
+            	Whether this call is coming from an explicit call,
+            	instead of from the implicit GC finalizer call.
+            </param>
+        </member>
+        <member name="M:DataStreams.Xls.XlsWriter.Finalize">
+            <summary>
+            	Called to release unmanaged resources.
+            </summary>
+        </member>
+        <member name="T:DataStreams.Xml.LoadMethod">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DataStreams.Xml.LoadMethod.InMemory">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DataStreams.Xml.LoadMethod.Streaming">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper">
+            <summary>
+            	XmlReader implementation that will only read through descendants of the
+            	current node and stop when the end of the current node is reached.
+            </summary>
+        </member>
+        <member name="M:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.GetAttribute(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.GetAttribute(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="name"></param>
+            <param name="namespaceURI"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.GetAttribute(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="i"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.MoveToAttribute(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.MoveToAttribute(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="name"></param>
+            <param name="ns"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.MoveToAttribute(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="i"></param>
+        </member>
+        <member name="M:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.MoveToFirstAttribute">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.MoveToNextAttribute">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.MoveToElement">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.Read">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.ReadString">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.ReadInnerXml">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.ReadOuterXml">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.LookupNamespace(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="prefix"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.ResolveEntity">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.ReadAttributeValue">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.Skip">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.ReadStartElement">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.ReadStartElement(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="name"></param>
+        </member>
+        <member name="M:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.ReadStartElement(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="localname"></param>
+            <param name="ns"></param>
+        </member>
+        <member name="M:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.ReadEndElement">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.ReadElementString">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.ReadElementString(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.ReadElementString(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="localname"></param>
+            <param name="ns"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.MoveToContent">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.IsStartElement">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.IsStartElement(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.IsStartElement(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="localname"></param>
+            <param name="ns"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.Close">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.Name">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.LocalName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.NamespaceURI">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.Prefix">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.HasValue">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.Value">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.Depth">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.BaseURI">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.IsEmptyElement">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.IsDefault">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.QuoteChar">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.XmlSpace">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.XmlLang">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.AttributeCount">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.Item(System.Int32)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.Item(System.String)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.Item(System.String,System.String)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.EOF">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.ReadState">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.HasAttributes">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.CanResolveEntity">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:DataStreams.Xml.RecordReaders.Streaming.XmlReaderNavigator">
+            <summary>
+            	XPathNavigator implementation that handles proxying Evaluate calls
+            	to a new XPathDocument instance wrapped around only an XmlNodeWrapper instance
+            	instead of the entire document.
+            </summary>
+        </member>
+        <member name="T:DataStreams.Xml.XmlDataReader">
+            <summary>
+            	Provides a datasource for the .Net Framework SqlBulkCopy class
+            	which allows data to be rapidly imported into SQL Server.
+            </summary>
+        </member>
+        <member name="M:DataStreams.Xml.XmlDataReader.#ctor(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="fileName"></param>
+            <param name="xPath"></param>
+        </member>
+        <member name="M:DataStreams.Xml.XmlDataReader.#ctor(System.IO.TextReader,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="inputStream"></param>
+            <param name="xPath"></param>
+        </member>
+        <member name="M:DataStreams.Xml.XmlDataReader.#ctor(System.IO.Stream,System.Text.Encoding,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="inputStream"></param>
+            <param name="encoding"></param>
+            <param name="xPath"></param>
+        </member>
+        <member name="M:DataStreams.Xml.XmlDataReader.#ctor(System.String,System.String,DataStreams.Xml.LoadMethod)">
+            <summary>
+            
+            </summary>
+            <param name="fileName"></param>
+            <param name="xPath"></param>
+            <param name="loadMethod"></param>
+        </member>
+        <member name="M:DataStreams.Xml.XmlDataReader.#ctor(System.IO.TextReader,System.String,DataStreams.Xml.LoadMethod)">
+            <summary>
+            
+            </summary>
+            <param name="inputStream"></param>
+            <param name="xPath"></param>
+            <param name="loadMethod"></param>
+        </member>
+        <member name="M:DataStreams.Xml.XmlDataReader.#ctor(System.IO.Stream,System.Text.Encoding,System.String,DataStreams.Xml.LoadMethod)">
+            <summary>
+            
+            </summary>
+            <param name="inputStream"></param>
+            <param name="encoding"></param>
+            <param name="xPath"></param>
+            <param name="loadMethod"></param>
+        </member>
+        <member name="M:DataStreams.Xml.XmlDataReader.AddNamespace(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="prefix"></param>
+            <param name="uri"></param>
+        </member>
+        <member name="M:DataStreams.Xml.XmlDataReader.Initialize(System.String[])">
+            <summary>
+            
+            </summary>
+            <param name="names"></param>
+        </member>
+        <member name="M:DataStreams.Xml.XmlDataReader.Parse(System.String,System.String)">
+            <summary>
+            	Creates a <see cref="T:DataStreams.Csv.CsvDataReader"/> object using
+            	a string of data as the source. Uses <see cref="P:System.Text.Encoding.Default"/>
+            	as the encoding.
+            </summary>
+            <param name="data">
+            	The string of data to use as the source.
+            </param>
+            <param name="xPath">
+            	
+            </param>
+            <returns>
+            	A <see cref="T:DataStreams.Csv.CsvDataReader"/> object using the string of <paramref name="data"/>
+            	as the source.
+            </returns>
+        </member>
+        <member name="M:DataStreams.Xml.XmlDataReader.IsDBNull(System.Int32,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="i"></param>
+            <param name="columnValue"></param>
+            <returns></returns>
+        </member>
+        <member name="P:DataStreams.Xml.XmlDataReader.Settings">
+            <summary>
+            	Has all the options that are able to be set that will affect the way
+            	records are parsed.
+            </summary>
+        </member>
+        <member name="P:DataStreams.Xml.XmlDataReader.Columns">
+            <summary>
+            	Collection of columns to include in the source data.
+            </summary>
+        </member>
+        <member name="T:DataStreams.Xml.XmlDataReader.ColumnCollection">
+            <summary>
+            	Collection of <see cref="T:DataStreams.Xml.XmlDataReader.Column"/> items.
+            </summary>
+        </member>
+        <member name="M:DataStreams.Xml.XmlDataReader.ColumnCollection.Add(System.String,System.String)">
+            <summary>
+            	Adds a <see cref="T:DataStreams.Xml.XmlDataReader.Column"/> to the collection.
+            </summary>
+            <param name="dataType">
+            	The name of the data type of the <see cref="T:DataStreams.Xml.XmlDataReader.Column"/>
+            	to add to the collection.
+            </param>
+            <param name="xPath">
+            	XPath expression to use to locate the column's value.
+            </param>
+        </member>
+        <member name="M:DataStreams.Xml.XmlDataReader.ColumnCollection.Add(System.String,System.String,System.String)">
+            <summary>
+            	Adds a <see cref="T:DataStreams.Xml.XmlDataReader.Column"/> to the collection.
+            </summary>
+            <param name="dataType">
+            	The name of the data type of the <see cref="T:DataStreams.Xml.XmlDataReader.Column"/>
+            	to add to the collection.
+            </param>
+            <param name="xPath">
+            	XPath expression to use to locate the column's value.
+            </param>
+            <param name="columnName">
+            	The name to use when referring to this column in column mappings.
+            </param>
+        </member>
+        <member name="P:DataStreams.Xml.XmlDataReader.ColumnCollection.Item(System.Int32)">
+            <summary>
+            	The <see cref="T:DataStreams.Xml.XmlDataReader.Column"/> at the specified index.
+            </summary>
+        </member>
+        <member name="P:DataStreams.Xml.XmlDataReader.ColumnCollection.Item(System.String)">
+            <summary>
+            	The <see cref="T:DataStreams.Xml.XmlDataReader.Column"/> corresponding to the given column name.
+            </summary>
+        </member>
+        <member name="T:DataStreams.Xml.XmlDataReader.Column">
+            <summary>
+            	Represents a data column in the data source to use during import.
+            </summary>
+        </member>
+        <member name="M:DataStreams.Xml.XmlDataReader.Column.#ctor(System.String,System.String)">
+            <summary>
+            	Initializes a new instance of the <see cref="T:DataStreams.Xml.XmlDataReader.Column"/>
+            	class using the name of the data type to use for this column.
+            </summary>
+            <param name="dataType">
+            	Name of the data type in the database, for example, datetime, varchar, and so on.
+            </param>
+            <param name="xPath">
+            	
+            </param>
+        </member>
+        <member name="T:DataStreams.Xml.XmlDataReader.UserSettings">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DataStreams.Xml.XmlDataReader.UserSettings.TrimWhitespace">
+            <summary>
+            	
+            </summary>
+        </member>
+        <member name="T:DataStreams.Xml.XmlRecordReader">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:DataStreams.Xml.XmlRecordReader.#ctor(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="fileName"></param>
+            <param name="xPath"></param>
+        </member>
+        <member name="M:DataStreams.Xml.XmlRecordReader.#ctor(System.IO.TextReader,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="inputStream"></param>
+            <param name="xPath"></param>
+        </member>
+        <member name="M:DataStreams.Xml.XmlRecordReader.#ctor(System.IO.Stream,System.Text.Encoding,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="inputStream"></param>
+            <param name="encoding"></param>
+            <param name="xPath"></param>
+        </member>
+        <member name="M:DataStreams.Xml.XmlRecordReader.#ctor(System.String,System.String,DataStreams.Xml.LoadMethod)">
+            <summary>
+            
+            </summary>
+            <param name="fileName"></param>
+            <param name="xPath"></param>
+            <param name="loadMethod"></param>
+        </member>
+        <member name="M:DataStreams.Xml.XmlRecordReader.#ctor(System.IO.TextReader,System.String,DataStreams.Xml.LoadMethod)">
+            <summary>
+            
+            </summary>
+            <param name="inputStream"></param>
+            <param name="xPath"></param>
+            <param name="loadMethod"></param>
+        </member>
+        <member name="M:DataStreams.Xml.XmlRecordReader.#ctor(System.IO.Stream,System.Text.Encoding,System.String,DataStreams.Xml.LoadMethod)">
+            <summary>
+            
+            </summary>
+            <param name="inputStream"></param>
+            <param name="encoding"></param>
+            <param name="xPath"></param>
+            <param name="loadMethod"></param>
+        </member>
+        <member name="M:DataStreams.Xml.XmlRecordReader.Parse(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="data"></param>
+            <param name="xPath"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataStreams.Xml.XmlRecordReader.Evaluate(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="xPath"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataStreams.Xml.XmlRecordReader.Evaluate(System.Xml.XPath.XPathExpression)">
+            <summary>
+            
+            </summary>
+            <param name="expr"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataStreams.Xml.XmlRecordReader.ReadToEnd(System.UInt64)">
+            <summary>
+            	Reads till the end of the xml data.
+            </summary>
+            <param name="maxRecords">
+            	The max number of records to return in the <see cref="T:System.Data.DataTable"/>.
+            	Pass in 0 to read all records.
+            </param>
+            <returns>
+            	A <see cref="T:System.Data.DataTable"/> containing the xml data.
+            </returns>
+        </member>
+        <member name="M:DataStreams.Xml.XmlRecordReader.ReadToEnd">
+            <summary>
+            	Reads till the end of the xml data.
+            </summary>
+            <returns>
+            	A <see cref="T:System.Data.DataTable"/> containing the xml data.
+            </returns>
+        </member>
+        <member name="M:DataStreams.Xml.XmlRecordReader.ReadRecord">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DataStreams.Xml.XmlRecordReader.AddNamespace(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="prefix"></param>
+            <param name="uri"></param>
+        </member>
+        <member name="M:DataStreams.Xml.XmlRecordReader.Dispose(System.Boolean)">
+            <summary>
+            	Closes and releases all related resources.
+            </summary>
+            <param name="disposing">
+            	Whether this call is coming from an explicit call,
+            	instead of from the implicit GC finalizer call.
+            </param>
+        </member>
+        <member name="M:DataStreams.Xml.XmlRecordReader.Finalize">
+            <summary>
+            	Called to release unmanaged resources.
+            </summary>
+        </member>
+        <member name="P:DataStreams.Xml.XmlRecordReader.Settings">
+            <summary>
+            	Has all the options that are able to be set that will affect the way
+            	records are parsed.
+            </summary>
+        </member>
+        <member name="P:DataStreams.Xml.XmlRecordReader.Item(System.String)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DataStreams.Xml.XmlRecordReader.Columns">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:DataStreams.Xml.XmlRecordReader.ColumnCollection">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:DataStreams.Xml.XmlRecordReader.ColumnCollection.Add(DataStreams.Xml.XmlRecordReader.Column)">
+            <summary>
+            	Adds a <see cref="T:DataStreams.Xml.XmlRecordReader.Column"/> to the collection.
+            </summary>
+            <param name="column">
+            	The <see cref="T:DataStreams.Xml.XmlRecordReader.Column"/> to add to the collection.
+            </param>
+        </member>
+        <member name="M:DataStreams.Xml.XmlRecordReader.ColumnCollection.Add(DataStreams.Xml.XmlRecordReader.Column,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="column"></param>
+            <param name="columnName"></param>
+        </member>
+        <member name="M:DataStreams.Xml.XmlRecordReader.ColumnCollection.Add(System.String)">
+            <summary>
+            	Adds a <see cref="T:DataStreams.Xml.XmlRecordReader.Column"/> to the collection.
+            </summary>
+        </member>
+        <member name="M:DataStreams.Xml.XmlRecordReader.ColumnCollection.Add(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="xPath"></param>
+            <param name="columnName"></param>
+        </member>
+        <member name="P:DataStreams.Xml.XmlRecordReader.ColumnCollection.Item(System.Int32)">
+            <summary>
+            	The <see cref="T:DataStreams.Xml.XmlRecordReader.Column"/> at the specified index.
+            </summary>
+        </member>
+        <member name="P:DataStreams.Xml.XmlRecordReader.ColumnCollection.Item(System.String)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:DataStreams.Xml.XmlRecordReader.Column">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:DataStreams.Xml.XmlRecordReader.Column.#ctor(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="xPath"></param>
+        </member>
+        <member name="T:DataStreams.Xml.XmlRecordReader.UserSettings">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DataStreams.Xml.XmlRecordReader.UserSettings.TrimWhitespace">
+            <summary>
+            	
+            </summary>
+        </member>
+    </members>
+</doc>

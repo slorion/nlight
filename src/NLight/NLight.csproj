@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1FB21654-1205-454E-90DB-A7F434AAE057}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NLight</RootNamespace>
+    <AssemblyName>NLight</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <NoWarn>1591</NoWarn>
+    <CodeAnalysisRuleSet>
+    </CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DocumentationFile>bin\Release\NLight.xml</DocumentationFile>
+    <NoWarn>1591</NoWarn>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <CodeAnalysisRuleSet>
+    </CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>..\NLight.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\SharedAssemblyInfo.cs">
+      <Link>SharedAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="Collections\ArrayExtensions.cs" />
+    <Compile Include="Collections\BufferManager.cs" />
+    <Compile Include="Collections\EnumerableExtensions.cs" />
+    <Compile Include="Collections\EnumerableExtensions.IReadOnlyCollectionWrapper.cs" />
+    <Compile Include="Collections\EnumerableExtensions.IReadOnlyListWrapper.cs" />
+    <Compile Include="Collections\OrderedDictionary.cs" />
+    <Compile Include="Collections\Resources\ExceptionMessages.Designer.cs">
+      <DependentUpon>ExceptionMessages.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Collections\Trees\Traversals.cs" />
+    <Compile Include="Collections\Trees\Traversals.TraversalKind.cs" />
+    <Compile Include="Core\BinaryHelper.cs" />
+    <Compile Include="Core\Buffer.cs" />
+    <Compile Include="Core\EnumHelper.cs" />
+    <Compile Include="Core\EnumHelper.EnumInfo.cs" />
+    <Compile Include="Core\INotifyPropertyChangedExtensions.cs" />
+    <Compile Include="Core\Resources\ExceptionMessages.Designer.cs">
+      <DependentUpon>ExceptionMessages.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Data\DbTypeExtensions.cs" />
+    <Compile Include="Data\Db\DbDataSessionState.cs" />
+    <Compile Include="Data\Db\DbDataSource.cs" />
+    <Compile Include="Data\Linq\ConnectionAwareQueryable.cs" />
+    <Compile Include="Data\Linq\LinqDataSessionState.cs" />
+    <Compile Include="Data\Linq\LinqDataSource.cs" />
+    <Compile Include="Data\Resources\ExceptionMessages.Designer.cs">
+      <DependentUpon>ExceptionMessages.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Diagnostics\Benchmarking\Benchmark.cs" />
+    <Compile Include="Diagnostics\Benchmarking\BenchmarkOptions.cs" />
+    <Compile Include="Diagnostics\Benchmarking\BenchmarkResult.cs" />
+    <Compile Include="Diagnostics\MemoryPressureManager.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="IO\Resources\ExceptionMessages.Designer.cs">
+      <DependentUpon>ExceptionMessages.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="IO\Text\DelimitedRecordColumn.cs" />
+    <Compile Include="IO\Text\DelimitedRecordReader.cs" />
+    <Compile Include="IO\Text\DelimitedRecordReader.ValueBuilder.cs" />
+    <Compile Include="IO\Text\DelimitedRecordWriter.cs" />
+    <Compile Include="IO\Text\DuplicateRecordColumnException.cs" />
+    <Compile Include="IO\Text\FixedWidthRecordColumn.cs" />
+    <Compile Include="IO\Text\FixedWidthRecordReader.cs" />
+    <Compile Include="IO\Text\FixedWidthRecordWriter.cs" />
+    <Compile Include="IO\Text\MalformedRecordException.cs" />
+    <Compile Include="IO\Text\MissingRecordFieldAction.cs" />
+    <Compile Include="IO\Text\MissingRecordFieldException.cs" />
+    <Compile Include="IO\Text\ParseErrorAction.cs" />
+    <Compile Include="IO\Text\ParseErrorEventArgs.cs" />
+    <Compile Include="IO\Text\ReadResult.cs" />
+    <Compile Include="IO\Text\RecordColumn.cs" />
+    <Compile Include="IO\Text\RecordColumnAlignment.cs" />
+    <Compile Include="IO\Text\RecordColumnCollection.cs" />
+    <Compile Include="IO\Text\RecordParsedEventArgs.cs" />
+    <Compile Include="IO\Text\TextRecordReader.cs" />
+    <Compile Include="IO\Text\TextRecordReader{T}.cs" />
+    <Compile Include="IO\Text\TextRecordReader{T}.FastStringList.cs" />
+    <Compile Include="IO\Text\TextRecordReader.Validations.cs" />
+    <Compile Include="IO\Text\TextRecordWriter.cs" />
+    <Compile Include="IO\Text\TextRecordWriter{T}.cs" />
+    <Compile Include="IO\Text\TextRecordWriter.Validations.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Text\ConversionOption.cs" />
+    <Compile Include="Text\DefaultEncoder.cs" />
+    <Compile Include="Text\Encodings\FastAsciiEncoding.cs" />
+    <Compile Include="Text\Parsing\EscapedStringParser.cs" />
+    <Compile Include="Text\Parsing\NumberParser.cs" />
+    <Compile Include="Text\Resources\ExceptionMessages.Designer.cs">
+      <DependentUpon>ExceptionMessages.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Text\StringValueConverter.cs" />
+    <Compile Include="Text\TrimmingOptions.cs" />
+    <Compile Include="Transactions\DataSession.cs" />
+    <Compile Include="Transactions\Resources\ExceptionMessages.Designer.cs">
+      <DependentUpon>ExceptionMessages.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Transactions\TransactionContext.cs" />
+    <Compile Include="Transactions\TransactionContextAffinity.cs" />
+    <Compile Include="Transactions\TransactionContextCreatedEventArgs.cs" />
+    <Compile Include="Transactions\TransactionContextState.cs" />
+    <Compile Include="Transactions\TransactionContextStateChangedEventArgs.cs" />
+    <Compile Include="Transactions\TransactionHandler.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\NLight.snk">
+      <Link>NLight.snk</Link>
+    </None>
+    <None Include="NLight.nuspec" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Collections\Resources\ExceptionMessages.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ExceptionMessages.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Core\Resources\ExceptionMessages.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ExceptionMessages.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Data\Resources\ExceptionMessages.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ExceptionMessages.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IO\Resources\ExceptionMessages.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ExceptionMessages.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Text\Resources\ExceptionMessages.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ExceptionMessages.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Transactions\Resources\ExceptionMessages.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ExceptionMessages.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
