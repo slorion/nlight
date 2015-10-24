@@ -22,11 +22,6 @@ namespace NLight.Collections
 	public class BufferManager<T>
 	{
 		/// <summary>
-		/// Contains the locking object for multi-threading purpose.
-		/// </summary>
-		private readonly object _lock = new object();
-
-		/// <summary>
 		/// Contains the number of chunks to create per segment.
 		/// </summary>
 		private readonly int _chunkPerSegmentCount;
@@ -103,7 +98,7 @@ namespace NLight.Collections
 		/// <remarks>It is the client's responsibility to release the buffer after usage.</remarks>
 		public ArraySegment<T> Request()
 		{
-			lock (_lock)
+			lock (_availableBuffers)
 			{
 				if (_availableBuffers.Count == 0)
 					CreateNewSegment();
@@ -121,7 +116,7 @@ namespace NLight.Collections
 		/// </remarks>
 		public void Release(ArraySegment<T> buffer)
 		{
-			lock (_lock)
+			lock (_availableBuffers)
 			{
 				_availableBuffers.Push(buffer);
 			}

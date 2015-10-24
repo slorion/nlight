@@ -14,7 +14,7 @@ namespace NLight.Tests.Benchmarks.IO.Text
 	{
 		public static void ReadAll(DelimitedRecordReaderBenchmarkArguments args)
 		{
-			using (DelimitedRecordReader reader = new DelimitedRecordReader(new StreamReader(args.Path, args.Encoding), args.BufferSize))
+			using (var reader = new DelimitedRecordReader(new StreamReader(args.Path, args.Encoding, true, args.BufferSize), args.BufferSize))
 			{
 				reader.AdvancedEscapingEnabled = args.AdvancedEscapingEnabled;
 				reader.DoubleQuoteEscapingEnabled = args.DoubleQuoteEscapingEnabled;
@@ -41,7 +41,7 @@ namespace NLight.Tests.Benchmarks.IO.Text
 
 		public static void ReadAll_LumenWorks(DelimitedRecordReaderBenchmarkArguments args)
 		{
-			using (LW.CsvReader reader = new LW.CsvReader(new StreamReader(args.Path, args.Encoding), false, LW.CsvReader.DefaultDelimiter, LW.CsvReader.DefaultQuote, LW.CsvReader.DefaultEscape, LW.CsvReader.DefaultComment, args.TrimWhiteSpaces, args.BufferSize))
+			using (var reader = new LW.CsvReader(new StreamReader(args.Path, args.Encoding, true, args.BufferSize), false, LW.CsvReader.DefaultDelimiter, LW.CsvReader.DefaultQuote, LW.CsvReader.DefaultEscape, LW.CsvReader.DefaultComment, args.TrimWhiteSpaces, args.BufferSize))
 			{
 				reader.SkipEmptyLines = args.SkipEmptyLines;
 
@@ -68,7 +68,7 @@ namespace NLight.Tests.Benchmarks.IO.Text
 
 		public static void ReadAll_DataStreams(DelimitedRecordReaderBenchmarkArguments args)
 		{
-			using (DS.CsvReader reader = new DS.CsvReader(new StreamReader(args.Path, args.Encoding)))
+			using (var reader = new DS.CsvReader(new StreamReader(args.Path, args.Encoding, true, args.BufferSize)))
 			{
 				reader.Settings.CaptureRawRecord = false;
 				reader.Settings.CaseSensitive = false;
@@ -79,7 +79,7 @@ namespace NLight.Tests.Benchmarks.IO.Text
 					reader.Settings.EscapeMode = DS.EscapeMode.Backslash;
 				else
 					reader.Settings.EscapeMode = DS.EscapeMode.Doubled;
-								
+
 				reader.Settings.SkipEmptyRecords = args.SkipEmptyLines;
 				reader.Settings.TrimWhitespace = args.TrimWhiteSpaces;
 
@@ -109,31 +109,30 @@ namespace NLight.Tests.Benchmarks.IO.Text
 			string directory = Path.GetDirectoryName(args.Path);
 			string file = Path.GetFileName(args.Path);
 
-			using (OleDbConnection cnn = new OleDbConnection(@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + directory + @";Extended Properties=""Text;HDR=No;FMT=Delimited"""))
+			using (var cnn = new OleDbConnection(@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + directory + @";Extended Properties=""Text;HDR=No;FMT=Delimited"""))
+			using (var cmd = cnn.CreateCommand())
 			{
-				using (OleDbCommand cmd = new OleDbCommand(@"SELECT * FROM " + file, cnn))
+				cmd.CommandText = $"SELECT * FROM {file}";
+
+				cnn.Open();
+				using (var reader = cmd.ExecuteReader(CommandBehavior.SequentialAccess))
 				{
-					cnn.Open();
+					string s;
 
-					using (OleDbDataReader reader = cmd.ExecuteReader(CommandBehavior.SequentialAccess))
+					if (args.FieldIndex < 0)
 					{
-						string s;
-
-						if (args.FieldIndex < 0)
+						while (reader.Read())
 						{
-							while (reader.Read())
-							{
-								for (int i = 0; i < reader.FieldCount; i++)
-									s = reader.GetValue(i) as string;
-							}
+							for (int i = 0; i < reader.FieldCount; i++)
+								s = reader.GetValue(i) as string;
 						}
-						else
+					}
+					else
+					{
+						while (reader.Read())
 						{
-							while (reader.Read())
-							{
-								for (int i = 0; i < args.FieldIndex + 1; i++)
-									s = reader.GetValue(i) as string;
-							}
+							for (int i = 0; i < args.FieldIndex + 1; i++)
+								s = reader.GetValue(i) as string;
 						}
 					}
 				}
@@ -146,16 +145,13 @@ namespace NLight.Tests.Benchmarks.IO.Text
 			// does NOT handle trimming and multiline fields
 			Regex regex = new Regex(@"
 				\G(^|,)
-				""
-				(?<field> (?> [^""]*) (?> """" [^""]* )* )
-				""
-				|
-				(?<field> [^"",]* )",
+				""(?<field> (?> [^""]*) (?> """" [^""]* )* )""
+				| (?<field> [^"",]* )",
 				RegexOptions.Compiled | RegexOptions.ExplicitCapture | RegexOptions.IgnorePatternWhitespace);
 
 			int fieldGroupIndex = regex.GroupNumberFromName("field");
 
-			using (StreamReader sr = new StreamReader(args.Path, args.Encoding))
+			using (var sr = new StreamReader(args.Path, args.Encoding, true, args.BufferSize))
 			{
 				string s;
 

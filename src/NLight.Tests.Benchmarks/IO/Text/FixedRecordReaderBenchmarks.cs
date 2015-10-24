@@ -13,7 +13,7 @@ namespace NLight.Tests.Benchmarks.IO.Text
 
 		public static void ReadAll(FixedRecordReaderBenchmarkArguments args)
 		{
-			using (FixedWidthRecordReader reader = new FixedWidthRecordReader(new StreamReader(args.Path, args.Encoding), args.BufferSize))
+			using (var reader = new FixedWidthRecordReader(new StreamReader(args.Path, args.Encoding, true, args.BufferSize), args.BufferSize))
 			{
 				reader.SkipEmptyLines = args.SkipEmptyLines;
 
@@ -43,7 +43,7 @@ namespace NLight.Tests.Benchmarks.IO.Text
 
 		public static void ReadAll_DataStreams(FixedRecordReaderBenchmarkArguments args)
 		{
-			using (FixedWidthReader reader = new FixedWidthReader(new StreamReader(args.Path, args.Encoding)))
+			using (var reader = new FixedWidthReader(new StreamReader(args.Path, args.Encoding, true, args.BufferSize)))
 			{
 				reader.Settings.CaptureRawRecord = false;
 
