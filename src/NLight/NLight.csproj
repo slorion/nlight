@@ -76,6 +76,9 @@
     <Compile Include="Core\Buffer.cs" />
     <Compile Include="Core\EnumHelper.cs" />
     <Compile Include="Core\EnumHelper.EnumInfo.cs" />
+    <Compile Include="Core\PreciseDateTime.cs" />
+    <Compile Include="Core\StringExtensions.cs" />
+    <Compile Include="Core\StrongRandom.cs" />
     <Compile Include="Data\DbTypeExtensions.cs" />
     <Compile Include="Data\Db\DbDataSessionState.cs" />
     <Compile Include="Data\Db\DbDataSource.cs" />
