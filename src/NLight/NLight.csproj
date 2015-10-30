@@ -141,6 +141,11 @@
     <Compile Include="Text\Parsing\NumberParser.cs" />
     <Compile Include="Text\StringValueConverter.cs" />
     <Compile Include="Text\TrimmingOptions.cs" />
+    <Compile Include="Threading\SynchronizationContextExtensions.cs" />
+    <Compile Include="Threading\Tasks\SingleThreadTaskScheduler.cs" />
+    <Compile Include="Threading\Tasks\TaskCompletionSourceExtensions.cs" />
+    <Compile Include="Threading\Tasks\TaskFactoryExtensions.cs" />
+    <Compile Include="Threading\ThreadHelper.cs" />
     <Compile Include="Transactions\DataSession.cs" />
     <Compile Include="Transactions\TransactionContext.cs" />
     <Compile Include="Transactions\TransactionContextAffinity.cs" />
