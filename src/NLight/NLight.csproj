@@ -91,6 +91,12 @@
     <Compile Include="Diagnostics\Benchmarking\BenchmarkResult.cs" />
     <Compile Include="Diagnostics\MemoryPressureManager.cs" />
     <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="IO\CopyOptions.cs" />
+    <Compile Include="IO\FileSystemWatcherExtensions.cs" />
+    <Compile Include="IO\Interop\NtfsHelper.cs" />
+    <Compile Include="IO\Interop\Win32CopyEx.cs" />
+    <Compile Include="IO\IOHelper.cs" />
+    <Compile Include="IO\OverwriteMode.cs" />
     <Compile Include="IO\Text\DelimitedRecordColumn.cs" />
     <Compile Include="IO\Text\DelimitedRecordReader.cs" />
     <Compile Include="IO\Text\DelimitedRecordReader.ValueBuilder.cs" />
