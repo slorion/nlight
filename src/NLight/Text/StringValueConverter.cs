@@ -607,6 +607,63 @@ namespace NLight.Text
 
 		#endregion
 
+		#region DateTimeOffset
+
+		public DateTimeOffset ConvertToDateTimeOffset(string input, TrimmingOptions trimWhiteSpaces, DateTimeOffset defaultValue) => ConvertToDateTimeOffset(input, trimWhiteSpaces, defaultValue, null);
+		public DateTimeOffset ConvertToDateTimeOffset(string input, TrimmingOptions trimWhiteSpaces, DateTimeOffset defaultValue, IFormatProvider culture) { DateTimeOffset value; return TryOrThrow(TryConvertToDateTimeOffset(input, trimWhiteSpaces, defaultValue, culture, out value), input, value); }
+		public DateTimeOffset? ConvertToNullableDateTimeOffset(string input, TrimmingOptions trimWhiteSpaces) => ConvertToNullableDateTime(input, trimWhiteSpaces, null);
+		public DateTimeOffset? ConvertToNullableDateTimeOffset(string input, TrimmingOptions trimWhiteSpaces, IFormatProvider culture) { DateTimeOffset? value; return TryOrThrow(TryConvertToNullableDateTimeOffset(input, trimWhiteSpaces, culture, out value), input, value); }
+		public bool TryConvertToDateTimeOffset(string input, TrimmingOptions trimWhiteSpaces, DateTimeOffset defaultValue, out DateTimeOffset value) => TryConvertToDateTimeOffset(input, trimWhiteSpaces, defaultValue, null, out value);
+		public bool TryConvertToNullableDateTimeOffset(string input, TrimmingOptions trimWhiteSpaces, out DateTimeOffset? value) => TryConvertToNullableDateTimeOffset(input, trimWhiteSpaces, null, out value);
+
+		public bool TryConvertToDateTimeOffset(string input, TrimmingOptions trimWhiteSpaces, DateTimeOffset defaultValue, IFormatProvider culture, out DateTimeOffset value)
+		{
+			input = TrimWhiteSpaces(input, trimWhiteSpaces);
+
+			if (string.IsNullOrEmpty(input))
+				value = defaultValue;
+			else
+			{
+				if (_expectedDateTimeFormats == null || _expectedDateTimeFormats.Length == 0 || !DateTimeOffset.TryParseExact(input, _expectedDateTimeFormats, culture, this.DateTimeStyles, out value))
+				{
+					if (this.DateTimeConversionOption == ConversionOption.Loose)
+					{
+						if (!DateTimeOffset.TryParseExact(input, "G", culture, this.DateTimeStyles, out value))
+						{
+							if (!DateTimeOffset.TryParse(input, culture, this.DateTimeStyles, out value))
+								return false;
+						}
+					}
+					else
+					{
+						value = defaultValue;
+						return false;
+					}
+				}
+			}
+
+			return true;
+		}
+
+		public bool TryConvertToNullableDateTimeOffset(string input, TrimmingOptions trimWhiteSpaces, IFormatProvider culture, out DateTimeOffset? value)
+		{
+			value = null;
+			input = TrimWhiteSpaces(input, trimWhiteSpaces);
+
+			if (!string.IsNullOrEmpty(input))
+			{
+				DateTimeOffset output;
+				if (!TryConvertToDateTimeOffset(input, TrimmingOptions.None, DateTime.MinValue, culture, out output))
+					return false;
+
+				value = output;
+			}
+
+			return true;
+		}
+
+		#endregion
+
 		#region TimeSpan
 
 		public TimeSpan ConvertToTimeSpan(string input, TrimmingOptions trimWhiteSpaces, TimeSpan defaultValue) => ConvertToTimeSpan(input, trimWhiteSpaces, defaultValue, null);

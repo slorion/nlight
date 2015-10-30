@@ -12,7 +12,7 @@ namespace NLight.Reactive
 		private static readonly object _true = new object();
 		private static readonly object _false = null;
 
-		public static IObservable<TOut> SkipIfProcessing<TIn, TOut>(this IObservable<TIn> source, Func<TIn, Task<TOut>> action, Action<TIn> skipAction = null)
+		public static IObservable<TOut> IgnoreElementsWhileProcessing<TIn, TOut>(this IObservable<TIn> source, Func<TIn, Task<TOut>> action, Action<TIn> skipAction = null)
 		{
 			if (source == null) throw new ArgumentNullException(nameof(source));
 			if (action == null) throw new ArgumentNullException(nameof(action));
