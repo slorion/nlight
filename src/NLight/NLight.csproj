@@ -116,6 +116,7 @@
     <Compile Include="IO\Text\TextRecordWriter.cs" />
     <Compile Include="IO\Text\TextRecordWriter{T}.cs" />
     <Compile Include="IO\Text\TextRecordWriter.Validations.cs" />
+    <Compile Include="Net\UdpConnection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Log.cs" />
     <Compile Include="Reactive\BehaviorSubjectSlim.cs" />
