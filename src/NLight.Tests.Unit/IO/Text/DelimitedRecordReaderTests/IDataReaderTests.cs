@@ -45,7 +45,7 @@ namespace NLight.Tests.Unit.IO.Text.DelimitedRecordReaderTests
 		protected override IList<object> GetExpectedFieldValues(long recordIndex)
 		{
 			if (recordIndex < 0 || (int) recordIndex >= DelimitedRecordReaderTestData.SampleTypedData1Values.Length)
-				throw new ArgumentOutOfRangeException("recordIndex", recordIndex, string.Empty);
+				throw new ArgumentOutOfRangeException(nameof(recordIndex), recordIndex, null);
 
 			return DelimitedRecordReaderTestData.SampleTypedData1Values[(int) recordIndex];
 		}

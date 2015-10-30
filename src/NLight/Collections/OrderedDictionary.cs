@@ -48,7 +48,7 @@ namespace NLight.Collections
 			foreach (var kv in collection)
 			{
 				if (!_dictionary.TryAdd(kv.Key, _list.Count))
-					throw new ArgumentException(Resources.ExceptionMessages.SourceCannotContainDuplicateKey, nameof(collection));
+					throw new ArgumentException(Resources.ExceptionMessages.Collections_SourceCannotContainDuplicateKey, nameof(collection));
 				else
 					_list.Add(kv.Value);
 			}

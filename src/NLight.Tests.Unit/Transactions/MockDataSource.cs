@@ -46,7 +46,7 @@ namespace NLight.Tests.Unit.Transactions
 				async session =>
 				{
 					if (this.MaxSimulatedQueryDelay != null)
-						await Task.Delay(_random.Next(0, (int) this.MaxSimulatedQueryDelay.Value.TotalMilliseconds));
+						await Task.Delay(_random.Next(0, (int) this.MaxSimulatedQueryDelay.Value.TotalMilliseconds)).ConfigureAwait(false);
 
 					return 0;
 				}).ContinueWith(_ => OnCommandExecuted(EventArgs.Empty));
@@ -61,7 +61,7 @@ namespace NLight.Tests.Unit.Transactions
 
 		private Task<DataSessionState> BeginSession(TransactionContext transactionContext)
 		{
-			if (transactionContext == null) throw new ArgumentNullException("transactionContext");
+			if (transactionContext == null) throw new ArgumentNullException(nameof(transactionContext));
 
 			return Task.Run(
 				() =>
@@ -87,7 +87,7 @@ namespace NLight.Tests.Unit.Transactions
 
 		private Task EndSession(DataSession<DataSessionState> session)
 		{
-			if (session == null) throw new ArgumentNullException("session");
+			if (session == null) throw new ArgumentNullException(nameof(session));
 
 			return Task.Run(
 				() =>
@@ -108,7 +108,7 @@ namespace NLight.Tests.Unit.Transactions
 
 		private Task CommitSession(DataSession<DataSessionState> session)
 		{
-			if (session == null) throw new ArgumentNullException("session");
+			if (session == null) throw new ArgumentNullException(nameof(session));
 
 			return Task.Run(
 				() =>
@@ -124,7 +124,7 @@ namespace NLight.Tests.Unit.Transactions
 
 		private Task RollbackSession(DataSession<DataSessionState> session)
 		{
-			if (session == null) throw new ArgumentNullException("session");
+			if (session == null) throw new ArgumentNullException(nameof(session));
 
 			return Task.Run(
 				() =>

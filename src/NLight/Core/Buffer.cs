@@ -104,7 +104,7 @@ namespace NLight.Core
 				else
 				{
 					if (keepCount >= _rawData.Length)
-						throw new ArgumentException(Resources.ExceptionMessages.CannotKeepAllBufferElements, "keepCount");
+						throw new ArgumentException(Resources.ExceptionMessages.Core_CannotKeepAllBufferElements, "keepCount");
 
 					Array.Copy(_rawData, this.Length - keepCount, _rawData, 0, keepCount);
 					this.Position = keepCount - (this.Length - this.Position);

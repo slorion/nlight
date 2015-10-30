@@ -1,3 +1,4 @@
 source https://nuget.org/api/v2
 
 nuget NUnit
+nuget Rx-Main

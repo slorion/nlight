@@ -76,7 +76,7 @@ namespace NLight.IO.Text
 
 		protected override ReadResult ReadCore(Buffer<char> buffer, IList<string> values)
 		{
-			if (this.Columns.Count < 1) throw new InvalidOperationException(Resources.ExceptionMessages.NoColumnDefined);
+			if (this.Columns.Count < 1) throw new InvalidOperationException(Resources.ExceptionMessages.IO_NoColumnDefined);
 
 			for (int i = 0; i < this.Columns.Count; i++)
 				values.Add(null);

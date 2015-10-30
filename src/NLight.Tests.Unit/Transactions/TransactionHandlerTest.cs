@@ -119,7 +119,7 @@ namespace NLight.Tests.Unit.Transactions
 				for (int i = 0; i < IterationCount; i++)
 					tasks.Add(Task.Factory.StartNew(() => ExecuteNode(testNode), TaskCreationOptions.DenyChildAttach).Unwrap());
 
-				await Task.WhenAll(tasks);
+				await Task.WhenAll(tasks).ConfigureAwait(false);
 			}
 			finally
 			{

@@ -45,7 +45,7 @@ namespace NLight.IO.Text
 		{
 			this.ColumnName = columnName;
 
-			_message = String.Format(CultureInfo.InvariantCulture, Resources.ExceptionMessages.DuplicateColumnName, this.ColumnName);
+			_message = String.Format(CultureInfo.InvariantCulture, Resources.ExceptionMessages.IO_DuplicateColumnName, this.ColumnName);
 		}
 
 		/// <summary>

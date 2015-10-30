@@ -92,13 +92,13 @@ namespace NLight.Tests.Unit.IO.Text.FixedWidthRecordReaderTests
 		public void ParsingTest(int bufferSize, int recordCount, int columnCount, int columnWidth)
 		{
 			if (bufferSize < 0)
-				throw new ArgumentOutOfRangeException("bufferSize", bufferSize, "Must be 1 or more.");
+				throw new ArgumentOutOfRangeException(nameof(bufferSize), bufferSize, "Must be 1 or more.");
 
 			if (recordCount < 0 || recordCount > 99)
-				throw new ArgumentOutOfRangeException("recordCount", recordCount, "Must be between 1 and 99 inclusively.");
+				throw new ArgumentOutOfRangeException(nameof(recordCount), recordCount, "Must be between 1 and 99 inclusively.");
 
 			if (columnCount < 0 || columnCount > 99)
-				throw new ArgumentOutOfRangeException("columnCount", columnCount, "Must be between 1 and 99 inclusively.");
+				throw new ArgumentOutOfRangeException(nameof(columnCount), columnCount, "Must be between 1 and 99 inclusively.");
 
 			var expectedValues = new string[recordCount][];
 			var data = new StringBuilder(recordCount * columnCount * columnWidth + recordCount);

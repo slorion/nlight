@@ -129,7 +129,7 @@ namespace NLight.Text
 			if (TryConvertTo(input, trimWhiteSpaces, dataType, defaultValue, culture, out value))
 				return value;
 			else
-				throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, Resources.ExceptionMessages.CannotConvertToDataType, input, dataType), nameof(input));
+				throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, Resources.ExceptionMessages.Text_CannotConvertToDataType, input, dataType), nameof(input));
 		}
 
 		public bool TryConvertTo(string input, TrimmingOptions trimWhiteSpaces, Type dataType, object defaultValue, out object value) => TryConvertTo(input, trimWhiteSpaces, dataType, defaultValue, null, out value);
@@ -346,7 +346,7 @@ namespace NLight.Text
 				case TypeCode.DBNull:
 				case TypeCode.Empty:
 				default:
-					throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, Resources.ExceptionMessages.ConversionNotSupported, typeof(string), dataType), "dataType");
+					throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, Resources.ExceptionMessages.Text_ConversionNotSupported, typeof(string), dataType), "dataType");
 			}
 		}
 
@@ -359,7 +359,7 @@ namespace NLight.Text
 			if (success)
 				return value;
 			else
-				throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, Resources.ExceptionMessages.CannotConvertToDataType, input, typeof(T)), nameof(input));
+				throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, Resources.ExceptionMessages.Text_CannotConvertToDataType, input, typeof(T)), nameof(input));
 		}
 
 		#region Boolean

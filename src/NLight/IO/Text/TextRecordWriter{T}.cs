@@ -16,6 +16,10 @@ namespace NLight.IO.Text
 	{
 		protected TextRecordWriter(TextWriter writer)
 		{
+#if DEBUG
+			_allocStackTrace = new StackTrace();
+#endif
+
 			if (writer == null) throw new ArgumentNullException(nameof(writer));
 
 			this.CommentCharacter = DefaultCommentCharacter;
@@ -147,17 +151,10 @@ namespace NLight.IO.Text
 
 		#region IDisposable Members
 
-		/// <summary>
-		/// Gets the disposed status flag.
-		/// </summary>
+		private readonly StackTrace _allocStackTrace;
+
 		public bool IsDisposed { get; private set; }
 
-		/// <summary>
-		/// Releases all resources used by the instance.
-		/// </summary>
-		/// <remarks>
-		/// 	Calls <see cref="Dispose(bool)"/> with the disposing parameter set to <c>true</c> to free unmanaged and managed resources.
-		/// </remarks>
 		public void Dispose()
 		{
 			Dispose(true);
@@ -176,6 +173,10 @@ namespace NLight.IO.Text
 							this.BaseWriter.Dispose();
 					}
 				}
+				catch (Exception ex) when (!disposing)
+				{
+					Log.Source.TraceEvent(TraceEventType.Error, 0, Resources.LogMessages.Shared_ExceptionDuringFinalization, ex);
+				}
 				finally
 				{
 					this.IsDisposed = true;
@@ -185,6 +186,7 @@ namespace NLight.IO.Text
 
 		~TextRecordWriter()
 		{
+			Log.Source.TraceEvent(TraceEventType.Warning, 0, Resources.LogMessages.Shared_InstanceNotDisposedCorrectly, _allocStackTrace);
 			Dispose(false);
 		}
 

@@ -41,7 +41,7 @@ namespace NLight.IO.Text
 		/// <param name="message">The message that describes the error.</param>
 		/// <param name="innerException">The exception that is the cause of the current exception.</param>
 		public MalformedRecordException(string message, Exception innerException)
-			: base(String.Empty, innerException)
+			: base(string.Empty, innerException)
 		{
 			_message = (message == null ? string.Empty : message);
 
@@ -79,7 +79,7 @@ namespace NLight.IO.Text
 			this.CurrentRecordIndex = currentRecordIndex;
 			this.CurrentColumnIndex = currentColumnIndex;
 
-			_message = String.Format(CultureInfo.InvariantCulture, Resources.ExceptionMessages.MalformedRecordException, this.CurrentRecordIndex, this.CurrentColumnIndex, this.BufferPosition, this.DataBuffer);
+			_message = string.Format(CultureInfo.InvariantCulture, Resources.ExceptionMessages.IO_MalformedRecordException, this.CurrentRecordIndex, this.CurrentColumnIndex, this.BufferPosition, this.DataBuffer);
 		}
 
 		/// <summary>

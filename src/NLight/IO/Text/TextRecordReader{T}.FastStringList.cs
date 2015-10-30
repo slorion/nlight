@@ -50,13 +50,13 @@ namespace NLight.IO.Text
 			{
 				get
 				{
-					if (index < 0 || index >= _size) throw new ArgumentOutOfRangeException("index", index, string.Empty);
+					if (index < 0 || index >= _size) throw new ArgumentOutOfRangeException(nameof(index), index, null);
 
 					return _items[index];
 				}
 				set
 				{
-					if (index < 0 || index >= _size) throw new ArgumentOutOfRangeException("index", index, string.Empty);
+					if (index < 0 || index >= _size) throw new ArgumentOutOfRangeException(nameof(index), index, null);
 
 					_items[index] = value;
 				}

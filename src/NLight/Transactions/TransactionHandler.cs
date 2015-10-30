@@ -80,7 +80,7 @@ namespace NLight.Transactions
 			}
 
 			if (current.State == TransactionContextState.Exited)
-				throw new InvalidOperationException(string.Format(Resources.ExceptionMessages.InvalidTransactionContextState, string.Join(",", new string[] { TransactionContextState.Entered.ToString(), TransactionContextState.ToBeCommitted.ToString(), TransactionContextState.ToBeRollbacked.ToString() })));
+				throw new InvalidOperationException(string.Format(Resources.ExceptionMessages.Transactions_InvalidTransactionContextState, string.Join(",", new string[] { TransactionContextState.Entered.ToString(), TransactionContextState.ToBeCommitted.ToString(), TransactionContextState.ToBeRollbacked.ToString() })));
 
 			if (current.Affinity == TransactionContextAffinity.NotSupported)
 			{

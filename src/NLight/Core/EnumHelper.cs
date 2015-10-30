@@ -20,8 +20,8 @@ namespace NLight.Core
 		/// <param name="enumType">The type to validate.</param>
 		private static void CheckEnumType(Type enumType)
 		{
-			if (enumType == null) throw new ArgumentNullException("enumType");
-			if (!enumType.IsEnum) throw new ArgumentException(string.Empty, "enumType");
+			if (enumType == null) throw new ArgumentNullException(nameof(enumType));
+			if (!enumType.IsEnum) throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, Resources.ExceptionMessages.Core_NotAnEnumType, enumType), nameof(enumType));
 		}
 
 		/// <summary>
@@ -420,7 +420,7 @@ namespace NLight.Core
 			if (isFlags && ((v & mask) == v))
 				return true;
 			else if (throwOnError)
-				throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, Resources.ExceptionMessages.InvalidEnumArgument, value), argumentName);
+				throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, Resources.ExceptionMessages.Core_InvalidEnumArgument, value), argumentName);
 			else
 				return false;
 		}
@@ -458,7 +458,7 @@ namespace NLight.Core
 			if (v >= min && v <= max)
 				return true;
 			else if (throwOnError)
-				throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, Resources.ExceptionMessages.InvalidEnumArgument, value), argumentName);
+				throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, Resources.ExceptionMessages.Core_InvalidEnumArgument, value), argumentName);
 			else
 				return false;
 		}
@@ -492,7 +492,7 @@ namespace NLight.Core
 			if ((v & m) == v)
 				return true;
 			else if (throwOnError)
-				throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, Resources.ExceptionMessages.InvalidEnumArgument, value), argumentName);
+				throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, Resources.ExceptionMessages.Core_InvalidEnumArgument, value), argumentName);
 			else
 				return false;
 		}

@@ -4,7 +4,6 @@ using System;
 using System.Data;
 using System.Diagnostics;
 using System.Globalization;
-using System.Security.Principal;
 using System.Threading;
 
 namespace NLight.Transactions
@@ -34,7 +33,7 @@ namespace NLight.Transactions
 		public TransactionContext(TransactionContextAffinity affinity)
 		{
 #if DEBUG
-			_allocStack = new System.Diagnostics.StackTrace();
+			_allocStack = new StackTrace();
 #endif
 
 			TransactionHandler.EnsureInitialize();
@@ -120,7 +119,7 @@ namespace NLight.Transactions
 		private void Enter()
 		{
 			if (this.State != TransactionContextState.Created && this.State != TransactionContextState.Exited)
-				throw new InvalidOperationException(string.Format(CultureInfo.CurrentCulture, Resources.ExceptionMessages.IncoherentContextTransition, this.State, TransactionContextState.Entered));
+				throw new InvalidOperationException(string.Format(CultureInfo.CurrentCulture, Resources.ExceptionMessages.Transactions_IncoherentContextTransition, this.State, TransactionContextState.Entered));
 
 			this.Parent = CurrentTransactionContext;
 
@@ -143,7 +142,7 @@ namespace NLight.Transactions
 		public void VoteCommit()
 		{
 			if (this.State != TransactionContextState.Entered && this.State != TransactionContextState.ToBeCommitted)
-				throw new InvalidOperationException(string.Format(CultureInfo.CurrentCulture, Resources.ExceptionMessages.IncoherentContextTransition, this.State, TransactionContextState.ToBeCommitted));
+				throw new InvalidOperationException(string.Format(CultureInfo.CurrentCulture, Resources.ExceptionMessages.Transactions_IncoherentContextTransition, this.State, TransactionContextState.ToBeCommitted));
 
 			if (this.State == TransactionContextState.ToBeCommitted)
 				return;
@@ -176,7 +175,7 @@ namespace NLight.Transactions
 		public void VoteRollback()
 		{
 			if (this.State != TransactionContextState.Entered && this.State != TransactionContextState.ToBeCommitted && this.State != TransactionContextState.ToBeRollbacked)
-				throw new InvalidOperationException(string.Format(CultureInfo.CurrentCulture, Resources.ExceptionMessages.IncoherentContextTransition, this.State, TransactionContextState.ToBeRollbacked));
+				throw new InvalidOperationException(string.Format(CultureInfo.CurrentCulture, Resources.ExceptionMessages.Transactions_IncoherentContextTransition, this.State, TransactionContextState.ToBeRollbacked));
 
 			if (this.State == TransactionContextState.ToBeRollbacked)
 				return;
@@ -208,7 +207,7 @@ namespace NLight.Transactions
 		public void Exit()
 		{
 			if (this.State == TransactionContextState.Created)
-				throw new InvalidOperationException(string.Format(CultureInfo.CurrentCulture, Resources.ExceptionMessages.IncoherentContextTransition, this.State, TransactionContextState.Exited));
+				throw new InvalidOperationException(string.Format(CultureInfo.CurrentCulture, Resources.ExceptionMessages.Transactions_IncoherentContextTransition, this.State, TransactionContextState.Exited));
 
 			if (this.State == TransactionContextState.Exited)
 				return;
@@ -246,15 +245,9 @@ namespace NLight.Transactions
 
 		#region IDisposable members
 
-#if DEBUG
-		private System.Diagnostics.StackTrace _allocStack;
-#endif
-
-		/// <summary>
-		/// Gets or sets a value indicating whether this instance is disposed.
-		/// </summary>
-		[System.ComponentModel.Browsable(false)]
-		protected bool IsDisposed { get; private set; }
+#pragma warning disable CS0649
+		private readonly StackTrace _allocStackTrace;
+#pragma warning restore CS0649
 
 		/// <summary>
 		/// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
@@ -271,22 +264,14 @@ namespace NLight.Transactions
 		/// <param name="disposing"><c>true</c> if this instance is disposed manually; <c>false</c> if it is disposed during finalization.</param>
 		protected virtual void Dispose(bool disposing)
 		{
-			if (!this.IsDisposed)
+			try
 			{
-				try
-				{
-					if (this.State != TransactionContextState.Exited && this.State != TransactionContextState.Created)
-						this.Exit();
-				}
-				catch
-				{
-					if (disposing)
-						throw;
-				}
-				finally
-				{
-					this.IsDisposed = true;
-				}
+				if (this.State != TransactionContextState.Exited && this.State != TransactionContextState.Created)
+					this.Exit();
+			}
+			catch (Exception ex) when (!disposing)
+			{
+				Log.Source.TraceEvent(TraceEventType.Error, 0, Resources.LogMessages.Shared_ExceptionDuringFinalization, ex);
 			}
 		}
 
@@ -295,10 +280,7 @@ namespace NLight.Transactions
 		/// </summary>
 		~TransactionContext()
 		{
-#if DEBUG
-			Debug.WriteLine(string.Format("FinalizableObject was not disposed{0}", _allocStack));
-#endif
-
+			Log.Source.TraceEvent(TraceEventType.Warning, 0, Resources.LogMessages.Shared_InstanceNotDisposedCorrectly, _allocStackTrace);
 			Dispose(false);
 		}
 

@@ -67,7 +67,7 @@ namespace NLight.Tests.Unit.IO.Text.FixedWidthRecordReaderTests
 		protected override IList<object> GetExpectedFieldValues(long recordIndex)
 		{
 			if (recordIndex < 0 || (int) recordIndex >= FixedWidthRecordReaderTestData.SampleTypedData1Values.Length)
-				throw new ArgumentOutOfRangeException("recordIndex", recordIndex, string.Empty);
+				throw new ArgumentOutOfRangeException(nameof(recordIndex), recordIndex, null);
 
 			return FixedWidthRecordReaderTestData.SampleTypedData1Values[(int) recordIndex];
 		}

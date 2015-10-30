@@ -32,6 +32,10 @@ namespace NLight.IO.Text
 
 		protected TextRecordReader(TextReader reader, int bufferSize)
 		{
+#if DEBUG
+			_allocStackTrace = new StackTrace();
+#endif
+
 			if (reader == null) throw new ArgumentNullException(nameof(reader));
 			if (bufferSize < 1) throw new ArgumentOutOfRangeException(nameof(bufferSize));
 
@@ -327,14 +331,14 @@ namespace NLight.IO.Text
 							throw e.Error;
 
 						case ParseErrorAction.RaiseEvent:
-							throw new InvalidOperationException(string.Format(CultureInfo.InvariantCulture, Resources.ExceptionMessages.ParseErrorActionInvalidInsideParseErrorEvent, e.Action), e.Error);
+							throw new InvalidOperationException(string.Format(CultureInfo.CurrentCulture, Resources.ExceptionMessages.IO_ParseErrorActionInvalidInsideParseErrorEvent, e.Action), e.Error);
 
 						case ParseErrorAction.SkipToNextLine:
 							SkipToNextLine();
 							break;
 
 						default:
-							throw new NotSupportedException(string.Format(CultureInfo.InvariantCulture, Resources.ExceptionMessages.ParseErrorActionNotSupported, e.Action), e.Error);
+							throw new NotSupportedException(string.Format(CultureInfo.CurrentCulture, Resources.ExceptionMessages.IO_ParseErrorActionNotSupported, e.Action), e.Error);
 					}
 					break;
 
@@ -343,7 +347,7 @@ namespace NLight.IO.Text
 					break;
 
 				default:
-					throw new NotSupportedException(string.Format(CultureInfo.InvariantCulture, Resources.ExceptionMessages.ParseErrorActionNotSupported, this.ParseErrorAction), error);
+					throw new NotSupportedException(string.Format(CultureInfo.CurrentCulture, Resources.ExceptionMessages.IO_ParseErrorActionNotSupported, this.ParseErrorAction), error);
 			}
 		}
 
@@ -368,7 +372,7 @@ namespace NLight.IO.Text
 		public ReadResult MoveTo(long recordIndex)
 		{
 			if (recordIndex < 0 || recordIndex > int.MaxValue) throw new ArgumentOutOfRangeException(nameof(recordIndex));
-			if (_seekableReader == null && recordIndex < this.CurrentRecordIndex) throw new InvalidOperationException(Resources.ExceptionMessages.CannotMovePreviousRecordInForwardOnly);
+			if (_seekableReader == null && recordIndex < this.CurrentRecordIndex) throw new InvalidOperationException(Resources.ExceptionMessages.IO_CannotMovePreviousRecordInForwardOnly);
 
 			Debug.Assert(_seekableReader == null || _seekableReader.BaseStream.CanSeek);
 
@@ -586,7 +590,7 @@ namespace NLight.IO.Text
 			int index = this.Columns.IndexOf(columnName);
 
 			if (index < 0)
-				throw new ArgumentException(string.Format(CultureInfo.InvariantCulture, Resources.ExceptionMessages.ColumnNotFound, columnName), argumentName);
+				throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, Resources.ExceptionMessages.IO_ColumnNotFound, columnName), argumentName);
 
 			return index;
 		}
@@ -597,7 +601,7 @@ namespace NLight.IO.Text
 				throw new ObjectDisposedException(null);
 
 			if ((validations & Validations.HasCurrentRecord) == Validations.HasCurrentRecord && this.CurrentRecordIndex < 0)
-				throw new InvalidOperationException(Resources.ExceptionMessages.NoCurrentRecord);
+				throw new InvalidOperationException(Resources.ExceptionMessages.IO_NoCurrentRecord);
 		}
 
 		#region IDataReader Members
@@ -992,17 +996,10 @@ namespace NLight.IO.Text
 
 		#region IDisposable Members
 
-		/// <summary>
-		/// Gets the disposed status flag.
-		/// </summary>
+		private readonly StackTrace _allocStackTrace;
+
 		public bool IsDisposed { get; private set; }
 
-		/// <summary>
-		/// Releases all resources used by the instance.
-		/// </summary>
-		/// <remarks>
-		/// 	Calls <see cref="Dispose(bool)"/> with the disposing parameter set to <c>true</c> to free unmanaged and managed resources.
-		/// </remarks>
 		public void Dispose()
 		{
 			Dispose(true);
@@ -1021,6 +1018,10 @@ namespace NLight.IO.Text
 							this.BaseReader.Dispose();
 					}
 				}
+				catch (Exception ex) when (!disposing)
+				{
+					Log.Source.TraceEvent(TraceEventType.Error, 0, Resources.LogMessages.Shared_ExceptionDuringFinalization, ex);
+				}
 				finally
 				{
 					_buffer = null;
@@ -1031,6 +1032,7 @@ namespace NLight.IO.Text
 
 		~TextRecordReader()
 		{
+			Log.Source.TraceEvent(TraceEventType.Warning, 0, Resources.LogMessages.Shared_InstanceNotDisposedCorrectly, _allocStackTrace);
 			Dispose(false);
 		}
 

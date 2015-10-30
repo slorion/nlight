@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace NLight.Data.Resources {
+namespace NLight.Resources {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace NLight.Data.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class ExceptionMessages {
+    internal class LogMessages {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal ExceptionMessages() {
+        internal LogMessages() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace NLight.Data.Resources {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("NLight.Data.Resources.ExceptionMessages", typeof(ExceptionMessages).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("NLight.Resources.LogMessages", typeof(LogMessages).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -57,6 +57,51 @@ namespace NLight.Data.Resources {
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error when calling {0} on observer &apos;{1}&apos;. Exception: &apos;{2}&apos;..
+        /// </summary>
+        internal static string Reactive_ErrorWhenNotifyingObserver {
+            get {
+                return ResourceManager.GetString("Reactive_ErrorWhenNotifyingObserver", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An exception occurred during finalization: {0}.
+        /// </summary>
+        internal static string Shared_ExceptionDuringFinalization {
+            get {
+                return ResourceManager.GetString("Shared_ExceptionDuringFinalization", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Instance was not disposed correctly. Stack trace: {0}.
+        /// </summary>
+        internal static string Shared_InstanceNotDisposedCorrectly {
+            get {
+                return ResourceManager.GetString("Shared_InstanceNotDisposedCorrectly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to When disposing, timeout of &apos;{0}&apos; expired before all elements have been processed..
+        /// </summary>
+        internal static string Shared_NonProcessedItemsAfterDisposeTimeout {
+            get {
+                return ResourceManager.GetString("Shared_NonProcessedItemsAfterDisposeTimeout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to When disposing, {0} element(s) remained in internal queue..
+        /// </summary>
+        internal static string Shared_NonProcessedItemsWhenDisposing {
+            get {
+                return ResourceManager.GetString("Shared_NonProcessedItemsWhenDisposing", resourceCulture);
             }
         }
     }
