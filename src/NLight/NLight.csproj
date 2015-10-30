@@ -118,6 +118,12 @@
     <Compile Include="IO\Text\TextRecordWriter.Validations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Log.cs" />
+    <Compile Include="Reactive\BehaviorSubjectSlim.cs" />
+    <Compile Include="Reactive\DeferredSubject.cs" />
+    <Compile Include="Reactive\ObservableExtensions.cs" />
+    <Compile Include="Reactive\SubjectExtensions.cs" />
+    <Compile Include="Reactive\SubjectSlim.cs" />
+    <Compile Include="Reactive\SubjectSlim.Subscription.cs" />
     <Compile Include="Resources\ExceptionMessages.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
