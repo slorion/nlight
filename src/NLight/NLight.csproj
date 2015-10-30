@@ -69,6 +69,7 @@
     <Compile Include="Collections\EnumerableExtensions.cs" />
     <Compile Include="Collections\EnumerableExtensions.IReadOnlyCollectionWrapper.cs" />
     <Compile Include="Collections\EnumerableExtensions.IReadOnlyListWrapper.cs" />
+    <Compile Include="Collections\IListExtensions.cs" />
     <Compile Include="Collections\OrderedDictionary.cs" />
     <Compile Include="Collections\Trees\Traversals.cs" />
     <Compile Include="Collections\Trees\Traversals.TraversalKind.cs" />
