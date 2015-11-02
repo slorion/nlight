@@ -10,7 +10,7 @@ namespace NLight.Data.Linq
 {
 	/// <summary>
 	/// Contains the methods required to execute transacted operations against a LINQ <see cref="DataContext"/>.
-	/// See <see cref="TransactionHandler"/>.
+	/// See <see cref="TransactionManager"/>.
 	/// </summary>
 	public static class LinqDataSource
 	{
@@ -26,7 +26,7 @@ namespace NLight.Data.Linq
 			if (createDataContext == null) throw new ArgumentNullException(nameof(createDataContext));
 			if (operation == null) throw new ArgumentNullException(nameof(operation));
 
-			return TransactionHandler.Execute(transactionGroupName, session => BeginSession(session, createDataContext), CommitSession, RollbackSession, EndSession, operation);
+			return TransactionManager.Execute(transactionGroupName, session => BeginSession(session, createDataContext), CommitSession, RollbackSession, EndSession, operation);
 		}
 
 		/// <summary>

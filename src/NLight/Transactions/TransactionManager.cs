@@ -10,16 +10,13 @@ using System.Threading.Tasks;
 namespace NLight.Transactions
 {
 	/// <summary>
-	/// Represents the transaction handler responsible for executing all transacted operations.
+	/// Represents the transaction manager responsible for executing all transacted operations.
 	/// </summary>
-	public static class TransactionHandler
+	public static class TransactionManager
 	{
 		private static readonly ConcurrentDictionary<TransactionContext, ConcurrentDictionary<string, Lazy<Task<DataSession>>>> _pending = new ConcurrentDictionary<TransactionContext, ConcurrentDictionary<string, Lazy<Task<DataSession>>>>();
 
-		/// <summary>
-		/// Initializes the <see cref="TransactionHandler"/> class.
-		/// </summary>
-		static TransactionHandler()
+		static TransactionManager()
 		{
 			TransactionContext.Created += OnTransactionContextCreated;
 		}
@@ -110,14 +107,6 @@ namespace NLight.Transactions
 			}
 		}
 
-		/// <summary>
-		/// Called when a transaction context is created.
-		/// </summary>
-		/// <param name="sender">The sender.</param>
-		/// <param name="e">The <see cref="TransactionContextCreatedEventArgs"/> instance containing the event data.</param>
-		/// <exception cref="ArgumentNullException">
-		///	<paramref name="e"/> is a null reference.
-		/// </exception>
 		private static void OnTransactionContextCreated(object sender, TransactionContextCreatedEventArgs e)
 		{
 			if (sender == null) throw new ArgumentNullException(nameof(sender));
@@ -127,17 +116,6 @@ namespace NLight.Transactions
 				e.NewTransactionContext.StateChanged += OnTransactionContextStateChanged;
 		}
 
-		/// <summary>
-		/// Called when a transaction context state has changed.
-		/// </summary>
-		/// <param name="sender">The sender.</param>
-		/// <param name="e">The <see cref="TransactionContextStateChangedEventArgs"/> instance containing the event data.</param>
-		/// <exception cref="ArgumentNullException">
-		///	<paramref name="sender"/> is a null reference.
-		/// </exception>
-		/// <exception cref="ArgumentNullException">
-		///	<paramref name="e"/> is a null reference.
-		/// </exception>
 		private static void OnTransactionContextStateChanged(object sender, TransactionContextStateChangedEventArgs e)
 		{
 			if (sender == null) throw new ArgumentNullException(nameof(sender));

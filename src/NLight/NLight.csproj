@@ -159,7 +159,7 @@
     <Compile Include="Transactions\TransactionContextCreatedEventArgs.cs" />
     <Compile Include="Transactions\TransactionContextState.cs" />
     <Compile Include="Transactions\TransactionContextStateChangedEventArgs.cs" />
-    <Compile Include="Transactions\TransactionHandler.cs" />
+    <Compile Include="Transactions\TransactionManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\NLight.snk">

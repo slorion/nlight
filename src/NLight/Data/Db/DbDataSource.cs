@@ -11,7 +11,7 @@ namespace NLight.Data.Db
 {
 	/// <summary>
 	/// Contains the methods required to execute transacted operations against a database.
-	/// See <see cref="TransactionHandler"/>.
+	/// See <see cref="TransactionManager"/>.
 	/// </summary>
 	public static class DbDataSource
 	{
@@ -27,7 +27,7 @@ namespace NLight.Data.Db
 			if (createConnection == null) throw new ArgumentNullException(nameof(createConnection));
 			if (operation == null) throw new ArgumentNullException(nameof(operation));
 
-			return TransactionHandler.Execute(transactionGroupName, context => BeginSession(context, createConnection), CommitSession, RollbackSession, EndSession, operation);
+			return TransactionManager.Execute(transactionGroupName, context => BeginSession(context, createConnection), CommitSession, RollbackSession, EndSession, operation);
 		}
 
 		//TODO: replace by or add support for IObservable<T> ?

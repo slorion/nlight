@@ -42,7 +42,7 @@ namespace NLight.Tests.Unit.Transactions
 
 		public Task ExecuteNonQuery(DbCommand command)
 		{
-			return TransactionHandler.Execute(this.TransactionGroupName, BeginSession, CommitSession, RollbackSession, EndSession,
+			return TransactionManager.Execute(this.TransactionGroupName, BeginSession, CommitSession, RollbackSession, EndSession,
 				async session =>
 				{
 					if (this.MaxSimulatedQueryDelay != null)

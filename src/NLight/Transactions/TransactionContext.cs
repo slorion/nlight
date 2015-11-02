@@ -36,7 +36,7 @@ namespace NLight.Transactions
 			_allocStack = new StackTrace();
 #endif
 
-			TransactionHandler.EnsureInitialize();
+			TransactionManager.EnsureInitialize();
 
 			this.Affinity = affinity;
 			this.State = TransactionContextState.Created;
