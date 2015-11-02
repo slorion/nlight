@@ -21,8 +21,7 @@ namespace NLight.Tests.Unit.Transactions
 		public VoteAction VoteAction { get; set; }
 		public Func<TransactionContextTestNode, Task> Operation { get; set; }
 
-		//public bool IsController => this.Affinity != TransactionContextAffinity.Required || this.Parent == null || this.Parent.Affinity == TransactionContextAffinity.NotSupported;
-		public bool IsController => this.Affinity == TransactionContextAffinity.RequiresNew || this.Parent == null;
+		public bool IsController => this.Affinity != TransactionContextAffinity.Required || this.Parent == null || this.Parent.Affinity == TransactionContextAffinity.NotSupported;
 
 		public TransactionContextTestNode GetController()
 		{

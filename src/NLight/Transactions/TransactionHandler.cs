@@ -2,7 +2,6 @@
 
 using System;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading;
@@ -31,23 +30,6 @@ namespace NLight.Transactions
 		internal static void EnsureInitialize()
 		{
 		}
-
-		///// <summary>
-		///// Executes the specified operation inside the current transaction context. If there is no context, a new one will be created with a <see cref="TransactionContextAffinity.NotSupported"/> affinity.
-		///// </summary>
-		///// <typeparam name="TState">The type of the data session state.</typeparam>
-		///// <typeparam name="TResult">The type of the operation result.</typeparam>
-		///// <param name="transactionGroupName">The transaction group name.</param>
-		///// <param name="begin">The action to execute when the transaction context begins (before any operation).</param>
-		///// <param name="commit">The action to execute when committing the transaction context.</param>
-		///// <param name="rollback">The action to execute when rollbacking the transaction context.</param>
-		///// <param name="end">The action to execute when the transaction context ends (after all operations).</param>
-		///// <param name="operation">The operation to execute inside the current transaction context.</param>
-		///// <returns>The result of the operation.</returns>
-		//public static Task<TResult> Execute<TState, TResult>(string transactionGroupName, Func<TransactionContext, Task<TState>> begin, Func<DataSession<TState>, Task> commit, Func<DataSession<TState>, Task> rollback, Func<DataSession<TState>, Task> end, Func<DataSession<TState>, TResult> operation)
-		//{
-		//	return Execute(transactionGroupName, begin, commit, rollback, end, session => Task.FromResult(operation(session)));
-		//}
 
 		/// <summary>
 		/// Executes the specified operation inside the current transaction context. If there is no context, a new one will be created with a <see cref="TransactionContextAffinity.NotSupported"/> affinity.

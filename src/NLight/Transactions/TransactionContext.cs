@@ -85,8 +85,7 @@ namespace NLight.Transactions
 		/// <summary>
 		/// Gets a value indicating whether this instance is a controlling transaction context.
 		/// </summary>
-		//public bool IsController => this.Affinity != TransactionContextAffinity.Required || this.Parent == null || this.Parent.Affinity == TransactionContextAffinity.NotSupported;
-		public bool IsController => this.Affinity == TransactionContextAffinity.RequiresNew || this.Parent == null;
+		public bool IsController => this.Affinity != TransactionContextAffinity.Required || this.Parent == null || this.Parent.Affinity == TransactionContextAffinity.NotSupported;
 
 		/// <summary>
 		/// Gets the controlling transaction context.
@@ -97,7 +96,10 @@ namespace NLight.Transactions
 			if (this.IsController)
 				return this;
 			else
+			{
+				Debug.Assert(this.Parent != null);
 				return this.Parent.GetController();
+			}
 		}
 
 		/// <summary>
