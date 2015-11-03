@@ -12,21 +12,21 @@ namespace NLight.Reactive
 		private static readonly object _true = new object();
 		private static readonly object _false = null;
 
-		public static IObservable<TOut> IgnoreElementsWhileProcessing<TIn, TOut>(this IObservable<TIn> source, Func<TIn, Task<TOut>> action, Action<TIn> skipAction = null)
+		public static IObservable<TOut> IgnoreElementsWhileConverting<TIn, TOut>(this IObservable<TIn> source, Func<TIn, Task<TOut>> convert, Action<TIn> ignoreAction = null)
 		{
 			if (source == null) throw new ArgumentNullException(nameof(source));
-			if (action == null) throw new ArgumentNullException(nameof(action));
+			if (convert == null) throw new ArgumentNullException(nameof(convert));
 
-			object isProcessing = _false;
+			object isConverting = _false;
 
 			return source
 				.SelectMany(
 					async data =>
 					{
-						if (Interlocked.CompareExchange(ref isProcessing, _true, _false) == _true)
+						if (Interlocked.CompareExchange(ref isConverting, _true, _false) == _true)
 						{
-							if (skipAction != null)
-								skipAction(data);
+							if (ignoreAction != null)
+								ignoreAction(data);
 
 							return Tuple.Create(false, default(TOut));
 						}
@@ -34,11 +34,11 @@ namespace NLight.Reactive
 						{
 							try
 							{
-								return Tuple.Create(true, await action(data).ConfigureAwait(false));
+								return Tuple.Create(true, await convert(data).ConfigureAwait(false));
 							}
 							finally
 							{
-								Interlocked.CompareExchange(ref isProcessing, _false, _true);
+								Interlocked.CompareExchange(ref isConverting, _false, _true);
 							}
 						}
 					})
