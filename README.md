@@ -34,7 +34,7 @@ Toolbox for .NET projects
 * `SubjectSlim<T>`: an `ISubject<T>` implementation that is still thread-safe but avoids locking internally and stores observers with a `List<T>` with copy on write instead of an `ImmutableList<T>`
 * `DeferredSubject<T>`: an `ISubject<T>` wrapper that buffers new elements in a `BlockingCollection<T>`
 * `ObservableExtensions`
-  * Ignore elements while processing the current one
+  * Ignore elements while converting the current one
   * Pairs the current element with the previous
 
 ### NLight.Text
