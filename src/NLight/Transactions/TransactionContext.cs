@@ -33,7 +33,7 @@ namespace NLight.Transactions
 		public TransactionContext(TransactionContextAffinity affinity)
 		{
 #if DEBUG
-			_allocStack = new StackTrace();
+			_allocStackTrace = new StackTrace();
 #endif
 
 			TransactionManager.EnsureInitialize();
