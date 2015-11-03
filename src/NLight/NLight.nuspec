@@ -5,8 +5,8 @@
 		<id>$id$</id>
 		<version>$version$</version>
 		<title>$id$</title>
-		<authors>$author$</authors>
-		<owners>$author$</owners>
+		<authors>Sébastien Lorion</authors>
+		<owners>Sébastien Lorion</owners>
 		<description>$description$</description>
 		<!--<licenseUrl>http://LICENSE_URL_HERE_OR_DELETE_THIS_LINE</licenseUrl>-->
 		<!--<projectUrl>http://LICENSE_URL_HERE_OR_DELETE_THIS_LINE</projectUrl>-->
