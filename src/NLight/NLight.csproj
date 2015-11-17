@@ -89,6 +89,7 @@
     <Compile Include="Diagnostics\Benchmarking\Benchmark.cs" />
     <Compile Include="Diagnostics\Benchmarking\BenchmarkOptions.cs" />
     <Compile Include="Diagnostics\Benchmarking\BenchmarkResult.cs" />
+    <Compile Include="Diagnostics\DebuggerTraceListener.cs" />
     <Compile Include="Diagnostics\MemoryPressureManager.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="IO\CopyOptions.cs" />
