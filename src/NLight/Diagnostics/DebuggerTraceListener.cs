@@ -5,10 +5,15 @@ using System.Diagnostics;
 
 namespace NLight.Diagnostics
 {
+	/// <summary>
+	/// A trace listener that will break in the debugger when the <see cref="TraceEventType"/> is equal or lower 
+	/// than the value specified by <see cref="BreakOnEventType"/> (by default <see cref="TraceEventType.Error"/>).
+	/// </summary>
 	public class DebuggerTraceListener
 		: TraceListener
 	{
-		public bool BreakOnErrorEnabled { get; set; } = true;
+		public bool BreakOnEventEnabled { get; set; } = true;
+		public TraceEventType BreakOnEventType { get; set; } = TraceEventType.Error;
 
 		public override void Write(string message) => Debug.Write(message);
 		public override void WriteLine(string message) => Debug.WriteLine(message);
@@ -16,52 +21,49 @@ namespace NLight.Diagnostics
 		public override void Fail(string message)
 		{
 			base.Fail(message);
-			BreakOnError(TraceEventType.Error);
+			BreakOnEvent(TraceEventType.Error);
 		}
 
 		public override void Fail(string message, string detailMessage)
 		{
 			base.Fail(message, detailMessage);
-			BreakOnError(TraceEventType.Error);
+			BreakOnEvent(TraceEventType.Error);
 		}
 
 		public override void TraceData(TraceEventCache eventCache, string source, TraceEventType eventType, int id, object data)
 		{
 			base.TraceData(eventCache, source, eventType, id, data);
-			BreakOnError(eventType);
+			BreakOnEvent(eventType);
 		}
 
 		public override void TraceData(TraceEventCache eventCache, string source, TraceEventType eventType, int id, params object[] data)
 		{
 			base.TraceData(eventCache, source, eventType, id, data);
-			BreakOnError(eventType);
+			BreakOnEvent(eventType);
 		}
 
 		public override void TraceEvent(TraceEventCache eventCache, string source, TraceEventType eventType, int id)
 		{
 			base.TraceEvent(eventCache, source, eventType, id);
-			BreakOnError(eventType);
+			BreakOnEvent(eventType);
 		}
 
 		public override void TraceEvent(TraceEventCache eventCache, string source, TraceEventType eventType, int id, string format, params object[] args)
 		{
 			base.TraceEvent(eventCache, source, eventType, id, format, args);
-			BreakOnError(eventType);
+			BreakOnEvent(eventType);
 		}
 
 		public override void TraceEvent(TraceEventCache eventCache, string source, TraceEventType eventType, int id, string message)
 		{
 			base.TraceEvent(eventCache, source, eventType, id, message);
-			BreakOnError(eventType);
+			BreakOnEvent(eventType);
 		}
 
-		private void BreakOnError(TraceEventType eventType)
+		private void BreakOnEvent(TraceEventType eventType)
 		{
-			if (this.BreakOnErrorEnabled && Debugger.IsAttached)
-			{
-				if (eventType == TraceEventType.Critical || eventType == TraceEventType.Error)
-					Debugger.Break();
-			}
+			if (this.BreakOnEventEnabled && eventType <= this.BreakOnEventType && Debugger.IsAttached)
+				Debugger.Break();
 		}
 	}
 }
