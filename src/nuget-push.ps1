@@ -4,7 +4,7 @@ cd $project_name
 
 del *.nupkg -Force
 
-..\.nuget\nuget.exe pack ($project_name + ".csproj") -Properties Configuration=Release -Build -IncludeReferencedProjects -NonInteractive
+..\.paket\paket.exe pack output .
 
 $pkg = dir *.nupkg | Select-Object -Last 1
 

@@ -1,0 +1,13 @@
+﻿type project
+licenseUrl http://opensource.org/licenses/MIT
+requireLicenseAcceptance false
+copyright Sébastien Lorion
+
+id NLight
+version 1.0.1
+authors Sébastien Lorion
+description NLight
+summary Toolbox for .NET projects
+projectUrl https://github.com/slorion/nlight
+tags io,parser,csv,delimited,transaction,reactive,tree
+releaseNotes Fixed package dependency on Rx.NET
