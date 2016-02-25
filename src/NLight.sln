@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NLight", "NLight\NLight.csproj", "{1FB21654-1205-454E-90DB-A7F434AAE057}"
 EndProject
@@ -19,6 +19,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nuget", "nuget", "{FC7DBE81
 	ProjectSection(SolutionItems) = preProject
 		nuget-push.ps1 = nuget-push.ps1
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NLightText", "NLightText\NLightText.csproj", "{1AEDC7D9-B983-4E4D-8F24-CC4B82C0DB48}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -38,6 +40,10 @@ Global
 		{7ABD7D88-1380-4AC5-9243-6F8A6A33F13D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7ABD7D88-1380-4AC5-9243-6F8A6A33F13D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7ABD7D88-1380-4AC5-9243-6F8A6A33F13D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1AEDC7D9-B983-4E4D-8F24-CC4B82C0DB48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1AEDC7D9-B983-4E4D-8F24-CC4B82C0DB48}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1AEDC7D9-B983-4E4D-8F24-CC4B82C0DB48}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1AEDC7D9-B983-4E4D-8F24-CC4B82C0DB48}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

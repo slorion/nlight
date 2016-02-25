@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1AEDC7D9-B983-4E4D-8F24-CC4B82C0DB48}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NLightText</RootNamespace>
+    <AssemblyName>NLightText</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\NLight\Collections\ArrayExtensions.cs">
+      <Link>NLight.Collections\ArrayExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\NLight\Collections\OrderedDictionary.cs">
+      <Link>Collections\OrderedDictionary.cs</Link>
+    </Compile>
+    <Compile Include="..\NLight\Core\Buffer.cs">
+      <Link>Core\Buffer.cs</Link>
+    </Compile>
+    <Compile Include="..\NLight\Core\EnumHelper.cs">
+      <Link>Core\EnumHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\NLight\Core\EnumHelper.EnumInfo.cs">
+      <Link>Core\EnumHelper.EnumInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\NLight\IO\Text\DelimitedRecordColumn.cs">
+      <Link>IO\Text\DelimitedRecordColumn.cs</Link>
+    </Compile>
+    <Compile Include="..\NLight\IO\Text\DelimitedRecordReader.cs">
+      <Link>IO\Text\DelimitedRecordReader.cs</Link>
+    </Compile>
+    <Compile Include="..\NLight\IO\Text\DelimitedRecordReader.ValueBuilder.cs">
+      <Link>IO\Text\DelimitedRecordReader.ValueBuilder.cs</Link>
+    </Compile>
+    <Compile Include="..\NLight\IO\Text\FixedWidthRecordColumn.cs">
+      <Link>IO\Text\FixedWidthRecordColumn.cs</Link>
+    </Compile>
+    <Compile Include="..\NLight\IO\Text\FixedWidthRecordReader.cs">
+      <Link>IO\Text\FixedWidthRecordReader.cs</Link>
+    </Compile>
+    <Compile Include="..\NLight\IO\Text\MalformedRecordException.cs">
+      <Link>IO\Text\MalformedRecordException.cs</Link>
+    </Compile>
+    <Compile Include="..\NLight\IO\Text\MissingRecordFieldAction.cs">
+      <Link>IO\Text\MissingRecordFieldAction.cs</Link>
+    </Compile>
+    <Compile Include="..\NLight\IO\Text\MissingRecordFieldException.cs">
+      <Link>IO\Text\MissingRecordFieldException.cs</Link>
+    </Compile>
+    <Compile Include="..\NLight\IO\Text\ParseErrorAction.cs">
+      <Link>IO\Text\ParseErrorAction.cs</Link>
+    </Compile>
+    <Compile Include="..\NLight\IO\Text\ParseErrorEventArgs.cs">
+      <Link>IO\Text\ParseErrorEventArgs.cs</Link>
+    </Compile>
+    <Compile Include="..\NLight\IO\Text\ReadResult.cs">
+      <Link>IO\Text\ReadResult.cs</Link>
+    </Compile>
+    <Compile Include="..\NLight\IO\Text\RecordColumn.cs">
+      <Link>IO\Text\RecordColumn.cs</Link>
+    </Compile>
+    <Compile Include="..\NLight\IO\Text\RecordColumnAlignment.cs">
+      <Link>IO\Text\RecordColumnAlignment.cs</Link>
+    </Compile>
+    <Compile Include="..\NLight\IO\Text\RecordColumnCollection.cs">
+      <Link>IO\Text\RecordColumnCollection.cs</Link>
+    </Compile>
+    <Compile Include="..\NLight\IO\Text\RecordParsedEventArgs.cs">
+      <Link>IO\Text\RecordParsedEventArgs.cs</Link>
+    </Compile>
+    <Compile Include="..\NLight\IO\Text\TextRecordReader.cs">
+      <Link>IO\Text\TextRecordReader.cs</Link>
+    </Compile>
+    <Compile Include="..\NLight\IO\Text\TextRecordReader.Validations.cs">
+      <Link>IO\Text\TextRecordReader.Validations.cs</Link>
+    </Compile>
+    <Compile Include="..\NLight\IO\Text\TextRecordReader{T}.cs">
+      <Link>IO\Text\TextRecordReader{T}.cs</Link>
+    </Compile>
+    <Compile Include="..\NLight\IO\Text\TextRecordReader{T}.FastStringList.cs">
+      <Link>IO\Text\TextRecordReader{T}.FastStringList.cs</Link>
+    </Compile>
+    <Compile Include="..\NLight\Log.cs">
+      <Link>Log.cs</Link>
+    </Compile>
+    <Compile Include="..\NLight\Resources\ExceptionMessages.Designer.cs">
+      <Link>Resources\ExceptionMessages.Designer.cs</Link>
+      <DependentUpon>ExceptionMessages.resx</DependentUpon>
+    </Compile>
+    <Compile Include="..\NLight\Resources\LogMessages.Designer.cs">
+      <Link>Resources\LogMessages.Designer.cs</Link>
+      <DependentUpon>LogMessages.resx</DependentUpon>
+    </Compile>
+    <Compile Include="..\NLight\Text\ConversionOption.cs">
+      <Link>Text\ConversionOption.cs</Link>
+    </Compile>
+    <Compile Include="..\NLight\Text\Parsing\EscapedStringParser.cs">
+      <Link>Text\Parsing\EscapedStringParser.cs</Link>
+    </Compile>
+    <Compile Include="..\NLight\Text\Parsing\NumberParser.cs">
+      <Link>Text\Parsing\NumberParser.cs</Link>
+    </Compile>
+    <Compile Include="..\NLight\Text\StringValueConverter.cs">
+      <Link>Text\StringValueConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\NLight\Text\TrimmingOptions.cs">
+      <Link>Text\TrimmingOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\SharedAssemblyInfo.cs">
+      <Link>SharedAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\NLight\Resources\ExceptionMessages.resx">
+      <Link>Resources\ExceptionMessages.resx</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\NLight\Resources\LogMessages.resx">
+      <Link>Resources\LogMessages.resx</Link>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
