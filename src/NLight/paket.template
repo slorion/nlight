@@ -4,10 +4,10 @@ requireLicenseAcceptance false
 copyright Sébastien Lorion
 
 id NLight
-version 1.0.1
+version 1.0.2
 authors Sébastien Lorion
 description Toolbox for .NET projects
 summary Toolbox for .NET projects
 projectUrl https://github.com/slorion/nlight
 tags io,parser,csv,delimited,transaction,reactive,tree
-releaseNotes Fixed package dependency on Rx.NET
+releaseNotes Fixed FixedWidthRecordReader parsing error when the first column starts at an offset
