@@ -69,6 +69,18 @@ namespace NLight.Tests.Unit.IO.Text.FixedWidthRecordReaderTests
 		}
 
 		[Test]
+		public void FirstColumnStartPositionIsNonZeroTest()
+		{
+			using (var reader = new FixedWidthRecordReader(new StringReader("abcdefThisghijklmnop")))
+			{
+				reader.Columns.Add(new FixedWidthRecordColumn("field1", typeof(string), 6, 4));
+
+				Assert.AreEqual(ReadResult.Success, reader.Read());
+				Assert.AreEqual("This", reader[0]);
+			}
+		}
+
+		[Test]
 		public void ParsingTest_Random()
 		{
 			//TODO: use RandomAttribute when usable

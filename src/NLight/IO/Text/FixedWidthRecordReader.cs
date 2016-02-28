@@ -89,7 +89,7 @@ namespace NLight.IO.Text
 				Tuple<FixedWidthRecordColumn, int> columnAndIndex = _sortedByStartingPosition[sortedColumnIndex];
 
 				// we need to account for gaps between non contiguous columns, i.e. columns not starting immediately after the previous one
-				int toSkip = previousColumn == null ? 0 : columnAndIndex.Item1.StartingPosition - (previousColumn.StartingPosition + previousColumn.Width);
+				int toSkip = previousColumn == null ? columnAndIndex.Item1.StartingPosition : columnAndIndex.Item1.StartingPosition - (previousColumn.StartingPosition + previousColumn.Width);
 
 				int remaining = columnAndIndex.Item1.Width + toSkip;
 				while (remaining > 0)
