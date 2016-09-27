@@ -1,4 +1,5 @@
 source https://nuget.org/api/v2
 
+nuget CsvHelper
 nuget NUnit
-nuget Rx-Main
+nuget System.Reactive
