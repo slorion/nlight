@@ -40,11 +40,28 @@
             <param name="columnValue"></param>
             <returns></returns>
         </member>
+        <member name="E:DataStreams.Common.DataReaderBase.ReadRecord">
+            <summary>
+            	This event is raised after each record has been read and before
+            	the values have been converted to the destination type. This event
+            	can be used to modify values in a record, add values to a record,
+            	or skip a record entirely.
+            </summary>
+        </member>
         <member name="M:DataStreams.Common.DataReaderBase.OnReadRecord">
             <summary>
             
             </summary>
             <returns>If the next record should be skipped.</returns>
+        </member>
+        <member name="T:DataStreams.Common.DataReaderBase.ReadRecordEventHandler">
+            <summary>
+            	Represents the method that will handle the <see cref="E:DataStreams.Common.DataReaderBase.ReadRecord"/>
+            	event of a <see cref="T:DataStreams.Common.DataReaderBase"/> instance.
+            </summary>
+            <param name="e">
+            	The <see cref="T:DataStreams.Common.DataReaderBase.ReadRecordEventArgs"/> that contains the event data.
+            </param>
         </member>
         <member name="M:DataStreams.Common.DataReaderBase.Dispose(System.Boolean)">
             <summary>
@@ -74,24 +91,17 @@
             	Closes and releases all related resources.
             </summary>
         </member>
-        <member name="E:DataStreams.Common.DataReaderBase.ReadRecord">
-            <summary>
-            	This event is raised after each record has been read and before
-            	the values have been converted to the destination type. This event
-            	can be used to modify values in a record, add values to a record,
-            	or skip a record entirely.
-            </summary>
-        </member>
-        <member name="T:DataStreams.Common.DataReaderBase.ReadRecordEventHandler">
-            <summary>
-            	Represents the method that will handle the <see cref="E:DataStreams.Common.DataReaderBase.ReadRecord"/>
-            	event of a <see cref="T:DataStreams.Common.DataReaderBase"/> instance.
-            </summary>
-            <param name="e">
-            	The <see cref="T:DataStreams.Common.DataReaderBase.ReadRecordEventArgs"/> that contains the event data.
-            </param>
-        </member>
         <member name="T:DataStreams.Common.DataReaderBase.RecordValuesCollection">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DataStreams.Common.DataReaderBase.RecordValuesCollection.Count">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DataStreams.Common.DataReaderBase.RecordValuesCollection.System#Collections#ICollection#IsSynchronized">
             <summary>
             
             </summary>
@@ -108,16 +118,6 @@
             
             </summary>
             <returns></returns>
-        </member>
-        <member name="P:DataStreams.Common.DataReaderBase.RecordValuesCollection.Count">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:DataStreams.Common.DataReaderBase.RecordValuesCollection.System#Collections#ICollection#IsSynchronized">
-            <summary>
-            
-            </summary>
         </member>
         <member name="P:DataStreams.Common.DataReaderBase.RecordValuesCollection.System#Collections#ICollection#SyncRoot">
             <summary>
@@ -154,100 +154,6 @@
             <summary>
             	Collection of <see cref="T:DataStreams.Common.DataReaderBase.DataReaderColumn"/> items.
             </summary>
-        </member>
-        <member name="T:DataStreams.Common.NamedColumnCollection">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="F:DataStreams.Common.NamedColumnCollection.columns">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="F:DataStreams.Common.NamedColumnCollection.indexByName">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="M:DataStreams.Common.NamedColumnCollection.System#Collections#ICollection#CopyTo(System.Array,System.Int32)">
-            <summary>
-            
-            </summary>
-            <param name="array"></param>
-            <param name="index"></param>
-        </member>
-        <member name="M:DataStreams.Common.NamedColumnCollection.System#Collections#IEnumerable#GetEnumerator">
-            <summary>
-            
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:DataStreams.Common.NamedColumnCollection.GetIndex(System.String)">
-            <summary>
-            
-            </summary>
-            <param name="columnName"></param>
-            <returns></returns>
-        </member>
-        <member name="M:DataStreams.Common.NamedColumnCollection.Add(System.Object)">
-            <summary>
-            	
-            </summary>
-            <param name="column">
-            	
-            </param>
-        </member>
-        <member name="M:DataStreams.Common.NamedColumnCollection.Add(System.Object,System.String)">
-            <summary>
-            	
-            </summary>
-            <param name="column">
-            	
-            </param>
-            <param name="columnName">
-            	
-            </param>
-        </member>
-        <member name="P:DataStreams.Common.NamedColumnCollection.CaseSensitive">
-            <summary>
-            	This determines whether the column lookup using the column name
-            	will be case sensitive or not. Default is true.
-            </summary>
-        </member>
-        <member name="P:DataStreams.Common.NamedColumnCollection.Names">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:DataStreams.Common.NamedColumnCollection.Count">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:DataStreams.Common.NamedColumnCollection.System#Collections#ICollection#IsSynchronized">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:DataStreams.Common.NamedColumnCollection.System#Collections#ICollection#SyncRoot">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:DataStreams.Common.NamedColumnCollection.Item(System.Int32)">
-            <summary>
-            
-            </summary>
-            <param name="columnIndex"></param>
-            <returns></returns>
-        </member>
-        <member name="P:DataStreams.Common.NamedColumnCollection.Item(System.String)">
-            <summary>
-            
-            </summary>
-            <param name="columnName"></param>
-            <returns></returns>
         </member>
         <member name="M:DataStreams.Common.DataReaderBase.DataReaderColumnCollection.Add(DataStreams.Common.DataReaderBase.DataReaderColumn)">
             <summary>
@@ -304,6 +210,100 @@
             	formatting symbols.
             </summary>
         </member>
+        <member name="T:DataStreams.Common.NamedColumnCollection">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DataStreams.Common.NamedColumnCollection.columns">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DataStreams.Common.NamedColumnCollection.indexByName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DataStreams.Common.NamedColumnCollection.CaseSensitive">
+            <summary>
+            	This determines whether the column lookup using the column name
+            	will be case sensitive or not. Default is true.
+            </summary>
+        </member>
+        <member name="P:DataStreams.Common.NamedColumnCollection.Names">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DataStreams.Common.NamedColumnCollection.Count">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DataStreams.Common.NamedColumnCollection.System#Collections#ICollection#IsSynchronized">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:DataStreams.Common.NamedColumnCollection.System#Collections#ICollection#CopyTo(System.Array,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="array"></param>
+            <param name="index"></param>
+        </member>
+        <member name="M:DataStreams.Common.NamedColumnCollection.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:DataStreams.Common.NamedColumnCollection.System#Collections#ICollection#SyncRoot">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:DataStreams.Common.NamedColumnCollection.GetIndex(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="columnName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataStreams.Common.NamedColumnCollection.Add(System.Object)">
+            <summary>
+            	
+            </summary>
+            <param name="column">
+            	
+            </param>
+        </member>
+        <member name="M:DataStreams.Common.NamedColumnCollection.Add(System.Object,System.String)">
+            <summary>
+            	
+            </summary>
+            <param name="column">
+            	
+            </param>
+            <param name="columnName">
+            	
+            </param>
+        </member>
+        <member name="P:DataStreams.Common.NamedColumnCollection.Item(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="columnIndex"></param>
+            <returns></returns>
+        </member>
+        <member name="P:DataStreams.Common.NamedColumnCollection.Item(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="columnName"></param>
+            <returns></returns>
+        </member>
         <member name="T:DataStreams.Common.ReaderBase">
             <summary>
             
@@ -329,11 +329,32 @@
             
             </summary>
         </member>
+        <member name="P:DataStreams.Common.ReaderBase.Item(System.Int32)">
+            <summary>
+            	Returns the current column value for a given column index.
+            </summary>
+            <exception cref="T:System.ObjectDisposedException">
+            	Methods were called after the object has been disposed.
+            </exception>
+        </member>
+        <member name="P:DataStreams.Common.ReaderBase.Values">
+            <summary>
+            	Returns the columns values for the current record as a string array.
+            </summary>
+            <exception cref="T:System.ObjectDisposedException">
+            	Methods were called after the object has been disposed.
+            </exception>
+        </member>
         <member name="M:DataStreams.Common.ReaderBase.ReadRecord">
             <summary>
             
             </summary>
             <returns></returns>
+        </member>
+        <member name="P:DataStreams.Common.ReaderBase.CurrentRecord">
+            <summary>
+            	The index of the current record.
+            </summary>
         </member>
         <member name="M:DataStreams.Common.ReaderBase.Close">
             <summary>
@@ -355,27 +376,6 @@
             	Methods were called after the object has been disposed.
             </exception>
         </member>
-        <member name="P:DataStreams.Common.ReaderBase.Item(System.Int32)">
-            <summary>
-            	Returns the current column value for a given column index.
-            </summary>
-            <exception cref="T:System.ObjectDisposedException">
-            	Methods were called after the object has been disposed.
-            </exception>
-        </member>
-        <member name="P:DataStreams.Common.ReaderBase.Values">
-            <summary>
-            	Returns the columns values for the current record as a string array.
-            </summary>
-            <exception cref="T:System.ObjectDisposedException">
-            	Methods were called after the object has been disposed.
-            </exception>
-        </member>
-        <member name="P:DataStreams.Common.ReaderBase.CurrentRecord">
-            <summary>
-            	The index of the current record.
-            </summary>
-        </member>
         <member name="T:DataStreams.Common.SpreadsheetDataReader">
             <summary>
             	Provides a datasource for the .Net Framework SqlBulkCopy class
@@ -387,6 +387,27 @@
             
             </summary>
             <param name="reader"></param>
+        </member>
+        <member name="P:DataStreams.Common.SpreadsheetDataReader.Settings">
+            <summary>
+            	Has all the options that are able to be set that will affect the way
+            	records are parsed.
+            </summary>
+        </member>
+        <member name="P:DataStreams.Common.SpreadsheetDataReader.Columns">
+            <summary>
+            	Collection of columns to include in the source data.
+            </summary>
+        </member>
+        <member name="P:DataStreams.Common.SpreadsheetDataReader.SheetCount">
+            <summary>
+            	Returns the count of sheets found in the workbook.
+            </summary>
+        </member>
+        <member name="P:DataStreams.Common.SpreadsheetDataReader.CurrentSheet">
+            <summary>
+            	Gets or sets the index of the current sheet in the workbook.
+            </summary>
         </member>
         <member name="M:DataStreams.Common.SpreadsheetDataReader.GetSheetIndex(System.String)">
             <summary>
@@ -410,6 +431,13 @@
             	The name of the sheet or empty string if the sheet index is invalid.
             </returns>
         </member>
+        <member name="P:DataStreams.Common.SpreadsheetDataReader.SheetNames">
+            <summary>
+            	Returns the list of sheet names as a string array in the correct
+            	order. The array can then easily be bound to a combo box for example
+            	for sheet selection in a windows form.
+            </summary>
+        </member>
         <member name="M:DataStreams.Common.SpreadsheetDataReader.Initialize(System.String[])">
             <summary>
             
@@ -431,34 +459,6 @@
             <returns>
             
             </returns>
-        </member>
-        <member name="P:DataStreams.Common.SpreadsheetDataReader.Settings">
-            <summary>
-            	Has all the options that are able to be set that will affect the way
-            	records are parsed.
-            </summary>
-        </member>
-        <member name="P:DataStreams.Common.SpreadsheetDataReader.Columns">
-            <summary>
-            	Collection of columns to include in the source data.
-            </summary>
-        </member>
-        <member name="P:DataStreams.Common.SpreadsheetDataReader.SheetCount">
-            <summary>
-            	Returns the count of sheets found in the workbook.
-            </summary>
-        </member>
-        <member name="P:DataStreams.Common.SpreadsheetDataReader.CurrentSheet">
-            <summary>
-            	Gets or sets the index of the current sheet in the workbook.
-            </summary>
-        </member>
-        <member name="P:DataStreams.Common.SpreadsheetDataReader.SheetNames">
-            <summary>
-            	Returns the list of sheet names as a string array in the correct
-            	order. The array can then easily be bound to a combo box for example
-            	for sheet selection in a windows form.
-            </summary>
         </member>
         <member name="T:DataStreams.Common.SpreadsheetDataReader.Column">
             <summary>
@@ -538,10 +538,68 @@
             </summary>
             <param name="fileName"></param>
         </member>
+        <member name="P:DataStreams.Common.SpreadsheetReader.CurrentRecord">
+            <summary>
+            	Gets or sets the current record the reader is on
+            	for reading records in a loop using <see cref="M:DataStreams.Common.SpreadsheetReader.ReadRecord"/>.
+            </summary>
+        </member>
+        <member name="P:DataStreams.Common.SpreadsheetReader.Settings">
+            <summary>
+            	Has all the options that are able to be set that will affect the way
+            	records are parsed and accessed.
+            </summary>
+        </member>
+        <member name="P:DataStreams.Common.SpreadsheetReader.HeaderCount">
+            <summary>
+            	Returns the count of column headers found when <see cref="P:DataStreams.Common.SpreadsheetReader.UserSettings.HasHeaders"/>
+            	is set to true.
+            </summary>
+        </member>
+        <member name="P:DataStreams.Common.SpreadsheetReader.Headers">
+            <summary>
+            	Returns the header values as a string array or
+            	sets the headers to allow columns to be accessed by
+            	name even if the current spreadsheet does not contain
+            	column headers.
+            </summary>
+        </member>
         <member name="M:DataStreams.Common.SpreadsheetReader.Reset">
             <summary>
             	Resets the position of the record cursor to the first record
             	for use with the <see cref="M:DataStreams.Common.SpreadsheetReader.ReadRecord"/> method.
+            </summary>
+        </member>
+        <member name="P:DataStreams.Common.SpreadsheetReader.Item(System.String)">
+            <summary>
+            	Returns the column's value corresponding to the column header
+            	name.
+            </summary>
+        </member>
+        <member name="P:DataStreams.Common.SpreadsheetReader.Item(System.Int32,System.Int32)">
+            <summary>
+            	Returns the column value at the given record and column indexes.
+            </summary>
+        </member>
+        <member name="P:DataStreams.Common.SpreadsheetReader.SheetCount">
+            <summary>
+            	Returns the count of sheets found in the workbook.
+            </summary>
+        </member>
+        <member name="P:DataStreams.Common.SpreadsheetReader.CurrentSheet">
+            <summary>
+            	Gets or sets the index of the current sheet in the workbook.
+            </summary>
+        </member>
+        <member name="P:DataStreams.Common.SpreadsheetReader.ColumnCount">
+            <summary>
+            	Returns the count of columns found on the current record when looping
+            	with the <see cref="M:DataStreams.Common.SpreadsheetReader.ReadRecord"/> method.
+            </summary>
+        </member>
+        <member name="P:DataStreams.Common.SpreadsheetReader.RecordCount">
+            <summary>
+            	Returns the count of records found in the current sheet.
             </summary>
         </member>
         <member name="M:DataStreams.Common.SpreadsheetReader.GetHeader(System.Int32)">
@@ -593,6 +651,19 @@
             	The name of the sheet or empty string if the sheet index is invalid.
             </returns>
         </member>
+        <member name="P:DataStreams.Common.SpreadsheetReader.SheetNames">
+            <summary>
+            	Returns the list of sheet names as a string array in the correct
+            	order. The array can then easily be bound to a combo box for example
+            	for sheet selection in a windows form.
+            </summary>
+        </member>
+        <member name="P:DataStreams.Common.SpreadsheetReader.Table">
+            <summary>
+            	Returns all data for the current sheet as a DataTable of string
+            	columns.
+            </summary>
+        </member>
         <member name="M:DataStreams.Common.SpreadsheetReader.ReadRecord">
             <summary>
             	Advances the record cursor to the next record.
@@ -607,77 +678,6 @@
             
             </summary>
             <param name="disposing"></param>
-        </member>
-        <member name="P:DataStreams.Common.SpreadsheetReader.CurrentRecord">
-            <summary>
-            	Gets or sets the current record the reader is on
-            	for reading records in a loop using <see cref="M:DataStreams.Common.SpreadsheetReader.ReadRecord"/>.
-            </summary>
-        </member>
-        <member name="P:DataStreams.Common.SpreadsheetReader.Settings">
-            <summary>
-            	Has all the options that are able to be set that will affect the way
-            	records are parsed and accessed.
-            </summary>
-        </member>
-        <member name="P:DataStreams.Common.SpreadsheetReader.HeaderCount">
-            <summary>
-            	Returns the count of column headers found when <see cref="P:DataStreams.Common.SpreadsheetReader.UserSettings.HasHeaders"/>
-            	is set to true.
-            </summary>
-        </member>
-        <member name="P:DataStreams.Common.SpreadsheetReader.Headers">
-            <summary>
-            	Returns the header values as a string array or
-            	sets the headers to allow columns to be accessed by
-            	name even if the current spreadsheet does not contain
-            	column headers.
-            </summary>
-        </member>
-        <member name="P:DataStreams.Common.SpreadsheetReader.Item(System.String)">
-            <summary>
-            	Returns the column's value corresponding to the column header
-            	name.
-            </summary>
-        </member>
-        <member name="P:DataStreams.Common.SpreadsheetReader.Item(System.Int32,System.Int32)">
-            <summary>
-            	Returns the column value at the given record and column indexes.
-            </summary>
-        </member>
-        <member name="P:DataStreams.Common.SpreadsheetReader.SheetCount">
-            <summary>
-            	Returns the count of sheets found in the workbook.
-            </summary>
-        </member>
-        <member name="P:DataStreams.Common.SpreadsheetReader.CurrentSheet">
-            <summary>
-            	Gets or sets the index of the current sheet in the workbook.
-            </summary>
-        </member>
-        <member name="P:DataStreams.Common.SpreadsheetReader.ColumnCount">
-            <summary>
-            	Returns the count of columns found on the current record when looping
-            	with the <see cref="M:DataStreams.Common.SpreadsheetReader.ReadRecord"/> method.
-            </summary>
-        </member>
-        <member name="P:DataStreams.Common.SpreadsheetReader.RecordCount">
-            <summary>
-            	Returns the count of records found in the current sheet.
-            </summary>
-        </member>
-        <member name="P:DataStreams.Common.SpreadsheetReader.SheetNames">
-            <summary>
-            	Returns the list of sheet names as a string array in the correct
-            	order. The array can then easily be bound to a combo box for example
-            	for sheet selection in a windows form.
-            </summary>
-        </member>
-        <member name="P:DataStreams.Common.SpreadsheetReader.Table">
-            <summary>
-            	Returns all data for the current sheet as a DataTable of string
-            	columns.
-            </summary>
         </member>
         <member name="T:DataStreams.Common.SpreadsheetReader.UserSettings">
             <summary>
@@ -831,7 +831,7 @@
             <param name="fileName">
             	The path to the file to use as the data source.
             </param>
-            <param name="delimiter">"&gt;
+            <param name="delimiter">">
             	The character to use as the column delimiter.
             </param>
         </member>
@@ -898,6 +898,17 @@
             	The <see cref="T:System.Text.Encoding"/> to use while parsing the data.
             </param>
         </member>
+        <member name="P:DataStreams.Csv.CsvDataReader.Settings">
+            <summary>
+            	Has all the options that are able to be set that will affect the way
+            	records are parsed.
+            </summary>
+        </member>
+        <member name="P:DataStreams.Csv.CsvDataReader.Columns">
+            <summary>
+            	Collection of columns to include in the source data.
+            </summary>
+        </member>
         <member name="M:DataStreams.Csv.CsvDataReader.IsDBNull(System.Int32,System.String)">
             <summary>
             
@@ -930,20 +941,9 @@
             	The string of data to use as the source.
             </param>
             <returns>
-            	A <see cref="T:DataStreams.Csv.CsvDataReader"/> object using the string of <paramref name="data"/>
+            	A <see cref="T:DataStreams.Csv.CsvDataReader"/> object using the string of <paramref name="data" />
             	as the source.
             </returns>
-        </member>
-        <member name="P:DataStreams.Csv.CsvDataReader.Settings">
-            <summary>
-            	Has all the options that are able to be set that will affect the way
-            	records are parsed.
-            </summary>
-        </member>
-        <member name="P:DataStreams.Csv.CsvDataReader.Columns">
-            <summary>
-            	Collection of columns to include in the source data.
-            </summary>
         </member>
         <member name="T:DataStreams.Csv.CsvDataReader.ColumnCollection">
             <summary>
@@ -1189,7 +1189,7 @@
             <param name="fileName">
             	The path to the file to use as the data source.
             </param>
-            <param name="delimiter">"&gt;
+            <param name="delimiter">">
             	The character to use as the column delimiter.
             </param>
         </member>
@@ -1256,6 +1256,44 @@
             	The <see cref="T:System.Text.Encoding"/> to use while parsing the data.
             </param>
         </member>
+        <member name="P:DataStreams.Csv.CsvReader.Settings">
+            <summary>
+            	Has all the options that are able to be set that will affect the way
+            	records are parsed and accessed.
+            </summary>
+        </member>
+        <member name="P:DataStreams.Csv.CsvReader.RawRecord">
+            <summary>
+            	Returns the text of the current record as it existed before parsing.
+            </summary>
+        </member>
+        <member name="P:DataStreams.Csv.CsvReader.ColumnCount">
+            <summary>
+            	The count of columns found in the current record.
+            </summary>
+        </member>
+        <member name="P:DataStreams.Csv.CsvReader.HeaderCount">
+            <summary>
+            	The count of headers read in by a previous call to <see cref="M:DataStreams.Csv.CsvReader.ReadHeaders"/>.
+            </summary>
+        </member>
+        <member name="P:DataStreams.Csv.CsvReader.Headers">
+            <summary>
+            	Returns the header values as a string array.
+            </summary>
+            <exception cref="T:System.ObjectDisposedException">
+            	Methods were called after the object has been disposed.
+            </exception>
+        </member>
+        <member name="P:DataStreams.Csv.CsvReader.Item(System.String)">
+            <summary>
+            	Returns the current column value corresponding to the
+            	<paramref name="headerName" />.
+            </summary>
+            <exception cref="T:System.ObjectDisposedException">
+            	Methods were called after the object has been disposed.
+            </exception>
+        </member>
         <member name="M:DataStreams.Csv.CsvReader.Parse(System.String)">
             <summary>
             	Creates a <see cref="T:DataStreams.Csv.CsvReader"/> object using
@@ -1266,7 +1304,7 @@
             	The string of data to use as the source.
             </param>
             <returns>
-            	A <see cref="T:DataStreams.Csv.CsvReader"/> object using the string of <paramref name="data"/>
+            	A <see cref="T:DataStreams.Csv.CsvReader"/> object using the string of <paramref name="data" />
             	as the source.
             </returns>
         </member>
@@ -1332,14 +1370,14 @@
         <member name="M:DataStreams.Csv.CsvReader.GetHeader(System.Int32)">
             <summary>
             	Returns the column header value for a given
-            	<paramref name="columnIndex"/>.
+            	<paramref name="columnIndex" />.
             </summary>
             <param name="columnIndex">
             	The index of the header column being requested.
             </param>
             <returns>
             	The value of the column header at the given
-            	<paramref name="columnIndex"/>.
+            	<paramref name="columnIndex" />.
             </returns>
             <exception cref="T:System.ObjectDisposedException">
             	Methods were called after the object has been disposed.
@@ -1375,14 +1413,14 @@
         <member name="M:DataStreams.Csv.CsvReader.GetIndex(System.String)">
             <summary>
             	Gets the corresponding column index for a given
-            	<paramref name="headerName"/>.
+            	<paramref name="headerName" />.
             </summary>
             <param name="headerName">
             	The column header of the column.
             </param>
             <returns>
             	The column index for the given
-            	<paramref name="headerName"/>. Returns -1 if not
+            	<paramref name="headerName" />. Returns -1 if not
             	found.
             </returns>
             <exception cref="T:System.ObjectDisposedException">
@@ -1442,44 +1480,6 @@
             <returns>
             	The corresponding decimal value.
             </returns>
-        </member>
-        <member name="P:DataStreams.Csv.CsvReader.Settings">
-            <summary>
-            	Has all the options that are able to be set that will affect the way
-            	records are parsed and accessed.
-            </summary>
-        </member>
-        <member name="P:DataStreams.Csv.CsvReader.RawRecord">
-            <summary>
-            	Returns the text of the current record as it existed before parsing.
-            </summary>
-        </member>
-        <member name="P:DataStreams.Csv.CsvReader.ColumnCount">
-            <summary>
-            	The count of columns found in the current record.
-            </summary>
-        </member>
-        <member name="P:DataStreams.Csv.CsvReader.HeaderCount">
-            <summary>
-            	The count of headers read in by a previous call to <see cref="M:DataStreams.Csv.CsvReader.ReadHeaders"/>.
-            </summary>
-        </member>
-        <member name="P:DataStreams.Csv.CsvReader.Headers">
-            <summary>
-            	Returns the header values as a string array.
-            </summary>
-            <exception cref="T:System.ObjectDisposedException">
-            	Methods were called after the object has been disposed.
-            </exception>
-        </member>
-        <member name="P:DataStreams.Csv.CsvReader.Item(System.String)">
-            <summary>
-            	Returns the current column value corresponding to the
-            	<paramref name="headerName"/>.
-            </summary>
-            <exception cref="T:System.ObjectDisposedException">
-            	Methods were called after the object has been disposed.
-            </exception>
         </member>
         <member name="F:DataStreams.Csv.CsvReader.DataBuffer.Count">
             <summary>
@@ -1743,6 +1743,12 @@
             	The <see cref="T:System.Text.Encoding"/> to use while writing the data.
             </param>
         </member>
+        <member name="P:DataStreams.Csv.CsvWriter.Settings">
+            <summary>
+            	Has all the options that are able to be set that will affect the way
+            	records are written.
+            </summary>
+        </member>
         <member name="M:DataStreams.Csv.CsvWriter.Write(System.String,System.Boolean)">
             <summary>
             	Writes another column of data to this record.
@@ -1833,12 +1839,6 @@
         <member name="M:DataStreams.Csv.CsvWriter.Finalize">
             <summary>
             	Called to release unmanaged resources.
-            </summary>
-        </member>
-        <member name="P:DataStreams.Csv.CsvWriter.Settings">
-            <summary>
-            	Has all the options that are able to be set that will affect the way
-            	records are written.
             </summary>
         </member>
         <member name="T:DataStreams.Csv.CsvWriter.UserSettings">
@@ -1965,6 +1965,11 @@
             	The <see cref="T:System.Text.Encoding"/> to use while parsing the data.
             </param>
         </member>
+        <member name="P:DataStreams.FixedWidth.FixedWidthDataReader.Columns">
+            <summary>
+            	Collection of columns to include in the source data.
+            </summary>
+        </member>
         <member name="M:DataStreams.FixedWidth.FixedWidthDataReader.Parse(System.String)">
             <summary>
             	Creates a <see cref="T:DataStreams.FixedWidth.FixedWidthDataReader"/> object using
@@ -1975,7 +1980,7 @@
             	The string of data to use as the source.
             </param>
             <returns>
-            	A <see cref="T:DataStreams.FixedWidth.FixedWidthDataReader"/> object using the string of <paramref name="data"/>
+            	A <see cref="T:DataStreams.FixedWidth.FixedWidthDataReader"/> object using the string of <paramref name="data" />
             	as the source.
             </returns>
         </member>
@@ -1992,11 +1997,6 @@
             <param name="i"></param>
             <param name="columnValue"></param>
             <returns></returns>
-        </member>
-        <member name="P:DataStreams.FixedWidth.FixedWidthDataReader.Columns">
-            <summary>
-            	Collection of columns to include in the source data.
-            </summary>
         </member>
         <member name="T:DataStreams.FixedWidth.FixedWidthDataReader.Column">
             <summary>
@@ -2137,6 +2137,31 @@
             	The <see cref="T:System.Text.Encoding"/> to use while parsing the data.
             </param>
         </member>
+        <member name="P:DataStreams.FixedWidth.FixedWidthReader.Settings">
+            <summary>
+            	Has all the options that are able to be set that will affect the way
+            	records are parsed.
+            </summary>
+        </member>
+        <member name="P:DataStreams.FixedWidth.FixedWidthReader.RawRecord">
+            <summary>
+            	Returns the text of the current record as it existed before parsing.
+            </summary>
+        </member>
+        <member name="P:DataStreams.FixedWidth.FixedWidthReader.Columns">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DataStreams.FixedWidth.FixedWidthReader.Item(System.String)">
+            <summary>
+            	Returns the current column value corresponding to the
+            	<paramref name="columnName" />.
+            </summary>
+            <exception cref="T:System.ObjectDisposedException">
+            	Methods were called after the object has been disposed.
+            </exception>
+        </member>
         <member name="M:DataStreams.FixedWidth.FixedWidthReader.Parse(System.String)">
             <summary>
             	Creates a <see cref="T:DataStreams.FixedWidth.FixedWidthReader"/> object using
@@ -2147,7 +2172,7 @@
             	The string of data to use as the source.
             </param>
             <returns>
-            	A <see cref="T:DataStreams.FixedWidth.FixedWidthReader"/> object using the string of <paramref name="data"/>
+            	A <see cref="T:DataStreams.FixedWidth.FixedWidthReader"/> object using the string of <paramref name="data" />
             	as the source.
             </returns>
         </member>
@@ -2226,31 +2251,6 @@
             <summary>
             	Called to release unmanaged resources.
             </summary>
-        </member>
-        <member name="P:DataStreams.FixedWidth.FixedWidthReader.Settings">
-            <summary>
-            	Has all the options that are able to be set that will affect the way
-            	records are parsed.
-            </summary>
-        </member>
-        <member name="P:DataStreams.FixedWidth.FixedWidthReader.RawRecord">
-            <summary>
-            	Returns the text of the current record as it existed before parsing.
-            </summary>
-        </member>
-        <member name="P:DataStreams.FixedWidth.FixedWidthReader.Columns">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:DataStreams.FixedWidth.FixedWidthReader.Item(System.String)">
-            <summary>
-            	Returns the current column value corresponding to the
-            	<paramref name="columnName"/>.
-            </summary>
-            <exception cref="T:System.ObjectDisposedException">
-            	Methods were called after the object has been disposed.
-            </exception>
         </member>
         <member name="F:DataStreams.FixedWidth.FixedWidthReader.DataBuffer.Count">
             <summary>
@@ -2414,6 +2414,17 @@
             	The <see cref="T:System.Text.Encoding"/> to use while writing the data.
             </param>
         </member>
+        <member name="P:DataStreams.FixedWidth.FixedWidthWriter.Settings">
+            <summary>
+            	Has all the options that are able to be set that will affect the way
+            	records are written.
+            </summary>
+        </member>
+        <member name="P:DataStreams.FixedWidth.FixedWidthWriter.Columns">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="M:DataStreams.FixedWidth.FixedWidthWriter.Write(System.String)">
             <summary>
             	Writes another column of data to this record.
@@ -2455,17 +2466,6 @@
         <member name="M:DataStreams.FixedWidth.FixedWidthWriter.Finalize">
             <summary>
             	Called to release unmanaged resources.
-            </summary>
-        </member>
-        <member name="P:DataStreams.FixedWidth.FixedWidthWriter.Settings">
-            <summary>
-            	Has all the options that are able to be set that will affect the way
-            	records are written.
-            </summary>
-        </member>
-        <member name="P:DataStreams.FixedWidth.FixedWidthWriter.Columns">
-            <summary>
-            
             </summary>
         </member>
         <member name="T:DataStreams.FixedWidth.FixedWidthWriter.ColumnCollection">
@@ -2895,6 +2895,76 @@
             	current node and stop when the end of the current node is reached.
             </summary>
         </member>
+        <member name="P:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.Name">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.LocalName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.NamespaceURI">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.Prefix">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.HasValue">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.Value">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.Depth">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.BaseURI">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.IsEmptyElement">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.IsDefault">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.QuoteChar">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.XmlSpace">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.XmlLang">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.AttributeCount">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="M:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.GetAttribute(System.String)">
             <summary>
             
@@ -2916,6 +2986,21 @@
             </summary>
             <param name="i"></param>
             <returns></returns>
+        </member>
+        <member name="P:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.Item(System.Int32)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.Item(System.String)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.Item(System.String,System.String)">
+            <summary>
+            
+            </summary>
         </member>
         <member name="M:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.MoveToAttribute(System.String)">
             <summary>
@@ -2961,6 +3046,16 @@
             
             </summary>
             <returns></returns>
+        </member>
+        <member name="P:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.EOF">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.ReadState">
+            <summary>
+            
+            </summary>
         </member>
         <member name="M:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.ReadString">
             <summary>
@@ -3074,112 +3169,17 @@
             <param name="ns"></param>
             <returns></returns>
         </member>
-        <member name="M:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.Close">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.Name">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.LocalName">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.NamespaceURI">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.Prefix">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.HasValue">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.Value">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.Depth">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.BaseURI">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.IsEmptyElement">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.IsDefault">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.QuoteChar">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.XmlSpace">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.XmlLang">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.AttributeCount">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.Item(System.Int32)">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.Item(System.String)">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.Item(System.String,System.String)">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.EOF">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.ReadState">
-            <summary>
-            
-            </summary>
-        </member>
         <member name="P:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.HasAttributes">
             <summary>
             
             </summary>
         </member>
         <member name="P:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.CanResolveEntity">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:DataStreams.Xml.RecordReaders.Streaming.XmlNodeWrapper.Close">
             <summary>
             
             </summary>
@@ -3244,6 +3244,17 @@
             <param name="xPath"></param>
             <param name="loadMethod"></param>
         </member>
+        <member name="P:DataStreams.Xml.XmlDataReader.Settings">
+            <summary>
+            	Has all the options that are able to be set that will affect the way
+            	records are parsed.
+            </summary>
+        </member>
+        <member name="P:DataStreams.Xml.XmlDataReader.Columns">
+            <summary>
+            	Collection of columns to include in the source data.
+            </summary>
+        </member>
         <member name="M:DataStreams.Xml.XmlDataReader.AddNamespace(System.String,System.String)">
             <summary>
             
@@ -3270,7 +3281,7 @@
             	
             </param>
             <returns>
-            	A <see cref="T:DataStreams.Csv.CsvDataReader"/> object using the string of <paramref name="data"/>
+            	A <see cref="T:DataStreams.Csv.CsvDataReader"/> object using the string of <paramref name="data" />
             	as the source.
             </returns>
         </member>
@@ -3281,17 +3292,6 @@
             <param name="i"></param>
             <param name="columnValue"></param>
             <returns></returns>
-        </member>
-        <member name="P:DataStreams.Xml.XmlDataReader.Settings">
-            <summary>
-            	Has all the options that are able to be set that will affect the way
-            	records are parsed.
-            </summary>
-        </member>
-        <member name="P:DataStreams.Xml.XmlDataReader.Columns">
-            <summary>
-            	Collection of columns to include in the source data.
-            </summary>
         </member>
         <member name="T:DataStreams.Xml.XmlDataReader.ColumnCollection">
             <summary>
@@ -3422,6 +3422,17 @@
             <param name="xPath"></param>
             <returns></returns>
         </member>
+        <member name="P:DataStreams.Xml.XmlRecordReader.Settings">
+            <summary>
+            	Has all the options that are able to be set that will affect the way
+            	records are parsed.
+            </summary>
+        </member>
+        <member name="P:DataStreams.Xml.XmlRecordReader.Item(System.String)">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="M:DataStreams.Xml.XmlRecordReader.Evaluate(System.String)">
             <summary>
             
@@ -3435,6 +3446,11 @@
             </summary>
             <param name="expr"></param>
             <returns></returns>
+        </member>
+        <member name="P:DataStreams.Xml.XmlRecordReader.Columns">
+            <summary>
+            
+            </summary>
         </member>
         <member name="M:DataStreams.Xml.XmlRecordReader.ReadToEnd(System.UInt64)">
             <summary>
@@ -3481,22 +3497,6 @@
         <member name="M:DataStreams.Xml.XmlRecordReader.Finalize">
             <summary>
             	Called to release unmanaged resources.
-            </summary>
-        </member>
-        <member name="P:DataStreams.Xml.XmlRecordReader.Settings">
-            <summary>
-            	Has all the options that are able to be set that will affect the way
-            	records are parsed.
-            </summary>
-        </member>
-        <member name="P:DataStreams.Xml.XmlRecordReader.Item(System.String)">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:DataStreams.Xml.XmlRecordReader.Columns">
-            <summary>
-            
             </summary>
         </member>
         <member name="T:DataStreams.Xml.XmlRecordReader.ColumnCollection">
