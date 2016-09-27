@@ -166,7 +166,6 @@
     <None Include="..\NLight.snk">
       <Link>NLight.snk</Link>
     </None>
-    <None Include="packages.config" />
     <None Include="paket.template" />
     <None Include="paket.references" />
   </ItemGroup>

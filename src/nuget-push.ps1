@@ -10,6 +10,6 @@ $pkg = dir *.nupkg | Select-Object -Last 1
 
 Write-Host $pkg
 
-..\.nuget\nuget.exe push $pkg
+..\.paket\paket.exe push url "https://www.nuget.org" file $pkg
 
 pause
