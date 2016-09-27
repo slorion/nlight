@@ -7,6 +7,7 @@ using System.IO;
 using System.Text.RegularExpressions;
 using DS = DataStreams.Csv;
 using LW = LumenWorks.Framework.IO.Csv;
+using CH = CsvHelper;
 
 namespace NLight.Tests.Benchmarks.IO.Text
 {
@@ -41,7 +42,7 @@ namespace NLight.Tests.Benchmarks.IO.Text
 
 		public static void ReadAll_LumenWorks(DelimitedRecordReaderBenchmarkArguments args)
 		{
-			using (var reader = new LW.CsvReader(new StreamReader(args.Path, args.Encoding, true, args.BufferSize), false, LW.CsvReader.DefaultDelimiter, LW.CsvReader.DefaultQuote, LW.CsvReader.DefaultEscape, LW.CsvReader.DefaultComment, args.TrimWhiteSpaces, args.BufferSize))
+			using (var reader = new LW.CsvReader(new StreamReader(args.Path, args.Encoding, true, args.BufferSize), false, LW.CsvReader.DefaultDelimiter, LW.CsvReader.DefaultQuote, LW.CsvReader.DefaultEscape, LW.CsvReader.DefaultComment, args.TrimWhiteSpaces ? LW.ValueTrimmingOptions.All : LW.ValueTrimmingOptions.None, args.BufferSize))
 			{
 				reader.SkipEmptyLines = args.SkipEmptyLines;
 
@@ -72,7 +73,7 @@ namespace NLight.Tests.Benchmarks.IO.Text
 			{
 				reader.Settings.CaptureRawRecord = false;
 				reader.Settings.CaseSensitive = false;
-				reader.Settings.SafetySwitch = true;
+				reader.Settings.SafetySwitch = false;
 				reader.Settings.UseComments = true;
 
 				if (args.AdvancedEscapingEnabled)
@@ -96,6 +97,43 @@ namespace NLight.Tests.Benchmarks.IO.Text
 				else
 				{
 					while (reader.ReadRecord())
+					{
+						for (int i = 0; i < args.FieldIndex + 1; i++)
+							s = reader[i];
+					}
+				}
+			}
+		}
+
+		public static void ReadAll_CsvHelper(DelimitedRecordReaderBenchmarkArguments args)
+		{
+			var config = new CH.Configuration.CsvConfiguration
+			{
+				BufferSize = args.BufferSize,
+				AllowComments = true,
+				IgnoreBlankLines = args.SkipEmptyLines,
+				HasHeaderRecord = false,
+				DetectColumnCountChanges = true,
+				TrimFields = args.TrimWhiteSpaces,
+				TrimHeaders = args.TrimWhiteSpaces
+			};
+
+			using (var reader = new CH.CsvReader(new StreamReader(args.Path, args.Encoding, true, args.BufferSize), config))
+			{
+				string s;
+
+				if (args.FieldIndex < 0)
+				{
+					while (reader.Read())
+					{
+						var record = reader.CurrentRecord;
+						for (int i = 0; i < record.Length; i++)
+							s = record[i];
+					}
+				}
+				else
+				{
+					while (reader.Read())
 					{
 						for (int i = 0; i < args.FieldIndex + 1; i++)
 							s = reader[i];

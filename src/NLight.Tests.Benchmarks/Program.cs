@@ -6,7 +6,6 @@ using System.Diagnostics;
 using NLight.Diagnostics.Benchmarking;
 using NLight.Text;
 using NLight.Tests.Benchmarks.IO.Text;
-using NLight.Text.Encodings;
 
 namespace NLight.Tests.Benchmarks
 {
@@ -77,6 +76,7 @@ namespace NLight.Tests.Benchmarks
 					Benchmark.Execute("LumenWorks", benchmarkOptions, benchmarkArgs, OutputResults, DelimitedRecordReaderBenchmarks.ReadAll_LumenWorks);
 					Benchmark.Execute("NLight", benchmarkOptions, benchmarkArgs, OutputResults, DelimitedRecordReaderBenchmarks.ReadAll);
 					Benchmark.Execute("DataStreams", benchmarkOptions, benchmarkArgs, OutputResults, DelimitedRecordReaderBenchmarks.ReadAll_DataStreams);
+					Benchmark.Execute("CsvHelper", benchmarkOptions, benchmarkArgs, OutputResults, DelimitedRecordReaderBenchmarks.ReadAll_CsvHelper);
 					//Benchmark.Execute("OleDb", benchmarkOptions, benchmarkArgs, OutputResults, DelimitedRecordReaderBenchmarks.ReadAll_OleDb);
 					//Benchmark.Execute("Regex", benchmarkOptions, benchmarkArgs, OutputResults, DelimitedRecordReaderBenchmarks.ReadAll_Regex);
 				}
