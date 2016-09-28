@@ -4,10 +4,10 @@ requireLicenseAcceptance false
 copyright Sébastien Lorion
 
 id NLight
-version 1.1.1
+version 1.1.2
 authors Sébastien Lorion
 description Toolbox for .NET projects
 summary Toolbox for .NET projects
 projectUrl https://github.com/slorion/nlight
 tags io,parser,csv,delimited,transaction,reactive,tree
-releaseNotes Migrated from Rx-Main 2.2.5 to System.Reactive 3.0.0
+releaseNotes Added WriteColumnHeaders to NLight.IO.Text.DelimitedRecordWriter
