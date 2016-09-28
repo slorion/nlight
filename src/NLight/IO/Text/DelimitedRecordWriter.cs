@@ -2,6 +2,7 @@
 
 using NLight.Text;
 using System.IO;
+using System.Linq;
 
 namespace NLight.IO.Text
 {
@@ -11,6 +12,7 @@ namespace NLight.IO.Text
 		public const char DefaultDelimiterCharacter = ',';
 		public const char DefaultQuoteCharacter = '"';
 		public const char DefaultQuoteEscapeCharacter = '"';
+		public const char DefaultColumnHeaderTypeSeparator = ':';
 
 		private char _quote;
 		private char _quoteEscape;
@@ -23,14 +25,14 @@ namespace NLight.IO.Text
 		public DelimitedRecordWriter(TextWriter writer)
 			: base(writer)
 		{
-			this.DelimiterCharacter = DefaultDelimiterCharacter;
 			_quote = DefaultQuoteCharacter;
 			_quoteEscape = DefaultQuoteEscapeCharacter;
 
 			UpdateEscapedQuoteStrings();
 		}
 
-		public char DelimiterCharacter { get; set; }
+		public char DelimiterCharacter { get; set; } = DefaultDelimiterCharacter;
+		public char ColumnHeaderTypeSeparator { get; set; } = DefaultColumnHeaderTypeSeparator;
 
 		public char QuoteCharacter
 		{
@@ -56,6 +58,14 @@ namespace NLight.IO.Text
 		{
 			_quoteString = _quote.ToString();
 			_escapedQuoteString = _quoteEscape.ToString() + _quote.ToString();
+		}
+
+		public void WriteColumnHeaders(bool includeDataType)
+		{
+			if (includeDataType)
+				this.WriteRecord(this.Columns.Cast<DelimitedRecordColumn>().Select(c => c.Name + this.ColumnHeaderTypeSeparator + c.DataType.Name));
+			else
+				this.WriteRecord(this.Columns.Keys);
 		}
 
 		#region Overrides
