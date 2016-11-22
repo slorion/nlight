@@ -65,7 +65,7 @@ namespace NLight.IO.Text
 			if (includeDataType)
 				this.WriteRecord(this.Columns.Cast<DelimitedRecordColumn>().Select(c => c.Name + this.ColumnHeaderTypeSeparator + c.DataType.Name));
 			else
-				this.WriteRecord(this.Columns.Keys);
+				this.WriteRecord(this.Columns.Cast<DelimitedRecordColumn>().Select(c => c.Name));
 		}
 
 		#region Overrides

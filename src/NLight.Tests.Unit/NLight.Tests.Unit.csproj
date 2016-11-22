@@ -93,6 +93,7 @@
     <Compile Include="IO\Text\DelimitedRecordReaderTests\MalformedTests.cs" />
     <Compile Include="IO\Text\DelimitedRecordReaderTests\ParsingTests.cs" />
     <Compile Include="IO\Text\DelimitedRecordReaderTests\UnicodeParsingTests.cs" />
+    <Compile Include="IO\Text\DelimitedRecordWriterTests\ClassTests.cs" />
     <Compile Include="IO\Text\FixedWidthRecordReaderTests\ClassTests.cs" />
     <Compile Include="IO\Text\FixedWidthRecordReaderTests\FixedWidthRecordReaderTestData.cs" />
     <Compile Include="IO\Text\FixedWidthRecordReaderTests\IDataReaderTests.cs" />
