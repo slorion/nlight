@@ -12,6 +12,19 @@ namespace NLight.Tests.Unit.IO.Text.DelimitedRecordReaderTests
 	public class IDataReaderTests
 		: NLight.Tests.Unit.BCL.Data.IDataReaderTests
 	{
+		public void DataTableLoadTest()
+		{
+			using (var sr = new StringReader("a,b,c\n1,2,3"))
+			using (var csv = new DelimitedRecordReader(sr))
+			{
+				var dt = new DataTable();
+				dt.Load(csv);
+
+				csv.ReadColumnHeaders();
+				Assert.AreEqual(csv.Columns.Count, dt.Columns.Count);
+			}
+		}
+
 		protected override IDataReader CreateDataReaderInstance()
 		{
 			var reader = new DelimitedRecordReader(new StringReader(DelimitedRecordReaderTestData.SampleTypedData1));

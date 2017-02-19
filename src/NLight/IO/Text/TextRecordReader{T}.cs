@@ -742,6 +742,12 @@ namespace NLight.IO.Text
 			{
 				ValidateReader(Validations.IsNotDisposed);
 
+				//HACK: workaround to make DataTable.Load work correctly by forcing initialization of the reader.
+				// DataTable.Load first calls this property, which returns 0 if the reader has not been initialized.
+				// In that case, DataTable.Load returns immediately without loading anything.
+				if (this.Columns.Count == 0)
+					this.Read(incrementRecordIndex: false);
+
 				return this.Columns.Count;
 			}
 		}
