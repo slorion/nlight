@@ -66,6 +66,7 @@ namespace NLight.Tests.Unit.IO.Text.DelimitedRecordReaderTests
 		[CLSCompliant(false)]
 		[TestCase("1\r\n\r\n1", null, null, null, null, null, null, new string[] { "1", "1" })]
 		[TestCase("\"Bob said, \"\"Hey!\"\"\",2, 3 ", null, null, null, null, null, null, new string[] { @"Bob said, ""Hey!""|2|3" })]
+		[TestCase("\"Bob said, \\\"Hey!\\\"\",2, 3 ", null, ReaderOptions.AdvancedEscaping, null, null, null, null, new string[] { @"Bob said, ""Hey!""|2|3" })]
 		[TestCase("\"Bob said, \"\"Hey!\"\"\",2, 3 ", null, ReaderOptions.NoTrim, null, null, null, null, new string[] { @"Bob said, ""Hey!""|2| 3 " })]
 		[TestCase("1\r2\n", null, null, null, null, null, null, new string[] { "1", "2" })]
 		[TestCase("\"\n\r\n\n\r\r\",,\t,\n", null, null, null, null, null, null, new string[] { "\n\r\n\n\r\r|||" })]

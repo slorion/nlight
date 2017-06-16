@@ -109,6 +109,12 @@ namespace NLight.Text.Parsing
 					value = '\t';
 					return true;
 
+				// double-quote
+				case '"':
+					startIndex = pos + 1;
+					value = '"';
+					return true;
+
 				// literal escape char
 				case '\\':
 					startIndex = pos + 1;
