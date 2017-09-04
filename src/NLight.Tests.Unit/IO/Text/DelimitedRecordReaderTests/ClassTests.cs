@@ -1,8 +1,10 @@
-﻿// Author(s): Sébastien Lorion
+// Author(s): Sébastien Lorion
 
 using NLight.IO.Text;
+using NLight.Text;
 using NUnit.Framework;
 using System;
+using System.Globalization;
 using System.IO;
 using System.Text;
 
@@ -358,6 +360,24 @@ namespace NLight.Tests.Unit.IO.Text.DelimitedRecordReaderTests
 
 				for (int i = 0; i < 3; i++)
 					Assert.AreEqual(i, ((System.Data.IDataReader) csv).GetOrdinal(i.ToString()));
+			}
+		}
+
+		[Test]
+		public void ColumnsTest_SpecificValueConverterIsUsed()
+		{
+			using (var csv = new DelimitedRecordReader(new StringReader("a,b\n1.0,2.0")))
+			{
+				Assert.AreEqual(ReadResult.Success, csv.ReadColumnHeaders());
+				Assert.AreEqual(ReadResult.Success, csv.Read());
+
+				CultureInfo.CurrentCulture = CultureInfo.GetCultureInfo("en-US");
+
+				csv.Columns["a"].ValueConverter = new StringValueConverter { IntegerNumberStyles = NumberStyles.Integer };
+				csv.Columns["b"].ValueConverter = new StringValueConverter { IntegerNumberStyles = NumberStyles.Float };
+
+				Assert.Throws<FormatException>(() => csv.GetValue("a", 0));
+				Assert.AreEqual(2.0f, csv.GetValue("b", 0.0f));
 			}
 		}
 	}

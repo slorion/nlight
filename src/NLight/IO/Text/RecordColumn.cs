@@ -1,5 +1,6 @@
-﻿// Author(s): Sébastien Lorion
+// Author(s): Sébastien Lorion
 
+using NLight.Text;
 using System;
 
 namespace NLight.IO.Text
@@ -33,5 +34,6 @@ namespace NLight.IO.Text
 		public Type DataType { get; }
 		public object DefaultValue { get; set; }
 		public bool IsIgnored { get; set; }
+		public StringValueConverter ValueConverter { get; set; }
 	}
 }

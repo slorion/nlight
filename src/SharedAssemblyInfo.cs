@@ -1,4 +1,4 @@
-﻿// Author(s): Sébastien Lorion
+// Author(s): Sébastien Lorion
 
 using System;
 using System.Reflection;
@@ -15,4 +15,4 @@ using System.Runtime.InteropServices;
 [assembly: CLSCompliant(true)]
 [assembly: ComVisible(false)]
 
-[assembly: AssemblyVersion("1.1.5.0")]
+[assembly: AssemblyVersion("1.1.6.0")]

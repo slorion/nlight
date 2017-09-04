@@ -1,4 +1,4 @@
-﻿// Author(s): Sébastien Lorion
+// Author(s): Sébastien Lorion
 
 using NLight.Core;
 using System;
@@ -99,6 +99,16 @@ namespace NLight.Text
 
 		#region ConvertTo
 
+		private static object TryOrThrow(bool success, string input, object value, Type dataType)
+		{
+			return success ? value : throw new FormatException(string.Format(CultureInfo.CurrentCulture, Resources.ExceptionMessages.Text_CannotConvertToDataType, input, dataType));
+		}
+
+		private static T TryOrThrow<T>(bool success, string input, T value)
+		{
+			return success ? value : throw new FormatException(string.Format(CultureInfo.CurrentCulture, Resources.ExceptionMessages.Text_CannotConvertToDataType, input, typeof(T)));
+		}
+
 		#region Untyped
 
 		public T ConvertTo<T>(string input, TrimmingOptions trimWhiteSpaces, T defaultValue) => ConvertTo<T>(input, trimWhiteSpaces, defaultValue, null);
@@ -125,11 +135,7 @@ namespace NLight.Text
 		public object ConvertTo(string input, TrimmingOptions trimWhiteSpaces, Type dataType, object defaultValue, IFormatProvider culture)
 		{
 			object value;
-
-			if (TryConvertTo(input, trimWhiteSpaces, dataType, defaultValue, culture, out value))
-				return value;
-			else
-				throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, Resources.ExceptionMessages.Text_CannotConvertToDataType, input, dataType), nameof(input));
+			return TryOrThrow(TryConvertTo(input, trimWhiteSpaces, dataType, defaultValue, culture, out value), input, value, dataType);
 		}
 
 		public bool TryConvertTo(string input, TrimmingOptions trimWhiteSpaces, Type dataType, object defaultValue, out object value) => TryConvertTo(input, trimWhiteSpaces, dataType, defaultValue, null, out value);
@@ -176,7 +182,7 @@ namespace NLight.Text
 				typeCode = Type.GetTypeCode(dataType);
 			}
 
-			// Handle the case where the provided default value is null, 
+			// Handle the case where the provided default value is null,
 			// so the casts are not failing when calling the specific conversion methods below.
 			// The corner case where the value is empty/null and the default value is also null has been handled already in the code above.
 			if (defaultValue == null && dataType.IsValueType)
@@ -353,14 +359,6 @@ namespace NLight.Text
 		#endregion
 
 		#region Typed
-
-		private static T TryOrThrow<T>(bool success, string input, T value)
-		{
-			if (success)
-				return value;
-			else
-				throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, Resources.ExceptionMessages.Text_CannotConvertToDataType, input, typeof(T)), nameof(input));
-		}
 
 		#region Boolean
 

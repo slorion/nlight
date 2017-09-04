@@ -1,4 +1,4 @@
-﻿// Author(s): Sébastien Lorion
+// Author(s): Sébastien Lorion
 
 using NLight.Core;
 using NLight.Text;
@@ -201,6 +201,11 @@ namespace NLight.IO.Text
 			return "Column" + columnIndex.ToString(CultureInfo.InvariantCulture);
 		}
 
+		private StringValueConverter GetValueConverter(int columnIndex)
+		{
+			return this.Columns[columnIndex].ValueConverter ?? this.ValueConverter;
+		}
+
 		public IList<object> GetValues()
 		{
 			ValidateReader(Validations.HasCurrentRecord);
@@ -235,7 +240,7 @@ namespace NLight.IO.Text
 			ValidateReader(Validations.HasCurrentRecord);
 			ValidateColumnIndex(columnIndex, nameof(columnIndex));
 
-			return this.ValueConverter.ConvertTo(this.CurrentRecord[columnIndex], TrimmingOptions.None, type, defaultValue, this.Culture);
+			return GetValueConverter(columnIndex).ConvertTo(this.CurrentRecord[columnIndex], TrimmingOptions.None, type, defaultValue, this.Culture);
 		}
 
 		public T GetValue<T>(string columnName, T defaultValue)
@@ -249,7 +254,7 @@ namespace NLight.IO.Text
 			ValidateReader(Validations.HasCurrentRecord);
 			ValidateColumnIndex(columnIndex, nameof(columnIndex));
 
-			return (T) this.ValueConverter.ConvertTo(this.CurrentRecord[columnIndex], TrimmingOptions.None, typeof(T), defaultValue, this.Culture);
+			return (T) GetValueConverter(columnIndex).ConvertTo(this.CurrentRecord[columnIndex], TrimmingOptions.None, typeof(T), defaultValue, this.Culture);
 		}
 
 		public bool TryGetValue(string columnName, object defaultValue, out object value)
@@ -277,7 +282,7 @@ namespace NLight.IO.Text
 			ValidateReader(Validations.HasCurrentRecord);
 			ValidateColumnIndex(columnIndex, nameof(columnIndex));
 
-			return this.ValueConverter.TryConvertTo(this.CurrentRecord[columnIndex], TrimmingOptions.None, type, defaultValue, this.Culture, out value);
+			return GetValueConverter(columnIndex).TryConvertTo(this.CurrentRecord[columnIndex], TrimmingOptions.None, type, defaultValue, this.Culture, out value);
 		}
 
 		public bool TryGetValue<T>(string columnName, T defaultValue, out T value)
@@ -293,7 +298,7 @@ namespace NLight.IO.Text
 
 			object objectValue;
 
-			if (this.ValueConverter.TryConvertTo(this.CurrentRecord[columnIndex], TrimmingOptions.None, typeof(T), defaultValue, this.Culture, out objectValue))
+			if (GetValueConverter(columnIndex).TryConvertTo(this.CurrentRecord[columnIndex], TrimmingOptions.None, typeof(T), defaultValue, this.Culture, out objectValue))
 			{
 				value = (T) objectValue;
 				return true;
@@ -760,7 +765,7 @@ namespace NLight.IO.Text
 			if (this.Columns[columnIndex].DataType != typeof(Boolean))
 				throw new InvalidCastException();
 
-			return this.ValueConverter.ConvertToBoolean(this.CurrentRecord[columnIndex], TrimmingOptions.None, default(Boolean), this.Culture);
+			return GetValueConverter(columnIndex).ConvertToBoolean(this.CurrentRecord[columnIndex], TrimmingOptions.None, default(Boolean), this.Culture);
 		}
 
 		byte IDataRecord.GetByte(int columnIndex)
@@ -771,7 +776,7 @@ namespace NLight.IO.Text
 			if (this.Columns[columnIndex].DataType != typeof(Byte))
 				throw new InvalidCastException();
 
-			return this.ValueConverter.ConvertToByte(this.CurrentRecord[columnIndex], TrimmingOptions.None, default(Byte), this.Culture);
+			return GetValueConverter(columnIndex).ConvertToByte(this.CurrentRecord[columnIndex], TrimmingOptions.None, default(Byte), this.Culture);
 		}
 
 		long IDataRecord.GetBytes(int columnIndex, long valueOffset, byte[] buffer, int bufferOffset, int length)
@@ -797,7 +802,7 @@ namespace NLight.IO.Text
 			if (this.Columns[columnIndex].DataType != typeof(char))
 				throw new InvalidCastException();
 
-			return this.ValueConverter.ConvertToChar(this.CurrentRecord[columnIndex], TrimmingOptions.None, default(Char), this.Culture);
+			return GetValueConverter(columnIndex).ConvertToChar(this.CurrentRecord[columnIndex], TrimmingOptions.None, default(Char), this.Culture);
 		}
 
 		long IDataRecord.GetChars(int columnIndex, long valueOffset, char[] buffer, int bufferOffset, int length)
@@ -846,7 +851,7 @@ namespace NLight.IO.Text
 			if (this.Columns[columnIndex].DataType != typeof(DateTime))
 				throw new InvalidCastException();
 
-			return this.ValueConverter.ConvertToDateTime(this.CurrentRecord[columnIndex], TrimmingOptions.None, default(DateTime), this.Culture);
+			return GetValueConverter(columnIndex).ConvertToDateTime(this.CurrentRecord[columnIndex], TrimmingOptions.None, default(DateTime), this.Culture);
 		}
 
 		decimal IDataRecord.GetDecimal(int columnIndex)
@@ -857,7 +862,7 @@ namespace NLight.IO.Text
 			if (this.Columns[columnIndex].DataType != typeof(Decimal))
 				throw new InvalidCastException();
 
-			return this.ValueConverter.ConvertToDecimal(this.CurrentRecord[columnIndex], TrimmingOptions.None, default(Decimal), this.Culture);
+			return GetValueConverter(columnIndex).ConvertToDecimal(this.CurrentRecord[columnIndex], TrimmingOptions.None, default(Decimal), this.Culture);
 		}
 
 		double IDataRecord.GetDouble(int columnIndex)
@@ -868,7 +873,7 @@ namespace NLight.IO.Text
 			if (this.Columns[columnIndex].DataType != typeof(Double))
 				throw new InvalidCastException();
 
-			return this.ValueConverter.ConvertToDouble(this.CurrentRecord[columnIndex], TrimmingOptions.None, default(Double), this.Culture);
+			return GetValueConverter(columnIndex).ConvertToDouble(this.CurrentRecord[columnIndex], TrimmingOptions.None, default(Double), this.Culture);
 		}
 
 		Type IDataRecord.GetFieldType(int columnIndex)
@@ -887,7 +892,7 @@ namespace NLight.IO.Text
 			if (this.Columns[columnIndex].DataType != typeof(Single))
 				throw new InvalidCastException();
 
-			return this.ValueConverter.ConvertToSingle(this.CurrentRecord[columnIndex], TrimmingOptions.None, default(Single), this.Culture);
+			return GetValueConverter(columnIndex).ConvertToSingle(this.CurrentRecord[columnIndex], TrimmingOptions.None, default(Single), this.Culture);
 		}
 
 		Guid IDataRecord.GetGuid(int columnIndex)
@@ -898,7 +903,7 @@ namespace NLight.IO.Text
 			if (this.Columns[columnIndex].DataType != typeof(Guid))
 				throw new InvalidCastException();
 
-			return this.ValueConverter.ConvertToGuid(this.CurrentRecord[columnIndex], TrimmingOptions.None, default(Guid), this.Culture);
+			return GetValueConverter(columnIndex).ConvertToGuid(this.CurrentRecord[columnIndex], TrimmingOptions.None, default(Guid), this.Culture);
 		}
 
 		short IDataRecord.GetInt16(int columnIndex)
@@ -909,7 +914,7 @@ namespace NLight.IO.Text
 			if (this.Columns[columnIndex].DataType != typeof(Int16))
 				throw new InvalidCastException();
 
-			return this.ValueConverter.ConvertToInt16(this.CurrentRecord[columnIndex], TrimmingOptions.None, default(Int16), this.Culture);
+			return GetValueConverter(columnIndex).ConvertToInt16(this.CurrentRecord[columnIndex], TrimmingOptions.None, default(Int16), this.Culture);
 		}
 
 		int IDataRecord.GetInt32(int columnIndex)
@@ -920,7 +925,7 @@ namespace NLight.IO.Text
 			if (this.Columns[columnIndex].DataType != typeof(Int32))
 				throw new InvalidCastException();
 
-			return this.ValueConverter.ConvertToInt32(this.CurrentRecord[columnIndex], TrimmingOptions.None, default(Int32), this.Culture);
+			return GetValueConverter(columnIndex).ConvertToInt32(this.CurrentRecord[columnIndex], TrimmingOptions.None, default(Int32), this.Culture);
 		}
 
 		long IDataRecord.GetInt64(int columnIndex)
@@ -931,7 +936,7 @@ namespace NLight.IO.Text
 			if (this.Columns[columnIndex].DataType != typeof(Int64))
 				throw new InvalidCastException();
 
-			return this.ValueConverter.ConvertToInt64(this.CurrentRecord[columnIndex], TrimmingOptions.None, default(Int64), this.Culture);
+			return GetValueConverter(columnIndex).ConvertToInt64(this.CurrentRecord[columnIndex], TrimmingOptions.None, default(Int64), this.Culture);
 		}
 
 		string IDataRecord.GetName(int columnIndex)
@@ -962,7 +967,7 @@ namespace NLight.IO.Text
 			if (((IDataRecord) this).IsDBNull(columnIndex))
 				return DBNull.Value;
 			else
-				return this.ValueConverter.ConvertTo(this.CurrentRecord[columnIndex], TrimmingOptions.None, this.Columns[columnIndex].DataType, this.Columns[columnIndex].DefaultValue, this.Culture);
+				return GetValueConverter(columnIndex).ConvertTo(this.CurrentRecord[columnIndex], TrimmingOptions.None, this.Columns[columnIndex].DataType, this.Columns[columnIndex].DefaultValue, this.Culture);
 		}
 
 		int IDataRecord.GetValues(object[] values)
