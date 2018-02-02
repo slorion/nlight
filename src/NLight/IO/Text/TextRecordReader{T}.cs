@@ -484,9 +484,7 @@ namespace NLight.IO.Text
 				while (this.CurrentRecord.Count < this.Columns.Count)
 					this.CurrentRecord.Add(null);
 
-				var recordParsed = this.RecordParsed;
-				if (recordParsed != null)
-					recordParsed(this, new RecordParsedEventArgs(readResult, this.CurrentRecord));
+				this.RecordParsed?.Invoke(this, new RecordParsedEventArgs(readResult, this.CurrentRecord));
 
 				return readResult;
 			}

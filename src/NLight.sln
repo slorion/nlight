@@ -1,24 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NLight", "NLight\NLight.csproj", "{1FB21654-1205-454E-90DB-A7F434AAE057}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NLight", "NLight\NLight.csproj", "{5F0233A8-3C05-44BB-8E97-476D6C5F7111}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NLight.Tests.Benchmarks", "NLight.Tests.Benchmarks\NLight.Tests.Benchmarks.csproj", "{6F7E4281-262F-4338-B49A-F848FD1170E8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NLight.Tests.Benchmarks", "NLight.Tests.Benchmarks\NLight.Tests.Benchmarks.csproj", "{8844C12D-26F6-4FF7-8585-1569AE4FA58F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NLight.Tests.Unit", "NLight.Tests.Unit\NLight.Tests.Unit.csproj", "{7ABD7D88-1380-4AC5-9243-6F8A6A33F13D}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "paket", "paket", "{C32D239A-7BF5-49D1-8146-D321109A0738}"
-	ProjectSection(SolutionItems) = preProject
-		paket.dependencies = paket.dependencies
-		paket.lock = paket.lock
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nuget", "nuget", "{FC7DBE81-7608-4AD9-A84C-315595B5E053}"
-	ProjectSection(SolutionItems) = preProject
-		nuget-push.ps1 = nuget-push.ps1
-	EndProjectSection
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NLight.Tests.Unit", "NLight.Tests.Unit\NLight.Tests.Unit.csproj", "{41D78BAF-EB52-497A-9A20-5FA5DD0902FC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,23 +15,23 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{1FB21654-1205-454E-90DB-A7F434AAE057}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1FB21654-1205-454E-90DB-A7F434AAE057}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1FB21654-1205-454E-90DB-A7F434AAE057}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1FB21654-1205-454E-90DB-A7F434AAE057}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6F7E4281-262F-4338-B49A-F848FD1170E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6F7E4281-262F-4338-B49A-F848FD1170E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6F7E4281-262F-4338-B49A-F848FD1170E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6F7E4281-262F-4338-B49A-F848FD1170E8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7ABD7D88-1380-4AC5-9243-6F8A6A33F13D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7ABD7D88-1380-4AC5-9243-6F8A6A33F13D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7ABD7D88-1380-4AC5-9243-6F8A6A33F13D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7ABD7D88-1380-4AC5-9243-6F8A6A33F13D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F0233A8-3C05-44BB-8E97-476D6C5F7111}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F0233A8-3C05-44BB-8E97-476D6C5F7111}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F0233A8-3C05-44BB-8E97-476D6C5F7111}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F0233A8-3C05-44BB-8E97-476D6C5F7111}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8844C12D-26F6-4FF7-8585-1569AE4FA58F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8844C12D-26F6-4FF7-8585-1569AE4FA58F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8844C12D-26F6-4FF7-8585-1569AE4FA58F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8844C12D-26F6-4FF7-8585-1569AE4FA58F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{41D78BAF-EB52-497A-9A20-5FA5DD0902FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41D78BAF-EB52-497A-9A20-5FA5DD0902FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41D78BAF-EB52-497A-9A20-5FA5DD0902FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41D78BAF-EB52-497A-9A20-5FA5DD0902FC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.TransientFaultHandling.6.0.1304.0\lib\portable-net45+win+wp8;packages\EnterpriseLibrary.TransientFaultHandling.Data.6.0.1304.1\lib\NET45
+		SolutionGuid = {AD7A5CEA-99AC-4A1E-8F6F-20BB9C9E68C8}
 	EndGlobalSection
 EndGlobal

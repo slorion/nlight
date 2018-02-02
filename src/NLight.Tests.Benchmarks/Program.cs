@@ -1,4 +1,4 @@
-﻿// Author(s): Sébastien Lorion
+// Author(s): Sébastien Lorion
 
 using System;
 using System.Diagnostics;
@@ -77,8 +77,7 @@ namespace NLight.Tests.Benchmarks
 					Benchmark.Execute("NLight", benchmarkOptions, benchmarkArgs, OutputResults, DelimitedRecordReaderBenchmarks.ReadAll);
 					Benchmark.Execute("DataStreams", benchmarkOptions, benchmarkArgs, OutputResults, DelimitedRecordReaderBenchmarks.ReadAll_DataStreams);
 					Benchmark.Execute("CsvHelper", benchmarkOptions, benchmarkArgs, OutputResults, DelimitedRecordReaderBenchmarks.ReadAll_CsvHelper);
-					//Benchmark.Execute("OleDb", benchmarkOptions, benchmarkArgs, OutputResults, DelimitedRecordReaderBenchmarks.ReadAll_OleDb);
-					//Benchmark.Execute("Regex", benchmarkOptions, benchmarkArgs, OutputResults, DelimitedRecordReaderBenchmarks.ReadAll_Regex);
+					Benchmark.Execute("Regex", benchmarkOptions, benchmarkArgs, OutputResults, DelimitedRecordReaderBenchmarks.ReadAll_Regex);
 				}
 			}
 
