@@ -1,8 +1,7 @@
-﻿// Author(s): Sébastien Lorion
+// Author(s): Sébastien Lorion
 
 using NLight.IO.Text;
 using System.Data;
-using System.Data.OleDb;
 using System.IO;
 using System.Text.RegularExpressions;
 using DS = DataStreams.Csv;
@@ -107,15 +106,14 @@ namespace NLight.Tests.Benchmarks.IO.Text
 
 		public static void ReadAll_CsvHelper(DelimitedRecordReaderBenchmarkArguments args)
 		{
-			var config = new CH.Configuration.CsvConfiguration
+			var config = new CH.Configuration.Configuration
 			{
 				BufferSize = args.BufferSize,
 				AllowComments = true,
 				IgnoreBlankLines = args.SkipEmptyLines,
 				HasHeaderRecord = false,
 				DetectColumnCountChanges = true,
-				TrimFields = args.TrimWhiteSpaces,
-				TrimHeaders = args.TrimWhiteSpaces
+				TrimOptions = args.TrimWhiteSpaces ? CH.Configuration.TrimOptions.Trim | CH.Configuration.TrimOptions.InsideQuotes : CH.Configuration.TrimOptions.None
 			};
 
 			using (var reader = new CH.CsvReader(new StreamReader(args.Path, args.Encoding, true, args.BufferSize), config))
@@ -126,7 +124,7 @@ namespace NLight.Tests.Benchmarks.IO.Text
 				{
 					while (reader.Read())
 					{
-						var record = reader.CurrentRecord;
+						var record = reader.Context.Record;
 						for (int i = 0; i < record.Length; i++)
 							s = record[i];
 					}
@@ -137,41 +135,6 @@ namespace NLight.Tests.Benchmarks.IO.Text
 					{
 						for (int i = 0; i < args.FieldIndex + 1; i++)
 							s = reader[i];
-					}
-				}
-			}
-		}
-
-		public static void ReadAll_OleDb(DelimitedRecordReaderBenchmarkArguments args)
-		{
-			string directory = Path.GetDirectoryName(args.Path);
-			string file = Path.GetFileName(args.Path);
-
-			using (var cnn = new OleDbConnection(@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + directory + @";Extended Properties=""Text;HDR=No;FMT=Delimited"""))
-			using (var cmd = cnn.CreateCommand())
-			{
-				cmd.CommandText = $"SELECT * FROM {file}";
-
-				cnn.Open();
-				using (var reader = cmd.ExecuteReader(CommandBehavior.SequentialAccess))
-				{
-					string s;
-
-					if (args.FieldIndex < 0)
-					{
-						while (reader.Read())
-						{
-							for (int i = 0; i < reader.FieldCount; i++)
-								s = reader.GetValue(i) as string;
-						}
-					}
-					else
-					{
-						while (reader.Read())
-						{
-							for (int i = 0; i < args.FieldIndex + 1; i++)
-								s = reader.GetValue(i) as string;
-						}
 					}
 				}
 			}

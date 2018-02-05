@@ -1,4 +1,4 @@
-﻿// Author(s): Sébastien Lorion
+// Author(s): Sébastien Lorion
 
 using NLight.Tests.Unit.BCL.Data.MockDataProvider;
 using NLight.Transactions;
@@ -8,7 +8,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace NLight.Tests.Unit.Transactions
@@ -100,7 +99,6 @@ namespace NLight.Tests.Unit.Transactions
 		}
 
 		[Test]
-		[RequiresThread]
 		[TestCaseSource(typeof(TestCaseFactory), "NestedContextCaseSource")]
 		public static async Task NestedContextTest(TransactionContextTestNode testNode)
 		{
