@@ -2,21 +2,22 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Version>2.0.0</Version>
+    <Version>2.1.0</Version>
     <Copyright>Copyright (c) 2009 Sébastien Lorion</Copyright>
     <Authors>Sébastien Lorion</Authors>
     <Company />
     <Description>Toolbox for .NET projects</Description>
     <PackageProjectUrl>https://github.com/slorion/nlight</PackageProjectUrl>
     <PackageTags>io,parser,csv,delimited,transaction,reactive,tree</PackageTags>
-    <PackageReleaseNotes>Migrated to .NET Standard 2.0</PackageReleaseNotes>
+    <PackageReleaseNotes>Added UseQuoteCharacter property to DelimitedRecordWriter to control whether fields are quoted in the output file or not (thanks to pmaiolino).</PackageReleaseNotes>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>C:\projects\oss\nlight\src\NLight.snk</AssemblyOriginatorKeyFile>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <NeutralLanguage>en</NeutralLanguage>
     <RepositoryUrl></RepositoryUrl>
-    <FileVersion>2.0.0.0</FileVersion>
-    <AssemblyVersion>2.0.0.0</AssemblyVersion>
+    <FileVersion>2.1.0.0</FileVersion>
+    <AssemblyVersion>2.1.0.0</AssemblyVersion>
+    <PackageLicenseUrl>https://github.com/slorion/nlight/blob/master/LICENSE</PackageLicenseUrl>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
