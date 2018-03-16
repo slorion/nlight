@@ -14,6 +14,8 @@ namespace NLight.IO.Text
 		public const char DefaultQuoteEscapeCharacter = '"';
 		public const char DefaultColumnHeaderTypeSeparator = ':';
 
+		public bool UseQuoteCharacter { get; set; } = true;
+		
 		private char _quote;
 		private char _quoteEscape;
 
@@ -82,12 +84,20 @@ namespace NLight.IO.Text
 			else if ((this.FieldTrimmingOptions & TrimmingOptions.Start) == TrimmingOptions.Start)
 				value = value.TrimStart();
 
-			value = value.Replace(_quoteString, _escapedQuoteString);
+			if (UseQuoteCharacter)
+			{
+				value = value.Replace(_quoteString, _escapedQuoteString);
 
-			writer.Write(_quote);
-			writer.Write(value);
-			writer.Write(_quote);
+				writer.Write(_quote);
+				writer.Write(value);
+				writer.Write(_quote);
+			}
+			else
+			{
+				writer.Write(value);
+			}
 
+			
 			_isFirstField = false;
 		}
 
