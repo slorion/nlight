@@ -7,6 +7,8 @@ using System.Text.RegularExpressions;
 using DS = DataStreams.Csv;
 using LW = LumenWorks.Framework.IO.Csv;
 using CH = CsvHelper;
+using System.Collections.Generic;
+using System;
 
 namespace NLight.Tests.Benchmarks.IO.Text
 {
@@ -106,7 +108,7 @@ namespace NLight.Tests.Benchmarks.IO.Text
 
 		public static void ReadAll_CsvHelper(DelimitedRecordReaderBenchmarkArguments args)
 		{
-			var config = new CH.Configuration.Configuration
+			var config = new CH.Configuration.CsvConfiguration(System.Globalization.CultureInfo.InvariantCulture)
 			{
 				BufferSize = args.BufferSize,
 				AllowComments = true,
@@ -124,9 +126,8 @@ namespace NLight.Tests.Benchmarks.IO.Text
 				{
 					while (reader.Read())
 					{
-						var record = reader.Context.Record;
-						for (int i = 0; i < record.Length; i++)
-							s = record[i];
+						for (int i = 0; i < reader.ColumnCount; i++)
+							s = reader[i];
 					}
 				}
 				else

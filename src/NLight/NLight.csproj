@@ -1,22 +1,22 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;net46</TargetFrameworks>
-    <Version>2.1.1</Version>
+    <TargetFrameworks>netstandard2.0</TargetFrameworks>
+    <Version>2.2.0</Version>
     <Copyright>Copyright (c) 2009 Sébastien Lorion</Copyright>
     <Authors>Sébastien Lorion</Authors>
     <Company />
     <Description>Toolbox for .NET projects</Description>
     <PackageProjectUrl>https://github.com/slorion/nlight</PackageProjectUrl>
     <PackageTags>io,parser,csv,delimited,transaction,reactive,tree</PackageTags>
-    <PackageReleaseNotes>Added multi-targeting support for .NET 4.6</PackageReleaseNotes>
+    <PackageReleaseNotes>Increased compatibility with newer .NET versions. Updated Reactive dependency to 5.0. NLight targets .NET Standard 2.0 (.NET Framework 4.6.1+, .NET Core 2.0+).</PackageReleaseNotes>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>C:\projects\oss\nlight\src\NLight.snk</AssemblyOriginatorKeyFile>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <NeutralLanguage>en</NeutralLanguage>
     <RepositoryUrl></RepositoryUrl>
-    <FileVersion>2.1.1.0</FileVersion>
-    <AssemblyVersion>2.1.1.0</AssemblyVersion>
+    <FileVersion>2.2.0.0</FileVersion>
+    <AssemblyVersion>2.2.0.0</AssemblyVersion>
     <PackageLicenseUrl>https://github.com/slorion/nlight/blob/master/LICENSE</PackageLicenseUrl>
   </PropertyGroup>
 
@@ -37,8 +37,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="System.Reactive" Version="3.1.1" />
-    <PackageReference Include="System.Reactive.Core" Version="3.1.1" />
+    <PackageReference Include="System.Reactive.Core" Version="5.0.0" />
   </ItemGroup>
 
   <ItemGroup>
