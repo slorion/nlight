@@ -126,11 +126,8 @@ namespace NLight.Tests.Benchmarks.IO.Text
 				{
 					while (reader.Read())
 					{
-						IDictionary<string,Object> record = (IDictionary<string, Object>)reader.GetRecord<dynamic>();
-						foreach (var str in record.Values)
-						{
-							s = (string)str;
-						}
+						for (int i = 0; i < reader.ColumnCount; i++)
+							s = reader[i];
 					}
 				}
 				else

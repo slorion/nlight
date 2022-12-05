@@ -9,7 +9,7 @@
     <Description>Toolbox for .NET projects</Description>
     <PackageProjectUrl>https://github.com/slorion/nlight</PackageProjectUrl>
     <PackageTags>io,parser,csv,delimited,transaction,reactive,tree</PackageTags>
-    <PackageReleaseNotes>Increased compatibility to newer .net versions. Minimum supported .NET Version is 4.7.2 (.NET Standard 2.0)</PackageReleaseNotes>
+    <PackageReleaseNotes>Increased compatibility with newer .NET versions. Updated Reactive dependency to 5.0. NLight targets .NET Standard 2.0 (.NET Framework 4.6.1+, .NET Core 2.0+).</PackageReleaseNotes>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>C:\projects\oss\nlight\src\NLight.snk</AssemblyOriginatorKeyFile>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
